@@ -1,6 +1,6 @@
 export default function Challenge() {
     return (
-        <div className="bg-black/30 px-6 py-4 rounded">
+        <div className="bg-black/50 px-6 py-4 rounded">
             <div className="flex justify-between">
                 <h3 className="font-semibold">
                     web/foo

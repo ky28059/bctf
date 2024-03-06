@@ -1,20 +1,27 @@
-export default function Challenge() {
+export type Challenge = {
+    name: string,
+    category: string,
+    desc: string, // TODO?
+    solves: number,
+    points: number,
+}
+export default function Challenge(props: Challenge) {
     return (
         <div className="bg-black/50 px-6 py-4 rounded border border-tertiary">
             <div className="flex justify-between">
                 <h3 className="font-semibold">
-                    web/foo
+                    {props.category}/{props.name}
                 </h3>
 
                 <p className="text-theme-bright">
-                    36 solves / 484 points
+                    {props.solves} solves / {props.points} points
                 </p>
             </div>
 
             <hr className="my-3 border-secondary" />
 
             <p className="text-sm">
-                The flag is in <code>flag.txt</code>, but there's a twist!!
+                {props.desc} {/* TODO */}
             </p>
 
             <div className="flex mt-3 text-sm">

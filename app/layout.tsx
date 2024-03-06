@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 
 import NavBar from '@/app/NavBar';
 import Equalizer from '@/app/Equalizer';
+import TimeProvider from '@/components/TimeProvider';
 
 import './globals.css';
 
@@ -22,9 +23,11 @@ export default function RootLayout(props: { children: ReactNode }) {
                 className="bg-gradient-to-b from-background from-25% to-theme bg-fixed text-white h-full"
                 style={inter.style}
             >
-                <NavBar />
-                {props.children}
-                <Equalizer />
+                <TimeProvider>
+                    <NavBar />
+                    {props.children}
+                    <Equalizer />
+                </TimeProvider>
             </body>
         </html>
     )

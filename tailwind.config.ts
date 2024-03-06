@@ -14,7 +14,8 @@ const config: Config = {
         'theme-dark': '#9A1B1F',
         'theme-bright': '#ff1e1e',
         primary: '#BABABA',
-        secondary: '#757575'
+        secondary: '#757575',
+        tertiary: '#404040'
       }
     },
     container: {

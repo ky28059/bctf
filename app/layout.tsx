@@ -2,9 +2,11 @@ import type {ReactNode} from 'react';
 import type {Metadata} from 'next';
 import { Inter } from 'next/font/google';
 
+// Components
 import NavBar from '@/app/NavBar';
 import Equalizer from '@/app/Equalizer';
 import TimeProvider from '@/components/TimeProvider';
+import FilterProvider from '@/components/FilterProvider';
 
 import './globals.css';
 
@@ -27,9 +29,11 @@ export default function RootLayout(props: { children: ReactNode }) {
                 style={inter.style}
             >
                 <TimeProvider>
-                    <NavBar />
-                    {props.children}
-                    <Equalizer />
+                    <FilterProvider>
+                        <NavBar />
+                        {props.children}
+                        <Equalizer />
+                    </FilterProvider>
                 </TimeProvider>
             </body>
         </html>

@@ -11,7 +11,7 @@ export default function Challenge() {
                 </p>
             </div>
 
-            <hr className="my-3"/>
+            <hr className="my-3 border-secondary" />
 
             <p className="text-sm">
                 The flag is in <code>flag.txt</code>, but there's a twist!!
@@ -20,11 +20,11 @@ export default function Challenge() {
             <div className="flex mt-3 text-sm">
                 <input
                     type="text"
-                    className="rounded-l px-3 py-2 border flex-grow bg-black/30"
+                    className="rounded-l px-3 py-2 border border-primary flex-grow bg-black/30 placeholder:text-secondary"
                     placeholder="Flag"
                 />
                 <button
-                    className="rounded-r py-2 px-3 border"
+                    className="rounded-r py-2 px-3 border border-primary"
                 >
                     Submit
                 </button>

@@ -14,7 +14,10 @@ export default function NavLink(props: NavLinkProps) {
     const active = pathname === props.href;
 
     return (
-        <Link href={props.href} className="px-3 py-2">
+        <Link
+            className={'px-4 py-2 border-b-2 transition duration-200 ' + (active ? 'border-theme text-theme' : 'border-secondary text-secondary hover:border-theme-dark hover:text-theme-dark')}
+            href={props.href}
+        >
             {props.children}
         </Link>
     )

@@ -1,6 +1,11 @@
+import type {Metadata} from 'next';
 import Filters from '@/app/challenges/Filters';
 import Challenges from '@/app/challenges/Challenges';
 
+
+export const metadata: Metadata = {
+    title: 'Challenges'
+}
 
 export default function ChallengesPage() {
     return (

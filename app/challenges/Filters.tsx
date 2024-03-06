@@ -12,7 +12,7 @@ export default function Filters() {
     }
 
     return (
-        <div className="bg-black/30 px-6 py-4 rounded w-80 h-max sticky top-32">
+        <div className="bg-black/30 px-6 py-4 rounded w-80 flex-none h-max sticky top-32">
             <h2 className="font-semibold mb-1">Filters</h2>
 
             <div className="flex flex-col gap-1 pl-2 mb-3">

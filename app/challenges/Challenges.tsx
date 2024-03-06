@@ -1,10 +1,22 @@
+'use client'
+
 import Challenge, {Challenge as ChallengeObj} from '@/app/challenges/Challenge';
+import {useContext, useMemo} from 'react';
+import FilterContext from '@/contexts/FilterContext';
 
 
 export default function Challenges() {
+    const {filter} = useContext(FilterContext);
+
+    // Filter by category if any category boxes are checked.
+    const filtered = useMemo(() => {
+        if (filter.categories.size === 0) return dummyChallenges;
+        return dummyChallenges.filter((c) => filter.categories.has(c.category));
+    }, [filter])
+
     return (
         <div className="flex-grow flex flex-col gap-3">
-            {dummyChallenges.map((c) => (
+            {filtered.map((c) => (
                 <Challenge
                     {...c}
                     key={c.name}

@@ -18,7 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout(props: { children: ReactNode }) {
     return (
         <html lang="en" className="h-full">
-            <body className="bg-gradient-to-b from-background from-25% to-theme text-white h-full" style={inter.style}>
+            <body
+                className="bg-gradient-to-b from-background from-25% to-theme bg-fixed text-white h-full"
+                style={inter.style}
+            >
                 <NavBar />
                 {props.children}
                 <Equalizer />

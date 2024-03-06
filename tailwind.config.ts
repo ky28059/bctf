@@ -12,6 +12,7 @@ const config: Config = {
         background: '#111',
         theme: '#c22026',
         'theme-dark': '#9A1B1F',
+        'theme-bright': '#ff1e1e',
         secondary: '#f5f5f5'
       }
     },

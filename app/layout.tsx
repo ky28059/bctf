@@ -2,6 +2,8 @@ import type {ReactNode} from 'react';
 import type {Metadata} from 'next';
 import { Inter } from 'next/font/google';
 
+import NavBar from '@/app/NavBar';
+
 import './globals.css';
 
 
@@ -16,6 +18,7 @@ export default function RootLayout(props: { children: ReactNode }) {
     return (
         <html lang="en">
             <body className={inter.className}>
+                <NavBar />
                 {props.children}
             </body>
         </html>

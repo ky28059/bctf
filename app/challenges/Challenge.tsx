@@ -2,6 +2,7 @@
 
 import {FormEvent, useContext, useState} from 'react';
 import Markdown from 'react-markdown';
+import SolvesModal from '@/app/challenges/SolvesModal';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 import type {Challenge} from '@/util/challenges';
 
@@ -9,6 +10,8 @@ import type {Challenge} from '@/util/challenges';
 export default function Challenge(props: Challenge) {
     const [flag, setFlag] = useState('');
     const {acceptFlag, rejectFlag} = useContext(FlagDispatchContext);
+
+    const [showSolves, setShowSolves] = useState(false);
 
     async function submitFlag(e: FormEvent) {
         e.preventDefault();
@@ -25,9 +28,12 @@ export default function Challenge(props: Challenge) {
                     {props.category}/{props.name}
                 </h3>
 
-                <p className="text-theme-bright">
+                <button
+                    className="text-theme-bright hover:text-theme transition duration-200"
+                    onClick={() => setShowSolves(true)}
+                >
                     {props.solves} solves / {props.points} points
-                </p>
+                </button>
             </div>
             <h4 className="text-sm text-primary mt-0.5">
                 {props.author}
@@ -70,6 +76,12 @@ export default function Challenge(props: Challenge) {
                     ))}
                 </div>
             )}
+
+            <SolvesModal
+                open={showSolves}
+                setOpen={setShowSolves}
+                challenge={props}
+            />
         </div>
     )
 }

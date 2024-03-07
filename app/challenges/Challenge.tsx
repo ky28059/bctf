@@ -1,3 +1,4 @@
+import Markdown from 'react-markdown';
 import type {Challenge} from '@/util/challenges';
 
 
@@ -19,9 +20,9 @@ export default function Challenge(props: Challenge) {
 
             <hr className="my-3 border-secondary" />
 
-            <p className="text-sm">
-                {props.description} {/* TODO markdown parse */}
-            </p>
+            <Markdown className="text-sm break-words space-y-2 [&_a]:text-theme-bright [&_a:hover]:underline [&_code]:px-2 [&_code]:py-1 [&_code]:bg-black/40 [&_code]:text-primary [&_code]:rounded">
+                {props.description}
+            </Markdown>
 
             <div className="flex mt-3 text-sm">
                 <input

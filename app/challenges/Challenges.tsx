@@ -19,7 +19,7 @@ export default function Challenges(props: ChallengesProps) {
     }, [filter])
 
     return (
-        <div className="flex-grow flex flex-col gap-3">
+        <div className="flex-grow flex flex-col gap-3 min-w-0">
             {filtered.map((c) => (
                 <Challenge
                     {...c}

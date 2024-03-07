@@ -13,6 +13,9 @@ export default function Challenge(props: Challenge) {
                     {props.solves} solves / {props.points} points
                 </p>
             </div>
+            <h4 className="text-sm text-primary mt-0.5">
+                {props.author}
+            </h4>
 
             <hr className="my-3 border-secondary" />
 

@@ -13,7 +13,7 @@ export default async function ChallengesPage() {
 
     return (
         <div className="container pt-32 pb-24 flex gap-6">
-            <Filters />
+            <Filters challenges={data.data} />
             <Challenges challenges={data.data} />
         </div>
     )

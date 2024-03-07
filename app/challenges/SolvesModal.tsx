@@ -23,7 +23,7 @@ export default function SolvesModal(props: SolvesModalProps) {
     const [solves, setSolves] = useState<SolveData[]>([]);
     const [page, setPage] = useState(0);
 
-    const MAX_PAGE = Math.ceil(props.challenge.solves / 10);
+    const maxPage = Math.ceil(props.challenge.solves / 10);
 
     useEffect(() => {
         if (!props.open) return;
@@ -86,7 +86,7 @@ export default function SolvesModal(props: SolvesModalProps) {
                     <FaChevronLeft />
                 </button>
 
-                {Array(MAX_PAGE).fill(0).map((_, i) => (
+                {Array(maxPage).fill(0).map((_, i) => (
                     // TODO: trim this if MAX_PAGE is too long
                     <button
                         className={'py-1.5 px-3 rounded transition duration-200 ' + (page === i ? 'bg-theme text-white' : 'hover:text-white')}
@@ -100,7 +100,7 @@ export default function SolvesModal(props: SolvesModalProps) {
                 <button
                     className="disabled:text-tertiary enabled:hover:text-primary transition duration-200 ml-2"
                     onClick={incrementPage}
-                    disabled={page === MAX_PAGE - 1}
+                    disabled={page === maxPage - 1}
                 >
                     <FaChevronRight />
                 </button>

@@ -70,6 +70,7 @@ export default function Challenge(props: Challenge) {
                         <a
                             className="text-theme hover:text-theme-bright transition duration-200 bg-black/40 px-2.5 py-1 rounded"
                             href={f.url}
+                            key={f.url}
                         >
                             {f.name}
                         </a>

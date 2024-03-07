@@ -12,7 +12,7 @@ import {pluralize} from '@/util/strings';
 
 export default function ProfileCard(props: ProfileData) {
     return (
-        <div className="bg-black/30 px-12 py-8">
+        <div className="bg-black/30 px-12 py-8 rounded-md">
             <h1 className="text-2xl font-bold border-b border-secondary pb-1 mb-4">
                 {props.name}
             </h1>

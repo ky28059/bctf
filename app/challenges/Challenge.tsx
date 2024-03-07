@@ -35,6 +35,19 @@ export default function Challenge(props: Challenge) {
                     Submit
                 </button>
             </div>
+
+            {props.files.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 mt-3 text-xs font-mono font-semibold">
+                    {props.files.map((f) => (
+                        <a
+                            className="text-theme hover:text-theme-bright transition duration-200 bg-black/40 px-2.5 py-1 rounded"
+                            href={f.url}
+                        >
+                            {f.name}
+                        </a>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }

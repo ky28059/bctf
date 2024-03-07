@@ -5,8 +5,11 @@ import { Inter } from 'next/font/google';
 // Components
 import NavBar from '@/app/NavBar';
 import Equalizer from '@/app/Equalizer';
+
+// Providers
 import TimeProvider from '@/components/TimeProvider';
 import FilterProvider from '@/components/FilterProvider';
+import FlagDispatchProvider from '@/components/FlagDispatchProvider';
 
 import './globals.css';
 
@@ -30,9 +33,11 @@ export default function RootLayout(props: { children: ReactNode }) {
             >
                 <TimeProvider>
                     <FilterProvider>
-                        <NavBar />
-                        {props.children}
-                        <Equalizer />
+                        <FlagDispatchProvider>
+                            <NavBar />
+                            {props.children}
+                            <Equalizer />
+                        </FlagDispatchProvider>
                     </FilterProvider>
                 </TimeProvider>
             </body>

@@ -1,10 +1,6 @@
-export type Challenge = {
-    name: string,
-    category: string,
-    desc: string, // TODO?
-    solves: number,
-    points: number,
-}
+import type {Challenge} from '@/util/challenges';
+
+
 export default function Challenge(props: Challenge) {
     return (
         <div className="bg-black/50 px-6 py-4 rounded border border-tertiary">
@@ -21,7 +17,7 @@ export default function Challenge(props: Challenge) {
             <hr className="my-3 border-secondary" />
 
             <p className="text-sm">
-                {props.desc} {/* TODO */}
+                {props.description} {/* TODO markdown parse */}
             </p>
 
             <div className="flex mt-3 text-sm">

@@ -8,12 +8,14 @@ import type {Challenge} from '@/util/challenges';
 
 export default function Challenge(props: Challenge) {
     const [flag, setFlag] = useState('');
-    const {rejectFlag} = useContext(FlagDispatchContext);
+    const {acceptFlag, rejectFlag} = useContext(FlagDispatchContext);
 
     async function submitFlag(e: FormEvent) {
         e.preventDefault();
         setFlag('');
-        rejectFlag(); // TODO
+
+        if (/bctf\{.+?}/.test(flag)) acceptFlag(); // TODO
+        else rejectFlag();
     }
 
     return (

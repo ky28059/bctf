@@ -2,7 +2,10 @@
 
 import {useState} from 'react';
 import ScoreboardEntry from '@/app/scoreboard/ScoreboardEntry';
+
+// Utils
 import {getScoreboard, LeaderboardData} from '@/util/scoreboard';
+import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
 
 // Icons
 import {FaChevronLeft, FaChevronRight} from 'react-icons/fa6';
@@ -13,10 +16,10 @@ export default function Scoreboard(props: LeaderboardData) {
     const [page, setPage] = useState(0);
 
     const maxScore = props.leaderboard[0].score;
-    const maxPage = Math.ceil(props.total / 100);
+    const maxPage = Math.ceil(props.total / SCOREBOARD_PAGE_SIZE);
 
     async function updatePage(page: number) {
-        const res = await getScoreboard(page * 100);
+        const res = await getScoreboard(page * SCOREBOARD_PAGE_SIZE);
         setLeaderboard(res.data.leaderboard);
         setPage(page);
     }
@@ -43,7 +46,7 @@ export default function Scoreboard(props: LeaderboardData) {
                 {leaderboard.map((d, i) => (
                     <ScoreboardEntry
                         {...d}
-                        rank={(page * 100) + i + 1}
+                        rank={(page * SCOREBOARD_PAGE_SIZE) + i + 1}
                         percent={d.score / maxScore * 100}
                         key={d.id}
                     />

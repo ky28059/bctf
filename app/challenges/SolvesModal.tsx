@@ -9,6 +9,7 @@ import Solve from '@/app/challenges/Solve';
 // Utils
 import type {Challenge} from '@/util/challenges';
 import {getSolves, SolveData} from '@/util/solves';
+import {SOLVES_PAGE_SIZE} from '@/util/config';
 
 // Icons
 import {FaChevronLeft, FaChevronRight} from 'react-icons/fa6';
@@ -23,7 +24,7 @@ export default function SolvesModal(props: SolvesModalProps) {
     const [solves, setSolves] = useState<SolveData[]>([]);
     const [page, setPage] = useState(0);
 
-    const maxPage = Math.ceil(props.challenge.solves / 10);
+    const maxPage = Math.ceil(props.challenge.solves / SOLVES_PAGE_SIZE);
 
     useEffect(() => {
         if (!props.open) return;
@@ -31,7 +32,7 @@ export default function SolvesModal(props: SolvesModalProps) {
     }, [props.open]);
 
     async function updatePage(page: number) {
-        const res = await getSolves(props.challenge.id, page * 10);
+        const res = await getSolves(props.challenge.id, page * SOLVES_PAGE_SIZE);
         setSolves(res.data.solves);
         setPage(page);
     }
@@ -70,7 +71,7 @@ export default function SolvesModal(props: SolvesModalProps) {
                 {solves.map((s, i) => (
                     <Solve
                         {...s}
-                        rank={(page * 10) + i + 1}
+                        rank={(page * SOLVES_PAGE_SIZE) + i + 1}
                         key={s.id}
                     />
                 ))}

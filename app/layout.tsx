@@ -9,6 +9,7 @@ import Equalizer from '@/app/Equalizer';
 // Providers
 import TimeProvider from '@/components/TimeProvider';
 import FilterProvider from '@/components/FilterProvider';
+import PreferencesProvider from '@/components/PreferencesProvider';
 import FlagDispatchProvider from '@/components/FlagDispatchProvider';
 
 import './globals.css';
@@ -33,11 +34,13 @@ export default function RootLayout(props: { children: ReactNode }) {
             >
                 <TimeProvider>
                     <FilterProvider>
-                        <FlagDispatchProvider>
-                            <NavBar />
-                            {props.children}
-                            <Equalizer />
-                        </FlagDispatchProvider>
+                        <PreferencesProvider>
+                            <FlagDispatchProvider>
+                                <NavBar />
+                                {props.children}
+                                <Equalizer />
+                            </FlagDispatchProvider>
+                        </PreferencesProvider>
                     </FilterProvider>
                 </TimeProvider>
             </body>

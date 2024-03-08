@@ -11,7 +11,7 @@ export default function GridChallenge(props: Challenge) {
     return (
         <>
             <button
-                className="bg-black/50 px-8 py-6 rounded border border-tertiary text-center focus:outline-none focus:ring-2"
+                className="bg-black/50 px-8 py-6 rounded border border-tertiary hover:border-secondary transition duration-150 text-center focus:outline-none focus:ring-2"
                 onClick={() => setOpen(true)}
             >
                 <h3 className="font-medium mb-2">

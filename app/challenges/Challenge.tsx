@@ -1,25 +1,14 @@
 'use client'
 
-import {FormEvent, useContext, useState} from 'react';
+import {useState} from 'react';
 import Markdown from 'react-markdown';
 import SolvesModal from '@/app/challenges/SolvesModal';
-import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 import type {Challenge} from '@/util/challenges';
+import FlagSubmissionInput from '@/app/challenges/FlagSubmissionInput';
 
 
 export default function Challenge(props: Challenge) {
-    const [flag, setFlag] = useState('');
-    const {acceptFlag, rejectFlag} = useContext(FlagDispatchContext);
-
     const [showSolves, setShowSolves] = useState(false);
-
-    async function submitFlag(e: FormEvent) {
-        e.preventDefault();
-        setFlag('');
-
-        if (/bctf\{.+?}/.test(flag)) acceptFlag(); // TODO
-        else rejectFlag();
-    }
 
     return (
         <div className="bg-black/50 px-6 py-4 rounded border border-tertiary">
@@ -45,24 +34,7 @@ export default function Challenge(props: Challenge) {
                 {props.description}
             </Markdown>
 
-            <form
-                className="flex mt-3 text-sm"
-                onSubmit={submitFlag}
-            >
-                <input
-                    type="text"
-                    className="rounded-l px-3 py-2 border border-primary flex-grow bg-black/30 placeholder:text-secondary"
-                    placeholder="bctf{...}"
-                    value={flag}
-                    onChange={(e) => setFlag(e.target.value)}
-                />
-                <button
-                    type="submit"
-                    className="rounded-r py-2 px-3 border border-primary"
-                >
-                    Submit
-                </button>
-            </form>
+            <FlagSubmissionInput />
 
             {props.files.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-3 text-xs font-mono font-semibold">

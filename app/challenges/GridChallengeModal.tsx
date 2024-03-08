@@ -1,11 +1,14 @@
 'use client'
 
-import {FormEvent, useContext, useState} from 'react';
 import Markdown from 'react-markdown';
-import CenteredModal from '@/components/CenteredModal';
-import {FaDownload} from 'react-icons/fa';
-import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 import type {Challenge} from '@/util/challenges';
+
+// Components
+import CenteredModal from '@/components/CenteredModal';
+import FlagSubmissionInput from '@/app/challenges/FlagSubmissionInput';
+
+// Icons
+import {FaDownload} from 'react-icons/fa';
 
 
 type GridChallengeModalProps = {
@@ -14,18 +17,6 @@ type GridChallengeModalProps = {
     challenge: Challenge
 }
 export default function GridChallengeModal(props: GridChallengeModalProps) {
-    const [flag, setFlag] = useState('');
-    const {acceptFlag, rejectFlag} = useContext(FlagDispatchContext);
-
-    // TODO: abstraction
-    async function submitFlag(e: FormEvent) {
-        e.preventDefault();
-        setFlag('');
-
-        if (/bctf\{.+?}/.test(flag)) acceptFlag(); // TODO
-        else rejectFlag();
-    }
-
     return (
         <CenteredModal
             className="relative bg-background rounded-lg p-8 text-white shadow-lg w-full max-w-xl max-h-[90%]"
@@ -57,24 +48,7 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                 </div>
             )}
 
-            <form
-                className="flex mt-3 text-sm"
-                onSubmit={submitFlag}
-            >
-                <input
-                    type="text"
-                    className="rounded-l px-3 py-2 border border-primary flex-grow bg-black/30 placeholder:text-secondary"
-                    placeholder="bctf{...}"
-                    value={flag}
-                    onChange={(e) => setFlag(e.target.value)}
-                />
-                <button
-                    type="submit"
-                    className="rounded-r py-2 px-3 border border-primary"
-                >
-                    Submit
-                </button>
-            </form>
+            <FlagSubmissionInput />
         </CenteredModal>
     )
 }

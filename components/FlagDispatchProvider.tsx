@@ -39,7 +39,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
         <FlagDispatchContext.Provider value={{rejectFlag, acceptFlag}}>
             {Array(2).fill(0).map((_, i) => (
                 <video
-                    className="fixed top-0 w-screen h-screen pointer-events-none z-10 object-cover object-center"
+                    className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToRejectVideos}
                     key={i}
                 >
@@ -49,7 +49,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
             ))}
             {Array(3).fill(0).map((_, i) => (
                 <video
-                    className="fixed top-0 w-screen h-screen pointer-events-none z-10 object-cover object-center"
+                    className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToAcceptVideos}
                     key={i}
                 >

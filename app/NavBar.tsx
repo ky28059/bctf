@@ -21,6 +21,7 @@ export default function NavBar() {
             ) : (
                 <>
                     <NavLink href="/register">Register</NavLink>
+                    <NavLink href="/login">Login</NavLink>
                 </>
             )}
         </NavWrapper>

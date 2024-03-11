@@ -1,18 +1,28 @@
-'use client'
+import {cookies} from 'next/headers';
 
-import {useScroll} from '@/hooks/useScroll';
+// Components
 import NavLink from '@/app/NavLink';
+import NavWrapper from '@/app/NavWrapper';
 
 
 export default function NavBar() {
-    const scroll = useScroll();
+    const authed = cookies().has('ctf_clearance');
 
     return (
-        <nav className={'flex justify-center pt-3 pb-2 fixed w-full top-0 transition duration-200 z-20' + (scroll > 0 ? ' bg-black/30 backdrop-blur-md' : '')}>
+        <NavWrapper>
             <NavLink href="/">Home</NavLink>
             <NavLink href="/scoreboard">Scoreboard</NavLink>
-            <NavLink href="/challenges">Challenges</NavLink>
-            <NavLink href="/profile">Profile</NavLink>
-        </nav>
+
+            {authed ? (
+                <>
+                    <NavLink href="/challenges">Challenges</NavLink>
+                    <NavLink href="/profile">Profile</NavLink>
+                </>
+            ) : (
+                <>
+                    <NavLink href="/register">Register</NavLink>
+                </>
+            )}
+        </NavWrapper>
     )
 }

@@ -19,7 +19,7 @@ type GridChallengeModalProps = {
 export default function GridChallengeModal(props: GridChallengeModalProps) {
     return (
         <CenteredModal
-            className="relative bg-background rounded-lg p-8 text-white shadow-lg w-full max-w-xl max-h-[90%]"
+            className="relative bg-background rounded-lg p-10 text-white shadow-lg w-full max-w-xl max-h-[90%]"
             isOpen={props.open}
             setIsOpen={props.setOpen}
         >

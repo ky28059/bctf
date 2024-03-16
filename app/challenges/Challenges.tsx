@@ -23,8 +23,11 @@ export default function Challenges(props: ChallengesProps) {
 
     // Filter by category if any category boxes are checked.
     const filtered = useMemo(() => {
-        if (filter.categories.size === 0) return props.challenges;
-        return props.challenges.filter((c) => filter.categories.has(c.category));
+        const res = (filter.categories.size === 0)
+            ? props.challenges
+            : props.challenges.filter((c) => filter.categories.has(c.category));
+
+        return res.toSorted((a, b) => a.points - b.points);
     }, [filter])
 
     // Group challenges by category for grid layout

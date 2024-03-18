@@ -3,6 +3,7 @@
 import {FormEvent, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {register} from '@/util/users';
+import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
 export default function RegisterContent() {
@@ -15,7 +16,7 @@ export default function RegisterContent() {
         e.preventDefault();
 
         const token = await register(email, name);
-        document.cookie = `ctf_clearance=${token}`;
+        document.cookie = `${AUTH_COOKIE_NAME}=${token}`;
 
         router.push('/profile');
         router.refresh();

@@ -4,9 +4,12 @@ import {cookies} from 'next/headers';
 import NavLink from '@/app/NavLink';
 import NavWrapper from '@/app/NavWrapper';
 
+// Utils
+import {AUTH_COOKIE_NAME} from '@/util/config';
+
 
 export default function NavBar() {
-    const authed = cookies().has('ctf_clearance');
+    const authed = cookies().has(AUTH_COOKIE_NAME);
 
     return (
         <NavWrapper>

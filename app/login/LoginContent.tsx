@@ -3,6 +3,7 @@
 import {FormEvent, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {login} from '@/util/users';
+import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
 export default function LoginContent() {
@@ -14,7 +15,7 @@ export default function LoginContent() {
         e.preventDefault();
 
         const token = await login(teamToken);
-        document.cookie = `ctf_clearance=${token}`;
+        document.cookie = `${AUTH_COOKIE_NAME}=${token}`;
 
         router.push('/profile');
         router.refresh();

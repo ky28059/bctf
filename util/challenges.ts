@@ -22,6 +22,6 @@ type ChallengesResponse = {
 }
 
 export async function getChallenges(): Promise<ChallengesResponse> {
-    const res = await fetch('https://quals-2024.ctf.dicega.ng/json/challs.json'); // TODO
+    const res = await fetch(`${process.env.API_BASE}/challs`);
     return await res.json();
 }

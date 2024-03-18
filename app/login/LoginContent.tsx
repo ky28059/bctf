@@ -2,34 +2,35 @@
 
 import {FormEvent, useState} from 'react';
 import {useRouter} from 'next/navigation';
+import {login} from '@/util/users';
 
 
 export default function LoginContent() {
-    const [token, setToken] = useState('');
+    const [teamToken, setTeamToken] = useState('');
 
     const router = useRouter();
 
-    async function login(e: FormEvent) {
+    async function loginCallback(e: FormEvent) {
         e.preventDefault();
 
-        // TODO: fetch rctf and such
+        const token = await login(teamToken);
+        document.cookie = `ctf_clearance=${token}`;
 
-        document.cookie = 'ctf_clearance=someHashStringIThink';
-        router.push('/challenges');
+        router.push('/profile');
         router.refresh();
     }
 
     return (
         <form
             className="flex flex-col gap-2 max-w-xl items-center mx-auto"
-            onSubmit={login}
+            onSubmit={loginCallback}
         >
             <input
                 className="w-full bg-black/40 px-4 py-2 rounded border border-secondary"
                 type="text"
                 placeholder="Team token"
-                value={token}
-                onChange={(e) => setToken(e.target.value)}
+                value={teamToken}
+                onChange={(e) => setTeamToken(e.target.value)}
             />
 
             <button

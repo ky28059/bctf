@@ -2,6 +2,7 @@
 
 import {FormEvent, useState} from 'react';
 import {useRouter} from 'next/navigation';
+import {register} from '@/util/users';
 
 
 export default function RegisterContent() {
@@ -10,12 +11,12 @@ export default function RegisterContent() {
 
     const router = useRouter();
 
-    async function register(e: FormEvent) {
+    async function registerCallback(e: FormEvent) {
         e.preventDefault();
 
-        // TODO: fetch rctf and such
+        const token = await register(email, name);
+        document.cookie = `ctf_clearance=${token}`;
 
-        document.cookie = 'ctf_clearance=someHashStringIThink';
         router.push('/profile');
         router.refresh();
     }
@@ -23,7 +24,7 @@ export default function RegisterContent() {
     return (
         <form
             className="flex flex-col gap-2 max-w-xl items-center mx-auto"
-            onSubmit={register}
+            onSubmit={registerCallback}
         >
             <input
                 className="w-full bg-black/40 px-4 py-2 rounded border border-secondary"

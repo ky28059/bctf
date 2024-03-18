@@ -1,3 +1,6 @@
+import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
+
+
 export type LeaderboardEntry = {
     id: string,
     name: string,
@@ -16,6 +19,6 @@ type LeaderboardResponse = {
 }
 
 export async function getScoreboard(offset: number = 0): Promise<LeaderboardResponse> {
-    const res = await fetch(`https://quals-2024.ctf.dicega.ng/json/leaderboard/all/now-${offset}.json`); // TODO
+    const res = await fetch(`${process.env.API_BASE}/leaderboard/now?limit=${SCOREBOARD_PAGE_SIZE}&offset=${offset}`);
     return res.json();
 }

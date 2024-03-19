@@ -21,7 +21,9 @@ type ChallengesResponse = {
     data: Challenge[]
 }
 
-export async function getChallenges(): Promise<ChallengesResponse> {
-    const res = await fetch(`${process.env.API_BASE}/challs`);
+export async function getChallenges(token: string): Promise<ChallengesResponse> {
+    const res = await fetch(`${process.env.API_BASE}/challs`, {
+        headers: {'Authorization': `Bearer ${token}`}
+    });
     return await res.json();
 }

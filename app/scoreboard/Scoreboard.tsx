@@ -15,7 +15,7 @@ export default function Scoreboard(props: LeaderboardData) {
     const [leaderboard, setLeaderboard] = useState(props.leaderboard);
     const [page, setPage] = useState(0);
 
-    const maxScore = props.leaderboard[0].score;
+    const maxScore = props.leaderboard[0]?.score ?? 0;
     const maxPage = Math.ceil(props.total / SCOREBOARD_PAGE_SIZE);
 
     async function updatePage(page: number) {

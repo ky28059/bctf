@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {cookies} from 'next/headers';
+import {redirect} from 'next/navigation';
 
 // Components
 import Profile from '@/app/profile/Profile';
@@ -18,6 +19,11 @@ export const metadata: Metadata = {
 export default async function ProfilePage() {
     const token = cookies().get(AUTH_COOKIE_NAME)!.value;
     const data = await getMyProfile(token);
+
+    if (data.kind === 'badToken') {
+        // TODO: clear cookie somehow?
+        return redirect('/login');
+    }
 
     return (
         <div className="container pt-32 pb-24 flex gap-6">

@@ -1,3 +1,6 @@
+import type {BadTokenResponse} from '@/util/errors';
+
+
 export type ProfileData = {
     name: string,
     ctftimeId: null,
@@ -36,7 +39,7 @@ export async function getProfile(id: string): Promise<ProfileResponse<ProfileDat
     return res.json();
 }
 
-export async function getMyProfile(token: string): Promise<ProfileResponse<MyProfileData>> {
+export async function getMyProfile(token: string): Promise<ProfileResponse<MyProfileData> | BadTokenResponse> {
     const res = await fetch(`${process.env.API_BASE}/users/me`, {
         headers: {'Authorization': `Bearer ${token}`}
     });

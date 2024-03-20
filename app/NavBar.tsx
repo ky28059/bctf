@@ -3,6 +3,7 @@ import {cookies} from 'next/headers';
 // Components
 import NavLink from '@/app/NavLink';
 import NavWrapper from '@/app/NavWrapper';
+import LogoutButton from '@/app/LogoutButton';
 
 // Utils
 import {AUTH_COOKIE_NAME} from '@/util/config';
@@ -20,6 +21,7 @@ export default function NavBar() {
                 <>
                     <NavLink href="/challenges">Challenges</NavLink>
                     <NavLink href="/profile">Profile</NavLink>
+                    <LogoutButton />
                 </>
             ) : (
                 <>

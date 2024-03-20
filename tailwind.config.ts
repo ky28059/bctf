@@ -15,6 +15,7 @@ const config: Config = {
         theme: '#c22026',
         'theme-dark': '#9A1B1F',
         'theme-bright': '#ff1e1e',
+        success: '#0dd157',
         primary: '#BABABA',
         secondary: '#757575',
         tertiary: '#404040'

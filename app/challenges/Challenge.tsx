@@ -2,23 +2,32 @@
 
 import {useState} from 'react';
 import Markdown from 'react-markdown';
+import {BiCheck} from 'react-icons/bi';
+
+// Components
 import SolvesModal from '@/app/challenges/SolvesModal';
-import type {Challenge} from '@/util/challenges';
 import FlagSubmissionInput from '@/app/challenges/FlagSubmissionInput';
 
+// Utils
+import type {Challenge} from '@/util/challenges';
 
-export default function Challenge(props: Challenge) {
+
+export default function Challenge(props: Challenge & {solved: boolean}) {
     const [showSolves, setShowSolves] = useState(false);
 
     return (
         <div className="bg-black/50 px-6 py-4 rounded border border-tertiary">
-            <div className="flex justify-between">
+            <div className="flex items-center gap-2">
                 <h3 className="font-semibold">
                     {props.category}/{props.name}
                 </h3>
 
+                {props.solved && (
+                    <BiCheck className="bg-success/40 p-0.5 mb-0.5 rounded-full" />
+                )}
+
                 <button
-                    className="text-theme-bright hover:text-theme transition duration-200"
+                    className="text-theme-bright hover:text-theme transition duration-200 ml-auto"
                     onClick={() => setShowSolves(true)}
                 >
                     {props.solves} solves / {props.points} points
@@ -34,7 +43,9 @@ export default function Challenge(props: Challenge) {
                 {props.description}
             </Markdown>
 
-            <FlagSubmissionInput />
+            <FlagSubmissionInput
+                solved={props.solved}
+            />
 
             {props.files.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-3 text-xs font-mono font-semibold">

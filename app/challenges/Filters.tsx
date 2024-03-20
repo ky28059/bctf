@@ -73,7 +73,7 @@ function FilterCategory(props: FilterCategoryProps) {
         >
             {props.category}
             <span className="text-primary text-sm">
-                (0/{props.counts[props.category]} solved)
+                (0/{props.counts[props.category] ?? 0} solved)
             </span>
         </FilterOption>
     )

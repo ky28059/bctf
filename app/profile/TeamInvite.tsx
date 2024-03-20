@@ -13,10 +13,10 @@ export default function TeamInvite(props: {token: string}) {
 
     return (
         <div className="bg-black/30 p-8 rounded-md">
-            <h3 className="text-xl font-semibold mb-4">
+            <h3 className="text-xl font-semibold mb-3">
                 Team invite
             </h3>
-            <p className="text-primary mb-4">
+            <p className="text-primary text-sm mb-4">
                 Send this invite URL to your teammates so they can log in.
             </p>
 

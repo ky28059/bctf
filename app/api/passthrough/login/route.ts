@@ -9,9 +9,12 @@ import {AUTH_COOKIE_NAME} from '@/util/config';
 // TODO: error handling?
 export async function POST(req: Request) {
     const {teamToken} = await req.json();
-    const token = await login(teamToken);
+    const res = await login(teamToken);
 
-    cookies().set(AUTH_COOKIE_NAME, token);
+    if (res.kind === 'badTokenVerification')
+        return NextResponse.json({error: res.message}, {status: 401});
+
+    cookies().set(AUTH_COOKIE_NAME, res.data.authToken);
 
     return NextResponse.json({ok: true});
 }

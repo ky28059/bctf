@@ -1,4 +1,4 @@
-import type {EmailAlreadyExistsResponse} from '@/util/errors';
+import type {BadLoginTokenResponse, EmailAlreadyExistsResponse} from '@/util/errors';
 
 
 type RegisterResponse = {
@@ -27,12 +27,12 @@ type LoginResponse = {
     }
 }
 
-export async function login(token: string) {
-    const res: LoginResponse = await (await fetch(`${process.env.API_BASE}/auth/login`, {
+export async function login(token: string): Promise<LoginResponse | BadLoginTokenResponse> {
+    const res = await fetch(`${process.env.API_BASE}/auth/login`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({teamToken: token})
-    })).json();
+    });
 
-    return res.data.authToken;
+    return res.json();
 }

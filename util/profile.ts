@@ -3,9 +3,17 @@ export type ProfileData = {
     ctftimeId: null,
     division: string,
     score: number,
-    globalPlace: number,
-    divisionPlace: number,
+    globalPlace: number | null,
+    divisionPlace: number | null,
     solves: Solve[]
+}
+
+export type MeProfileData = ProfileData & {
+    // bloods: [],
+    teamToken: string,
+    allowedDivisions: string[],
+    id: string,
+    email: string
 }
 
 export type Solve = {
@@ -17,13 +25,20 @@ export type Solve = {
     createdAt: number // epoch ms
 }
 
-type ProfileResponse = {
+type ProfileResponse<T extends ProfileData> = {
     kind: 'goodUserData',
     message: string,
-    data: ProfileData
+    data: T
 }
 
-export async function getProfile(id: string): Promise<ProfileResponse> {
-    const res = await fetch(`https://quals-2024.ctf.dicega.ng/json/users/${id}.json`);
+export async function getProfile(id: string): Promise<ProfileResponse<ProfileData>> {
+    const res = await fetch(`${process.env.API_BASE}/users/${id}`);
+    return res.json();
+}
+
+export async function getMyProfile(token: string): Promise<ProfileResponse<MeProfileData>> {
+    const res = await fetch(`${process.env.API_BASE}/users/me`, {
+        headers: {'Authorization': `Bearer ${token}`}
+    });
     return res.json();
 }

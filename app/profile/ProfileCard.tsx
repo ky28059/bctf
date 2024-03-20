@@ -21,10 +21,18 @@ export default function ProfileCard(props: ProfileData) {
                 {props.score} total points
             </ProfileCardStatistic>
             <ProfileCardStatistic icon={MdBarChart}>
-                {pluralize(props.divisionPlace)} place in the {props.division} division
+                {props.divisionPlace ? (
+                    `${pluralize(props.divisionPlace)} place in the ${props.division} division`
+                ) : (
+                    'Unranked'
+                )}
             </ProfileCardStatistic>
             <ProfileCardStatistic icon={MdBarChart}>
-                {pluralize(props.globalPlace)} place across all teams
+                {props.globalPlace ? (
+                    `${pluralize(props.globalPlace)} place across all teams`
+                ) : (
+                    'Unranked'
+                )}
             </ProfileCardStatistic>
         </div>
     )

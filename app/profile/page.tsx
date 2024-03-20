@@ -1,6 +1,12 @@
 import type {Metadata} from 'next';
+import {cookies} from 'next/headers';
+
+// Components
 import Profile from '@/app/profile/Profile';
-import {getProfile} from '@/util/profile';
+
+// Utils
+import {getMyProfile} from '@/util/profile';
+import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
 // TODO
@@ -9,7 +15,8 @@ export const metadata: Metadata = {
 }
 
 export default async function ProfilePage() {
-    const data = await getProfile('e219e6b9-3d48-4694-8656-bf6657e51936'); // TODO
+    const token = cookies().get(AUTH_COOKIE_NAME)!.value;
+    const data = await getMyProfile(token);
 
     return <Profile {...data.data} />
 }

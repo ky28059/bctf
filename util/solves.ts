@@ -1,3 +1,6 @@
+import {SOLVES_PAGE_SIZE} from '@/util/config';
+
+
 export type SolveData = {
     id: string,
     createdAt: number,
@@ -14,6 +17,6 @@ type SolvesResponse = {
 }
 
 export async function getSolves(id: string, offset: number): Promise<SolvesResponse> {
-    const res = await fetch(`https://quals-2024.ctf.dicega.ng/json/solves/${id}/${offset}.json`);
+    const res = await fetch(`${process.env.API_BASE}/challs/${id}/solves?limit=${SOLVES_PAGE_SIZE}&offset=${offset}`);
     return res.json();
 }

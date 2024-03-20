@@ -11,7 +11,7 @@ export default async function ScoreboardPage() {
     const data = await getScoreboard();
 
     return (
-        <div className="container pt-32 pb-24">
+        <div className="container pt-32 pb-14">
             <Scoreboard {...data.data} />
         </div>
     )

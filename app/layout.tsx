@@ -13,6 +13,7 @@ import PreferencesProvider from '@/components/PreferencesProvider';
 import FlagDispatchProvider from '@/components/FlagDispatchProvider';
 
 import './globals.css';
+import Footer from '@/app/Footer';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -29,7 +30,7 @@ export default function RootLayout(props: { children: ReactNode }) {
     return (
         <html lang="en" className="h-full overflow-y-scroll">
             <body
-                className="bg-gradient-to-b from-background from-25% to-theme bg-fixed text-white h-full"
+                className="bg-gradient-to-b from-background from-25% to-theme bg-fixed text-white h-full flex flex-col"
                 style={inter.style}
             >
                 <TimeProvider>
@@ -38,7 +39,9 @@ export default function RootLayout(props: { children: ReactNode }) {
                             <FlagDispatchProvider>
                                 <NavBar />
                                 {props.children}
+
                                 <Equalizer />
+                                <Footer />
                             </FlagDispatchProvider>
                         </PreferencesProvider>
                     </FilterProvider>

@@ -27,7 +27,7 @@ export default async function ChallengesPage() {
         return redirect('/api/logout');
 
     return (
-        <div className="container relative pt-32 pb-24 flex gap-6">
+        <div className="container relative pt-32 pb-14 flex gap-6">
             <Filters
                 challenges={challenges.data}
                 solves={profile.data.solves}

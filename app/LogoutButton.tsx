@@ -6,9 +6,6 @@ import {useRouter} from 'next/navigation';
 // Components
 import CenteredModal from '@/components/CenteredModal';
 
-// Utils
-import {AUTH_COOKIE_NAME} from '@/util/config';
-
 
 export default function LogoutButton() {
     const [open, setOpen] = useState(false);
@@ -16,10 +13,7 @@ export default function LogoutButton() {
 
     function logout() {
         setOpen(false);
-
-        // Clear auth cookie, then redirect to home.
-        document.cookie = `${AUTH_COOKIE_NAME}=; Max-Age=0; path=/`;
-        push('/');
+        push('/api/logout');
         refresh();
     }
 

@@ -20,10 +20,8 @@ export default async function ProfilePage() {
     const token = cookies().get(AUTH_COOKIE_NAME)!.value;
     const data = await getMyProfile(token);
 
-    if (data.kind === 'badToken') {
-        // TODO: clear cookie somehow?
-        return redirect('/login');
-    }
+    if (data.kind === 'badToken')
+        return redirect('/api/logout');
 
     return (
         <div className="container pt-32 pb-24 flex gap-6">

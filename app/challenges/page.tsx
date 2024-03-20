@@ -23,10 +23,8 @@ export default async function ChallengesPage() {
     const challenges = await getChallenges(token);
     const profile = await getMyProfile(token);
 
-    if (profile.kind === 'badToken') {
-        // TODO: clear cookie somehow?
-        return redirect('/login');
-    }
+    if (profile.kind === 'badToken')
+        return redirect('/api/logout');
 
     return (
         <div className="container relative pt-32 pb-24 flex gap-6">

@@ -17,3 +17,9 @@ export type RateLimitResponse = {
         timeLeft: number // ms
     }
 }
+
+export type EmailAlreadyExistsResponse = {
+    kind: 'badKnownEmail',
+    message: 'An account with this email already exists.',
+    data: null
+}

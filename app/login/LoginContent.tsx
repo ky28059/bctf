@@ -2,7 +2,6 @@
 
 import {FormEvent, useState} from 'react';
 import {useRouter} from 'next/navigation';
-import {AUTH_COOKIE_NAME} from '@/util/config';
 
 // Components
 import IconInput from '@/components/IconInput';
@@ -19,12 +18,10 @@ export default function LoginContent() {
     async function loginCallback(e: FormEvent) {
         e.preventDefault();
 
-        const token = await (await fetch('/api/passthrough/login', {
+        await fetch('/api/passthrough/login', {
             method: 'POST',
             body: JSON.stringify({teamToken})
-        })).text();
-
-        document.cookie = `${AUTH_COOKIE_NAME}=${token}`;
+        });
 
         router.push('/profile');
         router.refresh();

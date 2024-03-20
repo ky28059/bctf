@@ -1,3 +1,6 @@
+import type {EmailAlreadyExistsResponse} from '@/util/errors';
+
+
 type RegisterResponse = {
     kind: 'goodRegister',
     message: string,
@@ -6,14 +9,14 @@ type RegisterResponse = {
     }
 }
 
-export async function register(email: string, name: string) {
-    const res: RegisterResponse = await (await fetch(`${process.env.API_BASE}/auth/register`, {
+export async function register(email: string, name: string): Promise<RegisterResponse | EmailAlreadyExistsResponse> {
+    const res = await fetch(`${process.env.API_BASE}/auth/register`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, name})
-    })).json();
+    });
 
-    return res.data.authToken;
+    return res.json();
 }
 
 type LoginResponse = {

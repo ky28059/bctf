@@ -16,17 +16,19 @@ export default function RegisterContent() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
+    const [error, setError] = useState('');
+
     const router = useRouter();
 
     async function registerCallback(e: FormEvent) {
         e.preventDefault();
 
-        const token = await (await fetch('/api/passthrough/register', {
+        const res = await (await fetch('/api/passthrough/register', {
             method: 'POST',
             body: JSON.stringify({name, email})
-        })).text();
+        })).json();
 
-        document.cookie = `${AUTH_COOKIE_NAME}=${token}`;
+        if ('error' in res) return setError(res.error);
 
         router.push('/profile');
         router.refresh();
@@ -53,6 +55,12 @@ export default function RegisterContent() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
+
+            {error && (
+                <p className="text-sm text-theme-bright">
+                    {error}
+                </p>
+            )}
 
             <button
                 className="bg-theme-bright px-6 py-2 rounded text-white font-semibold w-max mt-4"

@@ -62,6 +62,7 @@ export default function Challenges(props: ChallengesProps) {
                         {challs.map((c) => (
                             <GridChallenge
                                 {...c}
+                                solved={solved.has(c.name)}
                                 key={c.id}
                             />
                         ))}

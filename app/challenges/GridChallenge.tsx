@@ -3,18 +3,23 @@
 import {useState} from 'react';
 import type {Challenge} from '@/util/challenges';
 import GridChallengeModal from '@/app/challenges/GridChallengeModal';
+import {BiCheck} from 'react-icons/bi';
 
 
-export default function GridChallenge(props: Challenge) {
+export default function GridChallenge(props: Challenge & {solved: boolean}) {
     const [open, setOpen] = useState(false);
 
     return (
         <>
             <button
-                className="bg-black/50 px-8 py-6 rounded border border-tertiary hover:border-secondary transition duration-150 text-center focus:outline-none focus:ring-2"
+                className={'px-8 py-6 rounded border transition duration-150 text-center focus:outline-none focus:ring-2 ' + (props.solved ? 'bg-success/20 border-success hover:bg-success/30' : 'bg-black/50 border-tertiary hover:border-secondary')}
                 onClick={() => setOpen(true)}
             >
-                <h3 className="font-medium mb-2">
+                <h3 className="font-medium mb-2 flex gap-2 items-center justify-center">
+                    {props.solved && (
+                        <BiCheck className="bg-success/40 p-0.5 mb-0.5 rounded-full" />
+                    )}
+
                     {props.name}
                 </h3>
                 <p className="text-primary">

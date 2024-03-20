@@ -7,6 +7,10 @@ import {BsChevronUp} from 'react-icons/bs';
 export default function TeamInvite(props: {token: string}) {
     const url = `https://ctf.b01lers.com/login?token=${props.token}`;
 
+    function copy() {
+        void navigator.clipboard.writeText(url);
+    }
+
     return (
         <div className="bg-black/30 p-8 rounded-md">
             <h3 className="text-xl font-semibold mb-4">
@@ -23,7 +27,10 @@ export default function TeamInvite(props: {token: string}) {
                         <BsChevronUp className="bg-black/30 p-0.5 rounded-full ml-auto ui-open:rotate-180 transition duration-200" />
                     </Disclosure.Button>
 
-                    <button className="bg-black/30 px-3 py-2 rounded text-primary text-sm font-semibold h-max hover:text-white hover:bg-black/40 transition duration-200">
+                    <button
+                        className="bg-black/30 px-3 py-2 rounded text-primary text-sm font-semibold h-max hover:text-white hover:bg-black/40 transition duration-200"
+                        onClick={copy}
+                    >
                         Copy
                     </button>
                 </div>

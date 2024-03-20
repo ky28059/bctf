@@ -1,7 +1,7 @@
 'use client'
 
-import {FormEvent, useState} from 'react';
-import {useRouter} from 'next/navigation';
+import {FormEvent, useEffect, useState} from 'react';
+import {useRouter, useSearchParams} from 'next/navigation';
 
 // Components
 import IconInput from '@/components/IconInput';
@@ -15,10 +15,17 @@ export default function LoginContent() {
     const [error, setError] = useState('');
 
     const router = useRouter();
+    const params = useSearchParams();
 
-    async function loginCallback(e: FormEvent) {
-        e.preventDefault();
+    // Automatically sign in if the `token` URL search parameter is set.
+    useEffect(() => {
+        const token = params.get('token');
+        if (!token) return;
 
+        void login(token);
+    }, [params.get('token')]);
+
+    async function login(teamToken: string) {
         const res = await (await fetch('/api/passthrough/login', {
             method: 'POST',
             body: JSON.stringify({teamToken})
@@ -33,7 +40,10 @@ export default function LoginContent() {
     return (
         <form
             className="flex flex-col gap-2 max-w-xl items-center mx-auto"
-            onSubmit={loginCallback}
+            onSubmit={(e) => {
+                e.preventDefault();
+                void login(teamToken);
+            }}
         >
             <IconInput
                 icon={FaAddressCard}

@@ -7,7 +7,7 @@ export default function Profile(props: ProfileData) {
     // TODO: funny stats
 
     return (
-        <div className="container pt-32 pb-24 flex flex-col gap-4">
+        <div className="flex flex-col gap-4 flex-grow">
             <ProfileCard {...props} />
             <ProfileSolves {...props} />
         </div>

@@ -8,7 +8,7 @@ export type ProfileData = {
     solves: Solve[]
 }
 
-export type MeProfileData = ProfileData & {
+export type MyProfileData = ProfileData & {
     // bloods: [],
     teamToken: string,
     allowedDivisions: string[],
@@ -36,7 +36,7 @@ export async function getProfile(id: string): Promise<ProfileResponse<ProfileDat
     return res.json();
 }
 
-export async function getMyProfile(token: string): Promise<ProfileResponse<MeProfileData>> {
+export async function getMyProfile(token: string): Promise<ProfileResponse<MyProfileData>> {
     const res = await fetch(`${process.env.API_BASE}/users/me`, {
         headers: {'Authorization': `Bearer ${token}`}
     });

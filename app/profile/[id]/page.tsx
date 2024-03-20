@@ -11,5 +11,9 @@ export const metadata: Metadata = {
 export default async function ProfilePage({params}: {params: {id: string}}) {
     const data = await getProfile(params.id);
 
-    return <Profile {...data.data} />
+    return (
+        <div className="container pt-32 pb-24">
+            <Profile {...data.data} />
+        </div>
+    )
 }

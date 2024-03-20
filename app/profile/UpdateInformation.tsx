@@ -1,10 +1,14 @@
 'use client'
 
 import {FormEvent, useState} from 'react';
-import type {MyProfileData} from '@/util/profile';
+import {useRouter} from 'next/navigation';
 
 // Components
 import IconInput from '@/components/IconInput';
+
+// Utils
+import {MyProfileData, updateProfileName} from '@/util/profile';
+import {AUTH_COOKIE_NAME} from '@/util/config';
 
 // Icons
 import {FaCircleUser} from 'react-icons/fa6';
@@ -16,10 +20,30 @@ export default function UpdateInformation(props: MyProfileData) {
     const [email, setEmail] = useState(props.email);
     const [division, setDivision] = useState(props.division);
 
+    const [error, setError] = useState('');
+
+    const {push, refresh} = useRouter();
+
     async function updateInfoCallback(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        // TODO
+        if (name === props.name && email === props.email)
+            return setError('Nothing to update!');
+
+        const token = document.cookie.match(RegExp(`${AUTH_COOKIE_NAME}=(.+?)(?:;|$)`))?.[1];
+        if (!token) return push('/login');
+
+        if (name !== props.name) {
+            const res = await updateProfileName(token, name);
+            if (res.kind === 'badRateLimit')
+                return setError(`You are doing this too fast! Try again in ${res.data.timeLeft} ms.`)
+        }
+
+        if (email !== props.email) {
+            // TODO
+        }
+
+        refresh();
     }
 
     return (

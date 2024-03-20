@@ -9,3 +9,11 @@ export type UserNotFoundResponse = {
     message: 'The user does not exist.',
     data: null
 }
+
+export type RateLimitResponse = {
+    kind: 'badRateLimit',
+    message: 'You are trying this too fast',
+    data: {
+        timeLeft: number // ms
+    }
+}

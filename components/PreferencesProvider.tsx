@@ -1,13 +1,27 @@
 'use client'
 
-import {ReactNode, useState} from 'react';
+import {ReactNode, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import PreferencesContext, {defaultPreferences} from '@/contexts/PreferencesContext';
 
 
 export default function PreferencesProvider(props: {children: ReactNode}) {
     const [preferences, setPreferences] = useState(defaultPreferences);
+    const hasRetrievedPreferences = useRef(false);
 
-    // TODO: cache in localStorage
+    useLayoutEffect(() => {
+        // TODO: better way of doing this?
+        if (!hasRetrievedPreferences.current) {
+            hasRetrievedPreferences.current = true;
+
+            const raw = localStorage.getItem('preferences');
+            if (!raw) return;
+            setPreferences(JSON.parse(raw))
+
+            return;
+        }
+
+        localStorage.setItem('preferences', JSON.stringify(preferences));
+    }, [preferences])
 
     return (
         <PreferencesContext.Provider value={{preferences, setPreferences}}>

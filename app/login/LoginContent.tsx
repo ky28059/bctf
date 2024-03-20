@@ -2,8 +2,16 @@
 
 import {FormEvent, useState} from 'react';
 import {useRouter} from 'next/navigation';
+
+// Components
+import IconInput from '@/components/IconInput';
+
+// Utils
 import {login} from '@/util/users';
 import {AUTH_COOKIE_NAME} from '@/util/config';
+
+// Icons
+import {FaAddressCard} from 'react-icons/fa6';
 
 
 export default function LoginContent() {
@@ -26,8 +34,8 @@ export default function LoginContent() {
             className="flex flex-col gap-2 max-w-xl items-center mx-auto"
             onSubmit={loginCallback}
         >
-            <input
-                className="w-full bg-black/40 px-4 py-2 rounded border border-secondary"
+            <IconInput
+                icon={FaAddressCard}
                 type="text"
                 placeholder="Team token"
                 value={teamToken}

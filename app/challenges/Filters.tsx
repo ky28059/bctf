@@ -2,11 +2,15 @@
 
 import {ReactNode, useContext, useMemo} from 'react';
 import FilterContext from '@/contexts/FilterContext';
+
+// Types
 import type {Challenge as ChallengeData} from '@/util/challenges';
+import type {Solve} from '@/util/profile';
 
 
 type FiltersProps = {
-    challenges: ChallengeData[]
+    challenges: ChallengeData[],
+    solves: Solve[]
 }
 export default function Filters(props: FiltersProps) {
     const {filter, setFilter} = useContext(FilterContext);
@@ -16,7 +20,7 @@ export default function Filters(props: FiltersProps) {
     }
 
     // Mapping of {categoryName: # of challenges in that category}
-    const counts = useMemo(() => {
+    const totals = useMemo(() => {
         const res: {[category: string]: number} = {};
 
         for (const c of props.challenges) {
@@ -27,22 +31,34 @@ export default function Filters(props: FiltersProps) {
         return res;
     }, []);
 
+    // Mapping of {categoryName: # of solved challenges in that category}
+    const solved = useMemo(() => {
+        const res: {[category: string]: number} = {};
+
+        for (const s of props.solves) {
+            if (!(s.category in res)) res[s.category] = 0;
+            res[s.category]++;
+        }
+
+        return res;
+    }, []);
+
     return (
         <div className="bg-black/30 px-6 py-4 rounded w-80 flex-none h-max sticky top-32">
             <h2 className="font-semibold mb-1">Filters</h2>
 
             <div className="flex flex-col gap-1 pl-2 mb-3">
-                <FilterCategory category="crypto" counts={counts} />
-                <FilterCategory category="misc" counts={counts} />
-                <FilterCategory category="pwn" counts={counts} />
-                <FilterCategory category="rev" counts={counts} />
-                <FilterCategory category="web" counts={counts} />
+                <FilterCategory category="crypto" totals={totals} solved={solved} />
+                <FilterCategory category="misc" totals={totals} solved={solved} />
+                <FilterCategory category="pwn" totals={totals} solved={solved} />
+                <FilterCategory category="rev" totals={totals} solved={solved} />
+                <FilterCategory category="web" totals={totals} solved={solved} />
             </div>
             <div className="pl-2">
                 <FilterOption checked={filter.showSolved} onChange={toggleShowSolved}>
                     Show solved
                     <span className="text-primary text-sm">
-                        (0/{props.challenges.length} solved)
+                        ({props.solves.length}/{props.challenges.length} solved)
                     </span>
                 </FilterOption>
             </div>
@@ -52,7 +68,8 @@ export default function Filters(props: FiltersProps) {
 
 type FilterCategoryProps = {
     category: string,
-    counts: { [category: string]: number}
+    totals: { [category: string]: number},
+    solved: { [category: string]: number}
 }
 function FilterCategory(props: FilterCategoryProps) {
     const {filter, setFilter} = useContext(FilterContext);
@@ -73,7 +90,7 @@ function FilterCategory(props: FilterCategoryProps) {
         >
             {props.category}
             <span className="text-primary text-sm">
-                (0/{props.counts[props.category] ?? 0} solved)
+                ({props.solved[props.category] ?? 0}/{props.totals[props.category] ?? 0} solved)
             </span>
         </FilterOption>
     )

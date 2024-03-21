@@ -3,7 +3,7 @@ import type {IconType} from 'react-icons';
 import type {ProfileData} from '@/util/profile';
 
 // Icons
-import {FaTrophy} from 'react-icons/fa6';
+import {FaAddressBook, FaTrophy} from 'react-icons/fa6';
 import {MdBarChart} from 'react-icons/md';
 
 // Utils
@@ -33,6 +33,9 @@ export default function ProfileCard(props: ProfileData) {
                 ) : (
                     'Unranked'
                 )}
+            </ProfileCardStatistic>
+            <ProfileCardStatistic icon={FaAddressBook}>
+                {props.division} division
             </ProfileCardStatistic>
         </div>
     )

@@ -58,14 +58,21 @@ type UpdateUserResponse = {
     }
 }
 
-export async function updateProfileName(token: string, name: string): Promise<UpdateUserResponse | RateLimitResponse> {
+export type UpdateProfilePayload = {
+    name?: string,
+    division?: string
+}
+export async function updateProfile(
+    token: string,
+    payload: UpdateProfilePayload
+): Promise<UpdateUserResponse | RateLimitResponse> {
     const res = await fetch(`${process.env.API_BASE}/users/me`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({name})
+        body: JSON.stringify(payload)
     });
     return res.json();
 }

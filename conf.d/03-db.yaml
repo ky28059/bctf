@@ -1,0 +1,8 @@
+database:
+  sql:
+    host: postgres
+    user: rctf
+    database: rctf
+  redis:
+    host: redis
+  migrate: before

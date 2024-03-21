@@ -1,0 +1,12 @@
+origin: https://ctf.b01lers.com:9000
+divisions:
+  open: Open
+  purdue: Purdue
+divisionACLs:
+  - match: domain
+    value: purdue.edu
+    divisions:
+      - purdue
+tokenKey: 'QhYjh15x6mUg1Vc0ilHo8e+UV1v5eRFXUITCpYRj95M='
+startTime: 1710784594000
+endTime: 1711389394000

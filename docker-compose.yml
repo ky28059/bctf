@@ -41,7 +41,7 @@ services:
       dockerfile: ./Dockerfile
       context: ../bctf
     ports:
-      - "9001:3000"
+      - "9123:3000"
     restart: always
 
 networks:

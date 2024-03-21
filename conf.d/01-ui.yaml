@@ -1,0 +1,5 @@
+ctfName: rCTF
+meta:
+  description: 'A description of your CTF'
+  imageUrl: 'https://example.com'
+homeContent: 'A description of your CTF. Markdown supported.'

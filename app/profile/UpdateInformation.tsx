@@ -5,6 +5,7 @@ import {useRouter} from 'next/navigation';
 
 // Components
 import IconInput from '@/components/IconInput';
+import DivisionSelector from '@/app/profile/DivisionSelector';
 
 // Utils
 import type {MyProfileData, UpdateProfilePayload} from '@/util/profile';
@@ -82,6 +83,12 @@ export default function UpdateInformation(props: MyProfileData) {
                     value={email}
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
+                />
+
+                <DivisionSelector
+                    division={division}
+                    setDivision={setDivision}
+                    divisions={props.allowedDivisions}
                 />
 
                 {error && (

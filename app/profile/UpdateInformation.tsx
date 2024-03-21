@@ -7,7 +7,7 @@ import {useRouter} from 'next/navigation';
 import IconInput from '@/components/IconInput';
 
 // Utils
-import {MyProfileData, updateProfileName} from '@/util/profile';
+import type {MyProfileData, UpdateProfilePayload} from '@/util/profile';
 import {AUTH_COOKIE_NAME} from '@/util/config';
 
 // Icons
@@ -27,17 +27,25 @@ export default function UpdateInformation(props: MyProfileData) {
     async function updateInfoCallback(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        if (name === props.name && email === props.email)
+        if (name === props.name && email === props.email && division === props.division)
             return setError('Nothing to update!');
+
+        // Update name and division via passthrough PATCH request
+        if (name !== props.name || division !== props.division) {
+            const payload: UpdateProfilePayload = {};
+            if (name !== props.name) payload.name = name;
+            if (division !== props.division) payload.division = division;
+
+            const res = await (await fetch('/api/passthrough/users/me', {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })).json();
+
+            if ('error' in res) return setError(res.error);
+        }
 
         const token = document.cookie.match(RegExp(`${AUTH_COOKIE_NAME}=(.+?)(?:;|$)`))?.[1];
         if (!token) return push('/login');
-
-        if (name !== props.name) {
-            const res = await updateProfileName(token, name);
-            if (res.kind === 'badRateLimit')
-                return setError(`You are doing this too fast! Try again in ${res.data.timeLeft} ms.`)
-        }
 
         if (email !== props.email) {
             // TODO
@@ -75,6 +83,12 @@ export default function UpdateInformation(props: MyProfileData) {
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                 />
+
+                {error && (
+                    <p className="text-sm text-theme-bright">
+                        {error}
+                    </p>
+                )}
 
                 <button
                     className="px-4 py-2 rounded bg-theme-bright text-white w-max ml-auto mt-2"

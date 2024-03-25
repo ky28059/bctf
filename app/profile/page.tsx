@@ -24,7 +24,7 @@ export default async function ProfilePage() {
         return redirect('/api/logout');
 
     return (
-        <div className="container pt-32 pb-14 flex gap-6">
+        <div className="px-8 xl:container pt-32 pb-14 flex flex-col-reverse md:flex-row gap-6">
             <MyProfileInfo {...data.data} />
             <Profile {...data.data} />
         </div>

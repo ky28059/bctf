@@ -8,7 +8,7 @@ import UpdateInformation from '@/app/profile/UpdateInformation';
  */
 export default function MyProfileInfo(props: MyProfileData) {
     return (
-        <aside className="flex flex-col gap-4 sticky top-32 w-96 h-max flex-none">
+        <aside className="flex flex-col gap-4 md:sticky top-32 w-full md:w-72 lg:w-80 xl:w-96 h-max flex-none">
             <TeamInvite token={props.teamToken} />
             <UpdateInformation {...props} />
         </aside>

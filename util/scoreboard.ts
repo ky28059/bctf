@@ -19,6 +19,8 @@ type LeaderboardResponse = {
 }
 
 export async function getScoreboard(offset: number = 0): Promise<LeaderboardResponse> {
-    const res = await fetch(`${process.env.API_BASE}/leaderboard/now?limit=${SCOREBOARD_PAGE_SIZE}&offset=${offset}`);
+    const res = await fetch(`${process.env.API_BASE}/leaderboard/now?limit=${SCOREBOARD_PAGE_SIZE}&offset=${offset}`, {
+        cache: 'no-store'
+    });
     return res.json();
 }

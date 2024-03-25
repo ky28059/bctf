@@ -2,7 +2,7 @@ import Sponsor from '@/app/(home)/Sponsor';
 
 export default function Sponsors() {
     return (
-        <div className="container flex flex-col gap-2">
+        <section className="container flex flex-col gap-2">
             <h2 className="font-bold text-2xl mb-3">
                 Sponsors
             </h2>
@@ -30,6 +30,6 @@ export default function Sponsors() {
                 faculty, students and industry partners to design, build and maintain trusted cyber/cyber-physical systems.
                 CERIAS serves as an unbiased resource to the worldwide community.
             </Sponsor>
-        </div>
+        </section>
     )
 }

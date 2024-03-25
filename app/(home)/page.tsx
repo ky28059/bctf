@@ -1,16 +1,12 @@
-import Timer from '@/app/(home)/Timer';
+import Header from '@/app/(home)/Header';
 import Sponsors from '@/app/(home)/Sponsors';
 import Rules from '@/app/(home)/Rules';
 
 
 export default function Home() {
     return (
-        <main className="pt-36 pb-14">
-            <div className="container mb-20 flex flex-col items-center">
-                <img src="/assets/logo.svg" />
-                <Timer />
-                <p className="">todo</p>
-            </div>
+        <main className="pb-14">
+            <Header />
 
             <div className="bg-black/30 py-12 mb-12">
                 <div className="container">
@@ -18,7 +14,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <Sponsors/>
+            <Sponsors />
         </main>
     )
 }

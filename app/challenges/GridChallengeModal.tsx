@@ -8,6 +8,7 @@ import type {Challenge} from '@/util/challenges';
 // Components
 import CenteredModal from '@/components/CenteredModal';
 import FlagSubmissionInput from '@/app/challenges/FlagSubmissionInput';
+import SolvesContent from '@/app/challenges/SolvesContent';
 
 // Icons
 import {FaDownload} from 'react-icons/fa';
@@ -63,6 +64,10 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                         )}
 
                         <FlagSubmissionInput challenge={props.challenge} />
+                    </Tab.Panel>
+
+                    <Tab.Panel>
+                        <SolvesContent challenge={props.challenge} />
                     </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>

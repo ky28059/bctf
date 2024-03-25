@@ -40,6 +40,7 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                         <a
                             className="bg-white/10 hover:bg-white/15 transition duration-200 px-6 py-3 rounded-sm text-sm text-primary font-semibold flex gap-2 items-center"
                             href={d.url}
+                            key={d.name + d.url}
                         >
                             <FaDownload />
                             {d.name}

@@ -15,7 +15,7 @@ export default function DisplayToggle() {
     }
 
     return (
-        <div className="sticky h-max -ml-2 top-32 flex flex-col gap-2 text-secondary">
+        <div className="hidden sticky h-max -ml-2 top-32 md:flex flex-col gap-2 text-secondary">
             <button
                 className={'transition duration-200 ' + (preferences.grid ? 'hover:text-primary' : 'text-white')}
                 onClick={() => setGrid(false)}

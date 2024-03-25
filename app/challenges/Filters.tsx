@@ -44,7 +44,7 @@ export default function Filters(props: FiltersProps) {
     }, []);
 
     return (
-        <div className="bg-black/30 px-6 py-4 rounded w-80 flex-none h-max sticky top-32">
+        <div className="bg-black/30 px-6 py-4 rounded w-full md:w-64 lg:w-80 flex-none h-max md:sticky top-32">
             <h2 className="font-semibold mb-1">Filters</h2>
 
             <div className="flex flex-col gap-1 pl-2 mb-3">
@@ -103,7 +103,7 @@ type FilterOptionProps = {
 }
 function FilterOption(props: FilterOptionProps) {
     return (
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-x-2 items-center flex-wrap">
             <input
                 type="checkbox"
                 className="accent-theme"

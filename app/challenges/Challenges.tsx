@@ -53,12 +53,12 @@ export default function Challenges(props: ChallengesProps) {
     return (
         <div className="flex flex-col gap-3 flex-grow min-w-0">
             {preferences.grid ? Object.entries(grouped).map(([category, challs]) => (
-                <section>
+                <section key={category}>
                     <h2 className="text-2xl font-mono mb-3">
                         {category}
                     </h2>
 
-                    <div className="grid grid-cols-3 gap-3 mb-3">
+                    <div className="grid grid-cols-2 xl:grid-cols-3 gap-3 mb-3">
                         {challs.map((c) => (
                             <GridChallenge
                                 {...c}

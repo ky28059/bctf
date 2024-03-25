@@ -17,7 +17,7 @@ export default function GridChallenge(props: Challenge & {solved: boolean}) {
             >
                 <h3 className="font-medium mb-2 flex gap-2 items-center justify-center">
                     {props.solved && (
-                        <BiCheck className="bg-success/40 p-0.5 mb-0.5 rounded-full" />
+                        <BiCheck className="flex-none bg-success/40 p-0.5 mb-0.5 rounded-full" />
                     )}
 
                     {props.name}

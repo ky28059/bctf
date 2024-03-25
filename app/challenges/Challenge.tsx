@@ -23,7 +23,7 @@ export default function Challenge(props: Challenge & {solved: boolean}) {
                 </h3>
 
                 {props.solved && (
-                    <BiCheck className="bg-success/40 p-0.5 mb-0.5 rounded-full" />
+                    <BiCheck className="flex-none bg-success/40 p-0.5 mb-0.5 rounded-full" />
                 )}
 
                 <button

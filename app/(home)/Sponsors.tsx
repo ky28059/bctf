@@ -2,7 +2,7 @@ import Sponsor from '@/app/(home)/Sponsor';
 
 export default function Sponsors() {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="container flex flex-col gap-2 mb-12">
             <h2 className="font-bold text-2xl mb-3">
                 Sponsors
             </h2>

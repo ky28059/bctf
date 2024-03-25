@@ -1,15 +1,24 @@
 import Timer from '@/app/(home)/Timer';
 import Sponsors from '@/app/(home)/Sponsors';
+import Rules from '@/app/(home)/Rules';
 
 
 export default function Home() {
     return (
-        <main className="container pt-36 pb-14 flex flex-col items-center">
-            <img src="/assets/logo.svg" />
-            <Timer />
-            <p className="mb-20">todo</p>
+        <main className="pt-36 pb-14">
+            <div className="container mb-20 flex flex-col items-center">
+                <img src="/assets/logo.svg" />
+                <Timer />
+                <p className="">todo</p>
+            </div>
 
             <Sponsors />
+
+            <div className="bg-black/30 py-12">
+                <div className="container">
+                    <Rules />
+                </div>
+            </div>
         </main>
     )
 }

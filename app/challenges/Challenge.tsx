@@ -44,6 +44,7 @@ export default function Challenge(props: Challenge & {solved: boolean}) {
             </Markdown>
 
             <FlagSubmissionInput
+                challenge={props}
                 solved={props.solved}
             />
 

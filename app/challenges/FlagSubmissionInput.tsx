@@ -3,20 +3,36 @@
 import {FormEvent, useContext, useState} from 'react';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 
+// Utils
+import type {Challenge} from '@/util/challenges';
+import {useRouter} from 'next/navigation';
+
 
 type FlagSubmissionInputProps = {
+    challenge: Challenge
     solved?: boolean
 }
 export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
     const [flag, setFlag] = useState('');
     const {acceptFlag, rejectFlag} = useContext(FlagDispatchContext);
 
+    const {refresh} = useRouter();
+
     async function submitFlag(e: FormEvent) {
         e.preventDefault();
+
+        const res = await (await fetch(`/api/passthrough/challs/${props.challenge.id}/submit`, {
+            method: 'POST',
+            body: JSON.stringify({flag})
+        })).json();
         setFlag('');
 
-        if (/bctf\{.+?}/.test(flag)) acceptFlag(); // TODO
-        else rejectFlag();
+        if (res.kind === 'goodFlag') {
+            acceptFlag();
+            refresh();
+        } else {
+            rejectFlag();
+        }
     }
 
     return (

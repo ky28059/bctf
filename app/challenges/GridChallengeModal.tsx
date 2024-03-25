@@ -48,7 +48,7 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                 </div>
             )}
 
-            <FlagSubmissionInput />
+            <FlagSubmissionInput challenge={props.challenge} />
         </CenteredModal>
     )
 }

@@ -35,7 +35,7 @@ export default function Challenges(props: ChallengesProps) {
             res = res.filter((c) => !solved.has(c.name));
 
         return res.toSorted((a, b) => a.points - b.points);
-    }, [filter])
+    }, [filter, props.challenges])
 
     // Group challenges by category for grid layout
     // TODO: abstraction with `Filters`, efficiency?

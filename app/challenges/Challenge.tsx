@@ -27,10 +27,12 @@ export default function Challenge(props: Challenge & {solved: boolean}) {
                 )}
 
                 <button
-                    className="text-theme-bright hover:text-theme transition duration-200 ml-auto"
+                    className="text-theme-bright hover:text-theme transition duration-200 ml-auto text-right text-pretty"
                     onClick={() => setShowSolves(true)}
                 >
-                    {props.solves} solves / {props.points} points
+                    {props.solves} solve{props.solves === 1 ? '' : 's'}
+                    {' / '}
+                    {props.points} point{props.points === 1 ? '' : 's'}
                 </button>
             </div>
             <h4 className="text-sm text-primary mt-0.5">

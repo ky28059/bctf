@@ -1,11 +1,13 @@
 import Sponsor from '@/app/(home)/Sponsor';
+import SectionHeader from '@/components/SectionHeader';
+
 
 export default function Sponsors() {
     return (
         <section className="container flex flex-col gap-2">
-            <h2 className="font-bold text-2xl mb-3">
+            <SectionHeader id="sponsors">
                 Sponsors
-            </h2>
+            </SectionHeader>
 
             <Sponsor href="/assets/sponsors/zellic.svg" name="Zellic">
                 Zellic is a security research firm. We hire top CTF talent to solve the world's most critical security problems. We specialize in ZKPs, cryptography, web app security, smart contracts, and blockchain L1/L2s. Before Zellic, we previously founded perfect blue, the #1 CTF team in 2020 and 2021. You're a good fit for Zellic if you have extensive real-world experience in vulnerability research (VR) / binary exploitation, reverse engineering (RE), cryptography, or web application security. We hire internationally and offer competitive salaries and a comprehensive benefits package.
@@ -17,9 +19,14 @@ export default function Sponsors() {
             </Sponsor>
 
             <Sponsor href="/assets/sponsors/caesar-creek.jpg" name="Caesar Creek Software">
-                Caesar Creek Software provides cyber research and development services to the Federal government.
-                We pride ourselves in offering high-quality services at a reasonable price and with the highest ethical
-                standards. You can be safe with Caesar Creek Software on your team!
+                Caesar Creek Software works with various government agencies to perform cyber research into major operating
+                system platforms, software security products, personal computers, cell phones, networking equipment, and
+                IoT devices. We specialize in offensive information operations, reverse engineering, vulnerability analysis,
+                and exploit development. We have a robust Internal Research and Development program that lets us do cool
+                stuff on our own. If it has a processor, we love taking it apart to see what makes it tick. We offer a
+                highly competitive compensation package including one of the best benefit packages in Ohio and starting
+                in 2019 we are an employee-owned company. U.S. citizenship is required for all positions, as well as the
+                ability to obtain a high-level security clearance.
             </Sponsor>
 
             <Sponsor href="/assets/sponsors/CERIAS.png" name="CERIAS">

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: ReactNode }) {
     return (
-        <html lang="en" className="h-full overflow-y-scroll">
+        <html lang="en" className="h-full overflow-y-scroll scroll-smooth">
             <body
                 className="bg-gradient-to-b from-background from-25% to-theme bg-fixed text-white h-full flex flex-col"
                 style={inter.style}

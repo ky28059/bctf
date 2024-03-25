@@ -8,9 +8,9 @@ type SponsorProps = {
 }
 export default function Sponsor(props: SponsorProps) {
     return (
-        <div className="flex gap-8 bg-black/30 backdrop-blur-sm rounded px-8 py-6">
+        <div className="flex gap-8 items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6">
             <img
-                className="w-48"
+                className="w-48 h-max flex-none"
                 src={props.href}
                 alt={props.name}
             />

@@ -12,13 +12,13 @@ export default function Home() {
                 <p className="">todo</p>
             </div>
 
-            <Sponsors />
-
-            <div className="bg-black/30 py-12">
+            <div className="bg-black/30 py-12 mb-12">
                 <div className="container">
                     <Rules />
                 </div>
             </div>
+
+            <Sponsors/>
         </main>
     )
 }

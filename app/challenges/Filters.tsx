@@ -55,9 +55,9 @@ export default function Filters(props: FiltersProps) {
                 <FilterCategory category="web" totals={totals} solved={solved} />
             </div>
             <div className="pl-2">
-                <FilterOption checked={filter.showSolved} onChange={toggleShowSolved}>
+                <FilterOption checked={filter.showSolved} onChange={toggleShowSolved} name="solved">
                     Show solved
-                    <span className="text-primary text-sm">
+                    <span className="text-primary text-sm ml-2">
                         ({props.solves.length}/{props.challenges.length} solved)
                     </span>
                 </FilterOption>
@@ -85,11 +85,12 @@ function FilterCategory(props: FilterCategoryProps) {
 
     return (
         <FilterOption
+            name={props.category}
             checked={filter.categories.has(props.category)}
             onChange={toggleCategory}
         >
             {props.category}
-            <span className="text-primary text-sm">
+            <span className="text-primary text-sm ml-2">
                 ({props.solved[props.category] ?? 0}/{props.totals[props.category] ?? 0} solved)
             </span>
         </FilterOption>
@@ -97,6 +98,7 @@ function FilterCategory(props: FilterCategoryProps) {
 }
 
 type FilterOptionProps = {
+    name: string,
     checked: boolean,
     onChange: () => void,
     children: ReactNode
@@ -105,12 +107,16 @@ function FilterOption(props: FilterOptionProps) {
     return (
         <div className="flex gap-x-2 items-center flex-wrap">
             <input
+                id={props.name}
+                name={props.name}
                 type="checkbox"
                 className="accent-theme"
                 checked={props.checked}
                 onChange={props.onChange}
             />
-            {props.children}
+            <label htmlFor={props.name}>
+                {props.children}
+            </label>
         </div>
     )
 }

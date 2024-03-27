@@ -11,7 +11,6 @@ import {getMyProfile} from '@/util/profile';
 import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
-// TODO
 export const metadata: Metadata = {
     title: 'Profile'
 }

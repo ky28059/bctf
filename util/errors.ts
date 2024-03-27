@@ -29,3 +29,9 @@ export type EmailAlreadyExistsResponse = {
     message: 'An account with this email already exists.',
     data: null
 }
+
+export type CtfEndedResponse = {
+    kind: 'badEnded',
+    message: 'The CTF has ended.',
+    data: null
+}

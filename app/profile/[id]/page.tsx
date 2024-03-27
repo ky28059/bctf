@@ -8,9 +8,14 @@ import Profile from '@/app/profile/Profile';
 import {getProfile} from '@/util/profile';
 
 
-// TODO
-export const metadata: Metadata = {
-    title: 'Profile'
+export async function generateMetadata({params}: {params: {id: string}}): Promise<Metadata> {
+    const data = await getProfile(params.id);
+
+    if (data.kind === 'badUnknownUser') return notFound();
+
+    return {
+        title: data.data.name
+    }
 }
 
 export default async function ProfilePage({params}: {params: {id: string}}) {

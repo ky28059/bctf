@@ -1,3 +1,6 @@
+import type {CtfEndedResponse} from '@/util/errors';
+
+
 type GoodFlagResponse = {
     kind: 'goodFlag',
     message: 'The flag is correct.',
@@ -14,7 +17,7 @@ export async function attemptSubmit(
     token: string,
     id: string,
     flag: string
-): Promise<GoodFlagResponse | BadFlagResponse> {
+): Promise<GoodFlagResponse | BadFlagResponse | CtfEndedResponse> {
     const res = await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {
         method: 'POST',
         headers: {

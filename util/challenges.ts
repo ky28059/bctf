@@ -4,7 +4,7 @@ export type Challenge = {
     files: FileData[]
     category: string,
     author: string,
-    description: string, // TODO?
+    description: string,
     sortWeight: number,
     solves: number,
     points: number,

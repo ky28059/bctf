@@ -31,6 +31,7 @@ export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
             acceptFlag();
             refresh();
         } else {
+            // TODO: handle "ctf ended" error?
             rejectFlag();
         }
     }

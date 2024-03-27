@@ -81,16 +81,26 @@ export default function SolvesContent(props: SolvesContentProps) {
 
     return (
         <>
-            <div className="table w-full">
+            <div className="table table-fixed w-full">
                 <div className="table-header-group">
                     <div className="table-row font-semibold">
-                        <div className="table-cell w-6 p-2 border-b border-secondary text-right">#</div>
+                        <div className="table-cell w-8 p-2 border-b border-secondary text-right">#</div>
                         <div className="table-cell p-2 border-b border-secondary">Team</div>
                         <div className="table-cell w-44 p-2 border-b border-secondary">Solve time</div>
                     </div>
                 </div>
 
-                {solves.map((s, i) => (
+                {solves.length === 0 ? Array(Math.min(SOLVES_PAGE_SIZE, props.challenge.solves)).fill(0).map((_, i) => (
+                    // Bare bones "loading UI" to prevent modal resizing after fetch resolution
+                    <div className="table-row" key={i}>
+                        <div className="table-cell p-2 text-secondary text-right text-sm">
+                            {i + 1}.
+                        </div>
+
+                        <div className="table-cell p-2 text-transparent">Loading</div>
+                        <div className="table-cell p-2 text-primary text-sm" />
+                    </div>
+                )) : solves.map((s, i) => (
                     <Solve
                         {...s}
                         rank={(page * SOLVES_PAGE_SIZE) + i + 1}

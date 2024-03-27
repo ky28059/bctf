@@ -35,7 +35,7 @@ export default function TeamInvite(props: {token: string}) {
                     </button>
                 </div>
 
-                <Disclosure.Panel className="break-words text-sm px-6 py-3 bg-black/20 border-l-[3px] border-secondary rounded">
+                <Disclosure.Panel className="break-words text-sm px-6 py-3 bg-black/20 border-l-[3px] border-secondary rounded select-all">
                     {url}
                 </Disclosure.Panel>
             </Disclosure>

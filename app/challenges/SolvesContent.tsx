@@ -84,7 +84,7 @@ export default function SolvesContent(props: SolvesContentProps) {
             <div className="table table-fixed w-full">
                 <div className="table-header-group">
                     <div className="table-row font-semibold">
-                        <div className="table-cell w-8 p-2 border-b border-secondary text-right">#</div>
+                        <div className="table-cell w-9 py-2 pr-2 border-b border-secondary text-right">#</div>
                         <div className="table-cell p-2 border-b border-secondary">Team</div>
                         <div className="table-cell w-44 p-2 border-b border-secondary">Solve time</div>
                     </div>

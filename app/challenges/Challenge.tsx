@@ -16,7 +16,7 @@ export default function Challenge(props: Challenge & {solved: boolean}) {
     const [showSolves, setShowSolves] = useState(false);
 
     return (
-        <div className="bg-black/50 px-6 py-4 rounded border border-tertiary">
+        <div className="bg-black/50 px-6 py-4 rounded border border-tertiary backdrop-blur-sm">
             <div className="flex items-center gap-2">
                 <h3 className="font-semibold">
                     {props.category}/{props.name}

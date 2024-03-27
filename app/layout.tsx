@@ -37,6 +37,11 @@ export default function RootLayout(props: { children: ReactNode }) {
                     <FilterProvider>
                         <PreferencesProvider>
                             <FlagDispatchProvider>
+                                <img
+                                    src="/assets/background2.webp"
+                                    className="fixed top-0 -z-10 opacity-10 object-cover object-center w-[max(100vw,_100vh)] h-[max(100vw,_100vh)] skew-y-12 -rotate-12"
+                                />
+
                                 <NavBar />
                                 {props.children}
 

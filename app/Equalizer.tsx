@@ -65,7 +65,7 @@ export default function Equalizer() {
 
     return (
         <canvas
-            className="w-screen h-screen fixed bottom-0 -z-10"
+            className="w-screen h-screen fixed bottom-0 -z-20"
             ref={canvasRef}
         />
     )

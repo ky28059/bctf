@@ -1,7 +1,8 @@
 'use client'
 
-import {FormEvent, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
+import {login} from '@/util/users';
 
 // Components
 import IconInput from '@/components/IconInput';
@@ -22,16 +23,13 @@ export default function LoginContent() {
         const token = params.get('token');
         if (!token) return;
 
-        void login(token);
+        void loginCallback(token);
     }, [params.get('token')]);
 
-    async function login(teamToken: string) {
-        const res = await (await fetch('/api/passthrough/login', {
-            method: 'POST',
-            body: JSON.stringify({teamToken})
-        })).json();
+    async function loginCallback(teamToken: string) {
+        const res = await login(teamToken);
 
-        if ('error' in res) return setError(res.error);
+        if ('error' in res) return setError(res.error!);
 
         router.push('/profile');
         router.refresh();
@@ -42,7 +40,7 @@ export default function LoginContent() {
             className="flex flex-col gap-2 max-w-xl items-center mx-auto"
             onSubmit={(e) => {
                 e.preventDefault();
-                void login(teamToken);
+                void loginCallback(teamToken);
             }}
         >
             <IconInput

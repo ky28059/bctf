@@ -2,7 +2,7 @@
 
 import {FormEvent, useState} from 'react';
 import {useRouter} from 'next/navigation';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import {register} from '@/util/users';
 
 // Components
 import IconInput from '@/components/IconInput';
@@ -23,12 +23,9 @@ export default function RegisterContent() {
     async function registerCallback(e: FormEvent) {
         e.preventDefault();
 
-        const res = await (await fetch('/api/passthrough/register', {
-            method: 'POST',
-            body: JSON.stringify({name, email})
-        })).json();
+        const res = await register(email, name);
 
-        if ('error' in res) return setError(res.error);
+        if ('error' in res) return setError(res.error!);
 
         router.push('/profile');
         router.refresh();

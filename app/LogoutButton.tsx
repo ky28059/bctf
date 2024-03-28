@@ -2,6 +2,7 @@
 
 import {useState} from 'react';
 import {useRouter} from 'next/navigation';
+import {logout} from '@/util/users';
 
 // Components
 import CenteredModal from '@/components/CenteredModal';
@@ -9,11 +10,11 @@ import CenteredModal from '@/components/CenteredModal';
 
 export default function LogoutButton() {
     const [open, setOpen] = useState(false);
-    const {push, refresh} = useRouter();
+    const {refresh} = useRouter();
 
-    function logout() {
+    async function logoutCallback() {
         setOpen(false);
-        push('/api/logout');
+        await logout();
         refresh();
     }
 
@@ -48,7 +49,7 @@ export default function LogoutButton() {
 
                     <button
                         className="border border-theme-bright text-theme-bright px-4 py-2 rounded hover:bg-theme-bright hover:text-background transition duration-100"
-                        onClick={logout}
+                        onClick={logoutCallback}
                     >
                         Log out
                     </button>

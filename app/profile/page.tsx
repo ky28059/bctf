@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import {cookies} from 'next/headers';
-import {redirect} from 'next/navigation';
+import {logout} from '@/util/users';
 
 // Components
 import Profile from '@/app/profile/Profile';
@@ -20,7 +20,7 @@ export default async function ProfilePage() {
     const data = await getMyProfile(token);
 
     if (data.kind === 'badToken')
-        return redirect('/api/logout');
+        return logout();
 
     return (
         <div className="px-8 xl:container pt-32 pb-14 flex flex-col-reverse md:flex-row gap-6">

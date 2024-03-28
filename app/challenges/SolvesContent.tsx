@@ -11,7 +11,7 @@ import {SolveData} from '@/util/solves';
 import type {Challenge} from '@/util/challenges';
 
 // Icons
-import {FaChevronLeft, FaChevronRight} from 'react-icons/fa6';
+import {FaChevronLeft, FaChevronRight, FaClock, FaRegClock} from 'react-icons/fa6';
 
 
 type SolvesContentProps = {
@@ -77,6 +77,16 @@ export default function SolvesContent(props: SolvesContentProps) {
 
     function incrementPage() {
         void updatePage(page + 1);
+    }
+
+    // "No solves" UI
+    if (props.challenge.solves === 0) {
+        return (
+            <div className="flex flex-col items-center text-primary gap-3 py-3.5">
+                <FaRegClock className="text-5xl" />
+                <p>{props.challenge.name} has no solves.</p>
+            </div>
+        )
     }
 
     return (

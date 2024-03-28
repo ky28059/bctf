@@ -10,6 +10,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        "loop-scroll": "loop-scroll 45s linear infinite",
+      },
+      keyframes: {
+        "loop-scroll": {
+          // Magic numbers, do not touch >:(
+          from: { transform: "translateY(0) translateX(0) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))" },
+          to: { transform: "translateY(70.5vh) translateX(15vh) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))" },
+        },
+      },
       colors: {
         background: '#111',
         theme: '#c22026',

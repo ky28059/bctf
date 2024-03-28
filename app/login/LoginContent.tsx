@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect, useState} from 'react';
+import {useLayoutEffect, useState} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
 import {login} from '@/util/users';
 
@@ -19,7 +19,7 @@ export default function LoginContent() {
     const params = useSearchParams();
 
     // Automatically sign in if the `token` URL search parameter is set.
-    useEffect(() => {
+    useLayoutEffect(() => {
         const token = params.get('token');
         if (!token) return;
 

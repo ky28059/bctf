@@ -13,9 +13,9 @@ export default async function Header() {
                 startTime={config.data.startTime}
                 endTime={config.data.endTime}
             />
-            <p>todo</p>
+            <p>b01lers CTF is jeopardy-style CTF hosted by the b01lers CTF team at Purdue University.</p>
 
-            <a href="#rules" className="text-inherit text-4xl mt-12">
+            <a href="#rules" className="text-inherit text-4xl mt-12 text-primary">
                 <BsChevronCompactDown className="animate-bounce" />
                 <span className="sr-only">Jump to Rules</span>
             </a>

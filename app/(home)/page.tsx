@@ -9,7 +9,7 @@ export default async function Home() {
         <main className="pb-14 relative">
             <Header />
 
-            <div className="bg-black/30 py-16 mb-12 backdrop-blur-sm">
+            <div className="bg-black/40 py-16 mb-12 backdrop-blur-sm border-t border-tertiary">
                 <div className="container">
                     <Rules />
                     <Prizes />

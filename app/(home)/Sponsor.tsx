@@ -3,15 +3,21 @@ import type {ReactNode} from 'react';
 
 type SponsorProps = {
     href: string,
+    src: string,
     name: string,
     children: ReactNode
 }
 export default function Sponsor(props: SponsorProps) {
     return (
-        <div className="flex gap-8 items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6">
+        <a
+            className="flex gap-8 items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6 border border-tertiary hover:border-secondary transition duration-200"
+            href={props.href}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             <img
                 className="w-48 h-max flex-none"
-                src={props.href}
+                src={props.src}
                 alt={props.name}
             />
             <div>
@@ -20,6 +26,6 @@ export default function Sponsor(props: SponsorProps) {
                     {props.children}
                 </p>
             </div>
-        </div>
+        </a>
     )
 }

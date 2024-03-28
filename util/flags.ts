@@ -1,4 +1,8 @@
+'use server'
+
 import type {CtfEndedResponse} from '@/util/errors';
+import {cookies} from 'next/headers';
+import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
 type GoodFlagResponse = {
@@ -14,18 +18,23 @@ type BadFlagResponse = {
 }
 
 export async function attemptSubmit(
-    token: string,
     id: string,
     flag: string
-): Promise<GoodFlagResponse | BadFlagResponse | CtfEndedResponse> {
-    const res = await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {
+) {
+    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    if (!token) return {error: 'Missing token'};
+
+    const res: GoodFlagResponse | BadFlagResponse | CtfEndedResponse = await (await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({flag})
-    })
+    })).json();
 
-    return res.json();
+    if (res.kind === 'badEnded')
+        return {error: res.message};
+
+    return {ok: res.kind === 'goodFlag'};
 }

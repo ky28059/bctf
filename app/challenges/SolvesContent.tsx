@@ -7,7 +7,7 @@ import Solve from '@/app/challenges/Solve';
 
 // Utils
 import {SOLVES_PAGE_SIZE} from '@/util/config';
-import {SolveData} from '@/util/solves';
+import {getSolves, SolveData} from '@/util/solves';
 import type {Challenge} from '@/util/challenges';
 
 // Icons
@@ -60,13 +60,11 @@ export default function SolvesContent(props: SolvesContentProps) {
     }, [maxPage, page, visiblePages]);
 
     useEffect(() => {
-        fetch(`/api/passthrough/challs/${props.challenge.id}/solves?offset=0`)
-            .then((r) => r.json())
-            .then((r) => setSolves(r.data.solves));
+        getSolves(props.challenge.id, 0).then((r) => setSolves(r.data.solves));
     }, []);
 
     async function updatePage(page: number) {
-        const res = await (await fetch(`/api/passthrough/challs/${props.challenge.id}/solves?offset=${page * SOLVES_PAGE_SIZE}`)).json();
+        const res = await getSolves(props.challenge.id, page * SOLVES_PAGE_SIZE);
         setSolves(res.data.solves);
         setPage(page);
     }

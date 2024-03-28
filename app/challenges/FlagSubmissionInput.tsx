@@ -1,11 +1,12 @@
 'use client'
 
 import {FormEvent, useContext, useState} from 'react';
+import {useRouter} from 'next/navigation';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 
 // Utils
 import type {Challenge} from '@/util/challenges';
-import {useRouter} from 'next/navigation';
+import {attemptSubmit} from '@/util/flags';
 
 
 type FlagSubmissionInputProps = {
@@ -21,13 +22,10 @@ export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
     async function submitFlag(e: FormEvent) {
         e.preventDefault();
 
-        const res = await (await fetch(`/api/passthrough/challs/${props.challenge.id}/submit`, {
-            method: 'POST',
-            body: JSON.stringify({flag})
-        })).json();
+        const res = await attemptSubmit(props.challenge.id, flag);
         setFlag('');
 
-        if (res.kind === 'goodFlag') {
+        if (res.ok) {
             acceptFlag();
             refresh();
         } else {

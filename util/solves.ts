@@ -1,3 +1,5 @@
+'use server'
+
 import {SOLVES_PAGE_SIZE} from '@/util/config';
 
 

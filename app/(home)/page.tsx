@@ -4,7 +4,7 @@ import Rules from '@/app/(home)/Rules';
 import Prizes from '@/app/(home)/Prizes';
 
 
-export default function Home() {
+export default async function Home() {
     return (
         <main className="pb-14 relative">
             <Header />

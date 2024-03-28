@@ -6,17 +6,40 @@ import {useIsMounted} from '@/hooks/useIsMounted';
 import CurrentTimeContext from '@/contexts/CurrentTimeContext';
 
 
-const CTF_DATE = DateTime.fromISO(
-    '2024-04-12',
-    {zone: 'America/Indiana/Indianapolis'}
-)
-
-export default function Timer() {
+type TimerProps = {
+    startTime: number,
+    endTime: number
+}
+export default function Timer(props: TimerProps) {
     const time = useContext(CurrentTimeContext);
-    const diff = CTF_DATE.diff(time, ['days', 'hours', 'minutes', 'seconds']);
+
+    const ctfStart = DateTime.fromMillis(props.startTime);
+    const ctfEnd = DateTime.fromMillis(props.endTime);
 
     // To prevent hydration errors
     const mounted = useIsMounted();
+
+    // If the CTF is over
+    if (time > ctfEnd) return (
+        <div className="mb-6">
+            <div className="bg-black/15 mt-1 text-6xl font-medium px-5 py-3 rounded select-none font-mono mb-1">
+                00
+                <span className="text-primary">:</span>
+                00
+                <span className="text-primary">:</span>
+                00
+                <span className="text-primary">:</span>
+                00
+            </div>
+            <p className="text-primary text-sm text-center">
+                b01lers CTF is over!
+            </p>
+        </div>
+    );
+
+    const diff = time > ctfStart
+        ? ctfEnd.diff(time, ['days', 'hours', 'minutes', 'seconds'])
+        : ctfStart.diff(time, ['days', 'hours', 'minutes', 'seconds']);
 
     return (
         <div className="mb-6">
@@ -30,7 +53,11 @@ export default function Timer() {
                 {!mounted ? '00' : diff.seconds.toFixed(0).toString().padStart(2, '0')}
             </div>
             <p className="text-primary text-sm text-center">
-                days until b01lers CTF.
+                {time > ctfStart ? (
+                    'left until b01lers CTF ends.'
+                ) : (
+                    'days until b01lers CTF.'
+                )}
             </p>
         </div>
     )

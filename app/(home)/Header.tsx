@@ -7,15 +7,24 @@ export default async function Header() {
     const config = await getConfig();
 
     return (
-        <header className="pt-36 container flex flex-col items-center h-screen">
+        <header className="container flex flex-col items-center justify-center h-screen">
             <img src="/assets/logo.svg" />
             <Timer
                 startTime={config.data.startTime}
                 endTime={config.data.endTime}
             />
-            <p>b01lers CTF is jeopardy-style CTF hosted by the b01lers CTF team at Purdue University.</p>
+            <p className="mb-2 max-w-3xl text-center text-pretty">
+                b01lers CTF is the public competitive CTF hosted by the b01lers CTF team at Purdue University.
+                Join our discord at <a href="https://discord.gg/tBMqujE" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">discord.gg/tBMqujE</a>{' '}
+                and look out for further info soon!
+            </p>
+            <div className="flex divide-x divide-primary text-sm">
+                <a href="#rules" className="px-4 py-2 uppercase hover:underline">Rules</a>
+                <a href="#prizes" className="px-4 py-2 uppercase hover:underline">Prizes</a>
+                <a href="#sponsors" className="px-4 py-2 uppercase hover:underline">Sponsors</a>
+            </div>
 
-            <a href="#rules" className="text-inherit text-4xl mt-12 text-primary">
+            <a href="#rules" className="text-inherit text-4xl mt-12 mb-16 text-primary">
                 <BsChevronCompactDown className="animate-bounce" />
                 <span className="sr-only">Jump to Rules</span>
             </a>

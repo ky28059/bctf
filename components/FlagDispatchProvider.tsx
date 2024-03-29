@@ -2,27 +2,38 @@
 
 import {ReactNode, useRef} from 'react';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
-import {getRandom} from '@/util/random';
+import {shuffle} from '@/util/random';
 
 
 export default function FlagDispatchProvider(props: {children: ReactNode}) {
     const rejectVideoRefs = useRef<HTMLVideoElement[]>([]);
     const acceptVideoRefs = useRef<HTMLVideoElement[]>([]);
 
-    function rejectFlag() {
-        const available = rejectVideoRefs.current.filter(s => !!s);
-        if (!available.length) return;
+    const rejectQueue = useRef<HTMLVideoElement[]>([]);
+    const acceptQueue = useRef<HTMLVideoElement[]>([]);
 
-        const video = getRandom(available);
+    function rejectFlag() {
+        if (!rejectQueue.current.length) {
+            const available = rejectVideoRefs.current.filter((s) => !!s);
+            if (!available.length) return;
+
+            rejectQueue.current = shuffle(available);
+        }
+
+        const video = rejectQueue.current.shift()!;
         video.currentTime = 0;
         void video.play();
     }
 
     function acceptFlag() {
-        const available = acceptVideoRefs.current.filter(s => !!s);
-        if (!available.length) return;
+        if (!acceptQueue.current.length) {
+            const available = acceptVideoRefs.current.filter((s) => !!s);
+            if (!available.length) return;
 
-        const video = getRandom(available);
+            acceptQueue.current = shuffle(available);
+        }
+
+        const video = acceptQueue.current.shift()!;
         video.currentTime = 0;
         void video.play();
     }

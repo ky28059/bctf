@@ -39,7 +39,7 @@ export default function RootLayout(props: { children: ReactNode }) {
                             <FlagDispatchProvider>
                                 <img
                                     src="/assets/background3.webp"
-                                    className="fixed top-0 -z-10 opacity-10 object-cover object-center h-screen scale-[2] animate-loop-scroll origin-bottom"
+                                    className="fixed top-0 -z-10 opacity-10 object-cover object-center h-[max(100vh,_100vw)] scale-[1.5] animate-loop-scroll origin-bottom"
                                 />
 
                                 <NavBar />

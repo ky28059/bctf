@@ -17,7 +17,11 @@ const config: Config = {
         "loop-scroll": {
           // Magic numbers, do not touch >:(
           from: { transform: "translateY(0) translateX(0) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))" },
-          to: { transform: "translateY(70.5vh) translateX(15vh) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))" },
+          to: {
+            // Translate x: 7.5 * scale
+            // Translate y: 35.26 * scale
+            transform: "translateY(calc(0.3526 * var(--tw-scale-y) * max(100vh, 100vw))) translateX(calc(0.075 * var(--tw-scale-x) * max(100vh, 100vw))) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))"
+          },
         },
       },
       colors: {

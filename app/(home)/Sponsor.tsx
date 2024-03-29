@@ -9,12 +9,13 @@ type SponsorProps = {
 }
 export default function Sponsor(props: SponsorProps) {
     return (
-        <a
-            className="flex gap-8 items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6 border border-tertiary hover:border-secondary transition duration-200"
-            href={props.href}
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+        <div className="relative flex gap-8 items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6 border border-tertiary hover:border-secondary transition duration-200">
+            <a
+                className="absolute inset-0"
+                href={props.href}
+                target="_blank"
+                rel="noopener noreferrer"
+            />
             <img
                 className="w-48 h-max flex-none"
                 src={props.src}
@@ -22,10 +23,10 @@ export default function Sponsor(props: SponsorProps) {
             />
             <div>
                 <h3 className="font-semibold mb-2 text-lg">{props.name}</h3>
-                <p className="text-sm text-primary">
+                <p className="text-sm text-primary [&_a]:relative [&_a]:z-10"> {/* TODO: hacky? */}
                     {props.children}
                 </p>
             </div>
-        </a>
+        </div>
     )
 }

@@ -37,7 +37,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
 
     return (
         <FlagDispatchContext.Provider value={{rejectFlag, acceptFlag}}>
-            {Array(2).fill(0).map((_, i) => (
+            {Array(4).fill(0).map((_, i) => (
                 <video
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToRejectVideos}

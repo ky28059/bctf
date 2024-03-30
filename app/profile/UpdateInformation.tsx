@@ -8,8 +8,7 @@ import IconInput from '@/components/IconInput';
 import DivisionSelector from '@/app/profile/DivisionSelector';
 
 // Utils
-import type {MyProfileData, UpdateProfilePayload} from '@/util/profile';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import {MyProfileData, updateProfile, UpdateProfilePayload} from '@/util/profile';
 
 // Icons
 import {FaCircleUser} from 'react-icons/fa6';
@@ -23,7 +22,7 @@ export default function UpdateInformation(props: MyProfileData) {
 
     const [error, setError] = useState('');
 
-    const {push, refresh} = useRouter();
+    const {refresh} = useRouter();
 
     async function updateInfoCallback(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -31,27 +30,21 @@ export default function UpdateInformation(props: MyProfileData) {
         if (name === props.name && email === props.email && division === props.division)
             return setError('Nothing to update!');
 
-        // Update name and division via passthrough PATCH request
+        // Update name and division
         if (name !== props.name || division !== props.division) {
             const payload: UpdateProfilePayload = {};
             if (name !== props.name) payload.name = name;
             if (division !== props.division) payload.division = division;
 
-            const res = await (await fetch('/api/passthrough/users/me', {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            })).json();
-
-            if ('error' in res) return setError(res.error);
+            const res = await updateProfile(payload);
+            if ('error' in res) return setError(res.error!);
         }
-
-        const token = document.cookie.match(RegExp(`${AUTH_COOKIE_NAME}=(.+?)(?:;|$)`))?.[1];
-        if (!token) return push('/login');
 
         if (email !== props.email) {
             // TODO
         }
 
+        setError(''); // TODO: push success notif?
         refresh();
     }
 

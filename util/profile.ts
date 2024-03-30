@@ -1,4 +1,8 @@
+'use server'
+
 import type {BadTokenResponse, RateLimitResponse, UserNotFoundResponse} from '@/util/errors';
+import {cookies} from 'next/headers';
+import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
 export type ProfileData = {
@@ -35,7 +39,9 @@ type ProfileResponse<T extends ProfileData> = {
 }
 
 export async function getProfile(id: string): Promise<ProfileResponse<ProfileData> | UserNotFoundResponse> {
-    const res = await fetch(`${process.env.API_BASE}/users/${id}`);
+    const res = await fetch(`${process.env.API_BASE}/users/${id}`, {
+        cache: 'no-store' // TODO: devise clever revalidate-on-demand scheme for this?
+    });
     return res.json();
 }
 
@@ -62,17 +68,22 @@ export type UpdateProfilePayload = {
     name?: string,
     division?: string
 }
-export async function updateProfile(
-    token: string,
-    payload: UpdateProfilePayload
-): Promise<UpdateUserResponse | RateLimitResponse> {
-    const res = await fetch(`${process.env.API_BASE}/users/me`, {
+export async function updateProfile(payload: UpdateProfilePayload) {
+    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    if (!token)
+        return {error: 'Not authenticated.'};
+
+    const res: UpdateUserResponse | RateLimitResponse = await (await fetch(`${process.env.API_BASE}/users/me`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(payload)
-    });
-    return res.json();
+    })).json();
+
+    if (res.kind === 'badRateLimit')
+        return {error: `You are doing this too fast! Try again in ${res.data.timeLeft} ms.`};
+
+    return {ok: true};
 }

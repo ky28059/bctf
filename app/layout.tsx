@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google';
 import NavBar from '@/app/NavBar';
 import Equalizer from '@/app/Equalizer';
 import Footer from '@/app/Footer';
+import ScrollableBackground from '@/app/ScrollableBackground';
 
 // Providers
 import TimeProvider from '@/components/TimeProvider';
@@ -37,10 +38,7 @@ export default function RootLayout(props: { children: ReactNode }) {
                     <FilterProvider>
                         <PreferencesProvider>
                             <FlagDispatchProvider>
-                                <img
-                                    src="/assets/background3.webp"
-                                    className="fixed top-0 -z-10 opacity-10 object-cover object-center h-[max(100vh,_100vw)] scale-[1.5] animate-loop-scroll origin-bottom"
-                                />
+                                <ScrollableBackground />
 
                                 <NavBar />
                                 {props.children}

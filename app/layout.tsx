@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 // Components
 import NavBar from '@/app/NavBar';
 import Equalizer from '@/app/Equalizer';
+import Footer from '@/app/Footer';
 
 // Providers
 import TimeProvider from '@/components/TimeProvider';
@@ -13,7 +14,6 @@ import PreferencesProvider from '@/components/PreferencesProvider';
 import FlagDispatchProvider from '@/components/FlagDispatchProvider';
 
 import './globals.css';
-import Footer from '@/app/Footer';
 
 
 const inter = Inter({ subsets: ['latin'] })

@@ -1,9 +1,11 @@
 'use client'
 
-import {useEffect, useRef} from 'react';
+import {useContext, useEffect, useRef} from 'react';
+import PreferencesContext from '@/contexts/PreferencesContext';
 
 
 export default function Equalizer() {
+    const {preferences} = useContext(PreferencesContext);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     function draw(dt: number) {
@@ -13,12 +15,8 @@ export default function Equalizer() {
         const ctx = canvas.getContext('2d')!;
 
         dt = dt / 1000;
-        if (localStorage.getItem('shouldAnimate') === 'false') {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            return;
-        } else {
-            requestAnimationFrame(draw);
-        }
+        requestAnimationFrame(draw);
+
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
         const margin = 10;
@@ -45,12 +43,13 @@ export default function Equalizer() {
     }
 
     useEffect(() => {
-        requestAnimationFrame(draw);
-    }, [canvasRef]);
+        if (!preferences.animations) return;
 
-    useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
+
+        // Start the animation
+        requestAnimationFrame(draw);
 
         const onResize = () => {
             const rect = canvas.getBoundingClientRect();
@@ -61,7 +60,9 @@ export default function Equalizer() {
 
         window.addEventListener('resize', onResize);
         return () => window.removeEventListener('resize', onResize);
-    }, [canvasRef])
+    }, [canvasRef, preferences.animations]);
+
+    if (!preferences.animations) return null;
 
     return (
         <canvas

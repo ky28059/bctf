@@ -15,7 +15,7 @@ export default function PreferencesProvider(props: {children: ReactNode}) {
 
             const raw = localStorage.getItem('preferences');
             if (!raw) return;
-            setPreferences(JSON.parse(raw))
+            setPreferences({...defaultPreferences, ...JSON.parse(raw)}) // TODO: eventually need deepmerge here
 
             return;
         }

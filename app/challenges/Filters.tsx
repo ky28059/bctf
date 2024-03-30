@@ -48,11 +48,14 @@ export default function Filters(props: FiltersProps) {
             <h2 className="font-semibold mb-1">Filters</h2>
 
             <div className="flex flex-col gap-1 pl-2 mb-3">
-                <FilterCategory category="crypto" totals={totals} solved={solved} />
-                <FilterCategory category="misc" totals={totals} solved={solved} />
-                <FilterCategory category="pwn" totals={totals} solved={solved} />
-                <FilterCategory category="rev" totals={totals} solved={solved} />
-                <FilterCategory category="web" totals={totals} solved={solved} />
+                {Object.keys(totals).map((c) => (
+                    <FilterCategory
+                        key={c}
+                        category={c}
+                        totals={totals}
+                        solved={solved}
+                    />
+                ))}
             </div>
             <div className="pl-2">
                 <FilterOption checked={filter.showSolved} onChange={toggleShowSolved} name="solved">

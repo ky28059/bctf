@@ -24,3 +24,29 @@ export async function getScoreboard(offset: number = 0): Promise<LeaderboardResp
     });
     return res.json();
 }
+
+type PointsData = {
+    time: number,
+    score: number
+}
+
+export type GraphEntryData = {
+    id: string,
+    name: string,
+    points: PointsData[]
+}
+
+type GraphResponse = {
+    kind: 'goodLeaderboard',
+    message: 'The leaderboard was retrieved.',
+    data: {
+        graph: GraphEntryData[]
+    }
+}
+
+export async function getGraph(): Promise<GraphResponse> {
+    const res = await fetch(`${process.env.API_BASE}/leaderboard/graph?limit=10`, {
+        cache: 'no-store'
+    });
+    return res.json();
+}

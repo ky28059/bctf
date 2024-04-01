@@ -2,6 +2,8 @@
 
 The updated website for b01lers CTF!
 
+This website was heavily inspired by [LA CTF](https://platform.lac.tf/) and the default rCTF frontend.
+
 ### Running locally
 
 This is a custom Next.js frontend wrapping [rCTF](https://rctf.redpwn.net/) as a backend. To configure rCTF, edit the

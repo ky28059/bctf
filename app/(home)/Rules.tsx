@@ -26,7 +26,7 @@ export default function Rules() {
                 </li>
                 <li>
                     Flags are of the format{' '}
-                    <code className="bg-black/40 px-2 py-1 text-primary rounded">{'bctf{\\w+}'}</code>{' '}
+                    <code className="bg-black/40 px-2 py-1 text-primary rounded">{'bctf{[ -~]+}'}</code>{' '}
                     unless otherwise noted on the challenge description. No brute-force guessing flags.
                 </li>
                 <li>

@@ -2,6 +2,9 @@ import type {ReactNode} from 'react';
 import type {IconType} from 'react-icons';
 import type {ProfileData} from '@/util/profile';
 
+// Components
+import ProfileStats from '@/app/profile/ProfileStats';
+
 // Icons
 import {FaAddressBook, FaTrophy} from 'react-icons/fa6';
 import {MdBarChart} from 'react-icons/md';
@@ -12,31 +15,35 @@ import {pluralize} from '@/util/strings';
 
 export default function ProfileCard(props: ProfileData) {
     return (
-        <div className="bg-black/30 px-12 py-8 rounded-md">
-            <h1 className="text-2xl font-bold border-b border-secondary pb-1 mb-4">
-                {props.name}
-            </h1>
+        <div className="bg-black/30 pl-12 pr-4 py-8 rounded-md flex">
+            <div className="flex-grow w-full">
+                <h1 className="text-2xl font-bold border-b border-secondary pb-1 mb-4">
+                    {props.name}
+                </h1>
 
-            <ProfileCardStatistic icon={FaTrophy}>
-                {props.score} total points
-            </ProfileCardStatistic>
-            <ProfileCardStatistic icon={MdBarChart}>
-                {props.divisionPlace ? (
-                    `${pluralize(props.divisionPlace)} place in the ${props.division} division`
-                ) : (
-                    'Unranked'
-                )}
-            </ProfileCardStatistic>
-            <ProfileCardStatistic icon={MdBarChart}>
-                {props.globalPlace ? (
-                    `${pluralize(props.globalPlace)} place across all teams`
-                ) : (
-                    'Unranked'
-                )}
-            </ProfileCardStatistic>
-            <ProfileCardStatistic icon={FaAddressBook}>
-                {props.division} division
-            </ProfileCardStatistic>
+                <ProfileCardStatistic icon={FaTrophy}>
+                    {props.score} total points
+                </ProfileCardStatistic>
+                <ProfileCardStatistic icon={MdBarChart}>
+                    {props.divisionPlace ? (
+                        `${pluralize(props.divisionPlace)} place in the ${props.division} division`
+                    ) : (
+                        'Unranked'
+                    )}
+                </ProfileCardStatistic>
+                <ProfileCardStatistic icon={MdBarChart}>
+                    {props.globalPlace ? (
+                        `${pluralize(props.globalPlace)} place across all teams`
+                    ) : (
+                        'Unranked'
+                    )}
+                </ProfileCardStatistic>
+                <ProfileCardStatistic icon={FaAddressBook}>
+                    {props.division} division
+                </ProfileCardStatistic>
+            </div>
+
+            <ProfileStats {...props} />
         </div>
     )
 }

@@ -4,8 +4,6 @@ import ProfileSolves from '@/app/profile/ProfileSolves';
 
 
 export default function Profile(props: ProfileData) {
-    // TODO: funny stats
-
     return (
         <div className="flex flex-col gap-4 flex-grow">
             <ProfileCard {...props} />

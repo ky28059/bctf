@@ -22,7 +22,7 @@ export default function ScoreboardGraph(props: {graph: GraphEntryData[]}) {
                         bottom: 5,
                     }}
                 >
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid strokeDasharray="3 3" opacity={0.25} />
                     <XAxis
                         dataKey="time"
                         type="number"
@@ -44,9 +44,7 @@ export default function ScoreboardGraph(props: {graph: GraphEntryData[]}) {
                             stroke={colors[i]}
                             strokeOpacity={!focused ? 1 : focused === p.name ? 1 : 0.1}
                             strokeWidth={!focused ? 1 : focused === p.name ? 2 : 1}
-                            dot={{
-                                fillOpacity: !focused ? 1 : focused === p.name ? 1 : 0.1
-                            }}
+                            dot={{r: 0}}
                         />
                     ))}
                 </LineChart>

@@ -1,3 +1,5 @@
+'use server'
+
 import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
 
 

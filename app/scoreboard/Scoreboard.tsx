@@ -11,7 +11,7 @@ import {getScoreboard, LeaderboardData} from '@/util/scoreboard';
 import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
 
 
-export default function Scoreboard(props: LeaderboardData) {
+export default function Scoreboard(props: LeaderboardData & {name?: string}) {
     const [leaderboard, setLeaderboard] = useState(props.leaderboard);
     const [page, setPage] = useState(0);
 
@@ -40,6 +40,7 @@ export default function Scoreboard(props: LeaderboardData) {
                         {...d}
                         rank={(page * SCOREBOARD_PAGE_SIZE) + i + 1}
                         percent={d.score / maxScore * 100}
+                        selected={d.name === props.name}
                         key={d.id}
                     />
                 ))}

@@ -30,7 +30,13 @@ export type EmailAlreadyExistsResponse = {
     data: null
 }
 
-export type CtfEndedResponse = {
+export type CTFNotStartedResponse = {
+    kind: 'badNotStarted',
+    message: 'The CTF has not started yet.',
+    data: null
+}
+
+export type CTFEndedResponse = {
     kind: 'badEnded',
     message: 'The CTF has ended.',
     data: null

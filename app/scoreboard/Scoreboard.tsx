@@ -20,7 +20,7 @@ export default function Scoreboard(props: LeaderboardData) {
 
     async function updatePage(page: number) {
         const res = await getScoreboard(page * SCOREBOARD_PAGE_SIZE);
-        setLeaderboard(res.data.leaderboard);
+        setLeaderboard(res.data?.leaderboard ?? []);
         setPage(page);
     }
 

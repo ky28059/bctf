@@ -59,7 +59,7 @@ export default function Pagination(props: PaginationProps) {
             <button
                 className="disabled:text-tertiary enabled:hover:text-primary transition duration-200 mr-2"
                 onClick={decrementPage}
-                disabled={page === 0}
+                disabled={page <= 0}
             >
                 <FaChevronLeft />
             </button>
@@ -98,7 +98,7 @@ export default function Pagination(props: PaginationProps) {
             <button
                 className="disabled:text-tertiary enabled:hover:text-primary transition duration-200 ml-2"
                 onClick={incrementPage}
-                disabled={page === maxPage - 1}
+                disabled={page >= maxPage - 1}
             >
                 <FaChevronRight />
             </button>

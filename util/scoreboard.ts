@@ -1,5 +1,6 @@
 'use server'
 
+import type {CTFNotStartedResponse} from '@/util/errors';
 import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
 
 
@@ -20,7 +21,7 @@ type LeaderboardResponse = {
     data: LeaderboardData
 }
 
-export async function getScoreboard(offset: number = 0): Promise<LeaderboardResponse> {
+export async function getScoreboard(offset: number = 0): Promise<LeaderboardResponse | CTFNotStartedResponse> {
     const res = await fetch(`${process.env.API_BASE}/leaderboard/now?limit=${SCOREBOARD_PAGE_SIZE}&offset=${offset}`, {
         cache: 'no-store'
     });
@@ -46,7 +47,7 @@ type GraphResponse = {
     }
 }
 
-export async function getGraph(): Promise<GraphResponse> {
+export async function getGraph(): Promise<GraphResponse | CTFNotStartedResponse> {
     const res = await fetch(`${process.env.API_BASE}/leaderboard/graph?limit=10`, {
         cache: 'no-store'
     });

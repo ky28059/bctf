@@ -1,6 +1,6 @@
 'use server'
 
-import type {CtfEndedResponse} from '@/util/errors';
+import type {CTFEndedResponse} from '@/util/errors';
 import {cookies} from 'next/headers';
 import {AUTH_COOKIE_NAME} from '@/util/config';
 
@@ -24,7 +24,7 @@ export async function attemptSubmit(
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
     if (!token) return {error: 'Missing token'};
 
-    const res: GoodFlagResponse | BadFlagResponse | CtfEndedResponse = await (await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {
+    const res: GoodFlagResponse | BadFlagResponse | CTFEndedResponse = await (await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

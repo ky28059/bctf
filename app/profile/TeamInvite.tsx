@@ -5,7 +5,7 @@ import {BsChevronUp} from 'react-icons/bs';
 
 
 export default function TeamInvite(props: {token: string}) {
-    const url = `https://ctf.b01lers.com/login?token=${encodeURIComponent(props.token)}`;
+    const url = `https://b01lersc.tf/login?token=${encodeURIComponent(props.token)}`;
 
     function copy() {
         void navigator.clipboard.writeText(url);

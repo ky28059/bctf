@@ -1,9 +1,9 @@
 'use client'
 
 import {useMemo, useState} from 'react';
+import {DateTime} from 'luxon';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 import type {GraphEntryData} from '@/util/scoreboard';
-import {DateTime} from 'luxon';
 
 
 export default function ScoreboardGraph(props: {graph: GraphEntryData[]}) {

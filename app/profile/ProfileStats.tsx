@@ -6,7 +6,8 @@ import {
     PolarGrid,
     Radar,
     RadarChart,
-    ResponsiveContainer
+    ResponsiveContainer,
+    Tooltip
 } from 'recharts';
 
 // Types
@@ -32,7 +33,7 @@ export default function ProfileStats(props: ProfileData & {challs: Challenge[]})
     }, [props.solves]);
 
     return (
-        <ResponsiveContainer height={300} className="flex-none text-xs lg:!w-[400px] ml-4 lg:ml-6 lg:-my-6">
+        <ResponsiveContainer height={275} className="flex-none text-xs lg:!w-[350px] ml-4 lg:ml-6 lg:-my-6">
             <RadarChart data={data}>
                 <PolarGrid opacity={0.5} />
                 <PolarAngleAxis dataKey="name" />
@@ -41,6 +42,12 @@ export default function ProfileStats(props: ProfileData & {challs: Challenge[]})
                     stroke="#c22026"
                     fill="#c22026"
                     fillOpacity={0.6}
+                />
+                <Tooltip
+                    wrapperClassName="!bg-background rounded !border-secondary"
+                    labelClassName="text-primary"
+                    allowEscapeViewBox={{x: true, y: true}}
+                    formatter={(percent: number, _) => [(percent * 100).toFixed(2) + '%', 'Percent solved']}
                 />
             </RadarChart>
         </ResponsiveContainer>

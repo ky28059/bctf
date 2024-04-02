@@ -20,6 +20,8 @@
 *.pem
 .idea
 
+/conf.d/04-email.yaml
+
 # debug
 npm-debug.log*
 yarn-debug.log*

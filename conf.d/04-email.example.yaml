@@ -1,0 +1,7 @@
+email:
+  from: no-reply@email.b01lers.com
+  provider:
+    name: 'emails/mailgun'
+    options:
+      apiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxx-xxxxxxxx'
+      domain: 'email.b01lers.com'

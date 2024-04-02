@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import type {IconType} from 'react-icons';
 import type {ProfileData} from '@/util/profile';
+import type {Challenge} from '@/util/challenges';
 
 // Components
 import ProfileStats from '@/app/profile/ProfileStats';
@@ -13,9 +14,9 @@ import {MdBarChart} from 'react-icons/md';
 import {pluralize} from '@/util/strings';
 
 
-export default function ProfileCard(props: ProfileData) {
+export default function ProfileCard(props: ProfileData & {challs: Challenge[]}) {
     return (
-        <div className="bg-black/30 pl-12 pr-4 py-8 rounded-md flex">
+        <div className="bg-black/30 pl-12 pr-12 lg:pr-4 py-8 rounded-md flex flex-col lg:flex-row">
             <div className="flex-grow w-full">
                 <h1 className="text-2xl font-bold border-b border-secondary pb-1 mb-4">
                     {props.name}
@@ -57,7 +58,7 @@ function ProfileCardStatistic(props: ProfileCardStatisticProps) {
 
     return (
         <p className="flex gap-4 items-center mt-2 text-primary">
-            <Icon className="text-lg" />
+            <Icon className="text-lg flex-none" />
             {props.children}
         </p>
     )

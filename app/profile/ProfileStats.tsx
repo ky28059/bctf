@@ -8,35 +8,38 @@ import {
     RadarChart,
     ResponsiveContainer
 } from 'recharts';
+
+// Types
 import type {ProfileData} from '@/util/profile';
+import type {Challenge} from '@/util/challenges';
 
 
-export default function ProfileStats(props: ProfileData) {
+export default function ProfileStats(props: ProfileData & {challs: Challenge[]}) {
     const data = useMemo(() => {
-        const res: { name: string, points: number, solves: number, fullMark: number }[] = [];
+        const res: {[name: string]: {solves: number, total: number}} = {};
 
-        for (const c of props.solves) {
-            const entry = res.find((d) => d.name === c.category);
-            if (!entry) {
-                res.push({name: c.category, points: c.points, solves: 1, fullMark: 9});
-            } else {
-                entry.points += c.points;
-                entry.solves++;
-            }
+        for (const c of props.challs) {
+            if (!res[c.category]) res[c.category] = {solves: 0, total: 0};
+            res[c.category].total++;
         }
 
-        return res;
+        for (const c of props.solves) {
+            if (!res[c.category]) res[c.category] = {solves: 0, total: 0};
+            res[c.category].solves++;
+        }
+
+        return Object.entries(res).map(([name, data]) => ({name, percent: data.solves / data.total}));
     }, [props.solves]);
 
     return (
-        <ResponsiveContainer height={300} className="text-xs -my-6">
+        <ResponsiveContainer height={300} className="flex-none text-xs lg:!w-[400px] ml-4 lg:ml-6 lg:-my-6">
             <RadarChart data={data}>
                 <PolarGrid opacity={0.5} />
                 <PolarAngleAxis dataKey="name" />
                 <Radar
-                    dataKey="solves"
-                    stroke="#C51E3A"
-                    fill="#C51E3A"
+                    dataKey="percent"
+                    stroke="#c22026"
+                    fill="#c22026"
                     fillOpacity={0.6}
                 />
             </RadarChart>

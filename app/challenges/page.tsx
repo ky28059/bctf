@@ -5,6 +5,7 @@ import {cookies} from 'next/headers';
 import Filters from '@/app/challenges/Filters';
 import Challenges from '@/app/challenges/Challenges';
 import DisplayToggle from '@/app/challenges/DisplayToggle';
+import CTFNotStarted from '@/components/CTFNotStarted';
 
 // Utils
 import {getChallenges} from '@/util/challenges';
@@ -26,7 +27,7 @@ export default async function ChallengesPage() {
     if (profile.kind === 'badToken')
         return logout();
 
-    return (
+    return challenges.kind === 'goodChallenges' ? (
         <div className="container relative pt-32 pb-14 flex flex-col md:flex-row gap-6">
             <Filters
                 challenges={challenges.data}
@@ -39,5 +40,7 @@ export default async function ChallengesPage() {
 
             <DisplayToggle />
         </div>
+    ) : (
+        <CTFNotStarted />
     )
 }

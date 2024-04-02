@@ -14,7 +14,7 @@ import {MdBarChart} from 'react-icons/md';
 import {pluralize} from '@/util/strings';
 
 
-export default function ProfileCard(props: ProfileData & {challs: Challenge[]}) {
+export default function ProfileCard(props: ProfileData & {challs: Challenge[] | null}) {
     return (
         <div className="bg-black/30 pl-12 pr-12 lg:pr-4 py-8 rounded-md flex flex-col lg:flex-row">
             <div className="flex-grow w-full">
@@ -44,7 +44,12 @@ export default function ProfileCard(props: ProfileData & {challs: Challenge[]}) 
                 </ProfileCardStatistic>
             </div>
 
-            <ProfileStats {...props} />
+            {props.challs && (
+                <ProfileStats
+                    {...props}
+                    challs={props.challs}
+                />
+            )}
         </div>
     )
 }

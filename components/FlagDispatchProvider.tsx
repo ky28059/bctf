@@ -1,6 +1,9 @@
 'use client'
 
-import {ReactElement, ReactNode, useRef, useState} from 'react';
+import {Fragment, ReactElement, ReactNode, useRef, useState} from 'react';
+import {Transition} from '@headlessui/react';
+
+// Utils
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 import {shuffle} from '@/util/random';
 
@@ -14,8 +17,8 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
 
     const [notifs, setNotifs] = useState<ReactElement[]>([]);
 
-    function dispatchNotif(message: string) {
-        setNotifs((n) => [...n, <Notification>{message}</Notification>]);
+    function dispatchNotif(message: string, success: boolean) {
+        setNotifs((n) => [...n, <Notification success={success}>{message}</Notification>]);
 
         setTimeout(() => setNotifs((n) => {
             n.shift();
@@ -80,7 +83,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
                 </video>
             ))}
 
-            <div className="fixed w-screen h-screen flex flex-col items-end justify-end py-8 px-8">
+            <div className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8">
                 {notifs}
             </div>
 
@@ -89,10 +92,22 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
     )
 }
 
-function Notification(props: {children: ReactNode}) {
+function Notification(props: {success?: boolean, children: ReactNode}) {
     return (
-        <div className="bg-background rounded shadow-lg px-6 py-4 w-72 text-primary">
-            {props.children}
-        </div>
+        <Transition
+            appear
+            show
+            as={Fragment}
+            enter="transition duration-150 ease-out"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition duration-100 ease-out"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+        >
+            <div className={'bg-background rounded shadow-lg px-6 py-3.5 w-80 border-l-[3px] text-primary ' + (props.success ? 'border-success' : 'border-theme')}>
+                {props.children}
+            </div>
+        </Transition>
     )
 }

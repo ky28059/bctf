@@ -21,8 +21,6 @@ export default function UpdateInformation(props: MyProfileData) {
     const [email, setEmail] = useState(props.email);
     const [division, setDivision] = useState(props.division);
 
-    const [error, setError] = useState('');
-
     const {dispatchNotif} = useContext(FlagDispatchContext);
     const {refresh} = useRouter();
 
@@ -30,7 +28,7 @@ export default function UpdateInformation(props: MyProfileData) {
         e.preventDefault();
 
         if (name === props.name && email === props.email && division === props.division)
-            return setError('Nothing to update!');
+            return dispatchNotif('Nothing to update!', false);
 
         // Update name and division
         if (name !== props.name || division !== props.division) {
@@ -39,19 +37,18 @@ export default function UpdateInformation(props: MyProfileData) {
             if (division !== props.division) payload.division = division;
 
             const res = await updateProfile(payload);
-            if (res.error) return setError(res.error);
+            if (res.error) return dispatchNotif(res.error, false);
 
-            dispatchNotif('Successfully updated user information.');
+            dispatchNotif('Successfully updated user information.', true);
         }
 
         if (email !== props.email) {
             const res = await updateEmail(email);
-            if (res.error) return setError(res.error);
+            if (res.error) return dispatchNotif(res.error, false);
 
-            dispatchNotif('Confirmation email sent.');
+            dispatchNotif('Confirmation email sent.', true);
         }
 
-        setError('');
         refresh();
     }
 
@@ -90,12 +87,6 @@ export default function UpdateInformation(props: MyProfileData) {
                     setDivision={setDivision}
                     divisions={props.allowedDivisions}
                 />
-
-                {error && (
-                    <p className="text-sm text-theme-bright">
-                        {error}
-                    </p>
-                )}
 
                 <button
                     className="px-4 py-2 rounded bg-theme-bright text-white w-max ml-auto mt-2"

@@ -10,7 +10,6 @@ import {getProfile} from '@/util/profile';
 
 export async function generateMetadata({params}: {params: {id: string}}): Promise<Metadata> {
     const data = await getProfile(params.id);
-
     if (data.kind === 'badUnknownUser') return notFound();
 
     return {
@@ -20,7 +19,6 @@ export async function generateMetadata({params}: {params: {id: string}}): Promis
 
 export default async function ProfilePage({params}: {params: {id: string}}) {
     const data = await getProfile(params.id);
-
     if (data.kind === 'badUnknownUser') return notFound();
 
     return (

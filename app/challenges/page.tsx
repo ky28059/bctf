@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {cookies} from 'next/headers';
+import {redirect} from 'next/navigation';
 
 // Components
 import Filters from '@/app/challenges/Filters';
@@ -10,7 +11,6 @@ import CTFNotStarted from '@/components/CTFNotStarted';
 // Utils
 import {getChallenges} from '@/util/challenges';
 import {getMyProfile} from '@/util/profile';
-import {logout} from '@/util/auth';
 import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
@@ -25,7 +25,7 @@ export default async function ChallengesPage() {
     const profile = await getMyProfile(token);
 
     if (profile.kind === 'badToken')
-        return logout();
+        return redirect('/logout');
 
     return challenges.kind === 'goodChallenges' ? (
         <div className="container relative pt-32 pb-14 flex flex-col md:flex-row gap-6">

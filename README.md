@@ -9,11 +9,11 @@ This website was heavily inspired by [LA CTF](https://platform.lac.tf/) and the 
 This is a custom Next.js frontend wrapping [rCTF](https://rctf.redpwn.net/) as a backend. To configure rCTF, edit the
 config files in `/conf.d` [as normal](https://rctf.redpwn.net/configuration/). In `conf.d`,
 
-- `01-ui.yaml` -- defines rCTF's UI config values. These values are mostly ignored by the custom frontend, but necessary
+- `01-ui.yaml` defines rCTF's UI config values. These values are mostly ignored by the custom frontend, but necessary
 for styling certain things that we don't have full control over (ex. the email template).
-- `02-ctf.yaml` -- defines metadata for the actual CTF, including divisions, start / end time, and the frontend URL.
-- `03-db.yaml` -- defines config options for rCTF's underlying databases.
-- `04-email.yaml` -- defines config options for email verification. This includes an API key so isn't committed, but an
+- `02-ctf.yaml` defines metadata for the actual CTF, including divisions, start / end time, and the frontend URL.
+- `03-db.yaml` defines config options for rCTF's underlying databases.
+- `04-email.yaml` defines config options for email verification. This includes an API key so isn't committed, but an
 example is included in `04-email.example.yaml`.
 
 To run just the frontend, first install dependencies with

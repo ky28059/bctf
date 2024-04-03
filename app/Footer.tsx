@@ -15,7 +15,7 @@ export default function Footer() {
     return (
         <footer className="mt-auto text-center pb-12 text-primary text-sm hover:text-white transition duration-200">
             <p>
-                b01lers CTF platform -
+                <a href="https://github.com/ky28059/bctf" target="_blank" rel="noopener noreferrer" className="underline">b01lers CTF platform</a> -
                 Backend powered by <a href="https://rctf.redpwn.net/" target="_blank" rel="noopener noreferrer" className="underline">rCTF</a> -
                 Frontend made with 🤍 by <a href="https://github.com/ky28059" target="_blank" rel="noopener noreferrer" className="underline">ky28059</a>
             </p>

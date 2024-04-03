@@ -50,7 +50,7 @@ export default function Timer(props: TimerProps) {
                 <span className="text-primary">:</span>
                 {!mounted ? '00' : diff.minutes.toString().padStart(2, '0')}
                 <span className="text-primary">:</span>
-                {!mounted ? '00' : diff.seconds.toFixed(0).toString().padStart(2, '0')}
+                {!mounted ? '00' : Math.floor(diff.seconds).toString().padStart(2, '0')}
             </div>
             <p className="text-primary text-sm text-center">
                 {time > ctfStart ? (

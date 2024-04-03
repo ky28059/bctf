@@ -83,7 +83,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
                 </video>
             ))}
 
-            <div className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8">
+            <div className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8 pointer-events-none">
                 {notifs}
             </div>
 

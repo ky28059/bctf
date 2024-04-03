@@ -1,6 +1,6 @@
 'use client'
 
-import {ReactNode, useRef} from 'react';
+import {ReactElement, ReactNode, useRef, useState} from 'react';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 import {shuffle} from '@/util/random';
 
@@ -11,6 +11,17 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
 
     const rejectQueue = useRef<HTMLVideoElement[]>([]);
     const acceptQueue = useRef<HTMLVideoElement[]>([]);
+
+    const [notifs, setNotifs] = useState<ReactElement[]>([]);
+
+    function dispatchNotif(message: string) {
+        setNotifs((n) => [...n, <Notification>{message}</Notification>]);
+
+        setTimeout(() => setNotifs((n) => {
+            n.shift();
+            return [...n];
+        }), 5000);
+    }
 
     function rejectFlag() {
         if (!rejectQueue.current.length) {
@@ -47,7 +58,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
     }
 
     return (
-        <FlagDispatchContext.Provider value={{rejectFlag, acceptFlag}}>
+        <FlagDispatchContext.Provider value={{rejectFlag, acceptFlag, dispatchNotif}}>
             {Array(4).fill(0).map((_, i) => (
                 <video
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
@@ -69,7 +80,19 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
                 </video>
             ))}
 
+            <div className="fixed w-screen h-screen flex flex-col items-end justify-end py-8 px-8">
+                {notifs}
+            </div>
+
             {props.children}
         </FlagDispatchContext.Provider>
+    )
+}
+
+function Notification(props: {children: ReactNode}) {
+    return (
+        <div className="bg-background rounded shadow-lg px-6 py-4 w-72 text-primary">
+            {props.children}
+        </div>
     )
 }

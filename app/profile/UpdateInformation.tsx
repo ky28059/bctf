@@ -1,6 +1,6 @@
 'use client'
 
-import {FormEvent, useState} from 'react';
+import {FormEvent, useContext, useState} from 'react';
 import {useRouter} from 'next/navigation';
 
 // Components
@@ -9,6 +9,7 @@ import DivisionSelector from '@/app/profile/DivisionSelector';
 
 // Utils
 import {MyProfileData, updateEmail, updateProfile, UpdateProfilePayload} from '@/util/profile';
+import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 
 // Icons
 import {FaCircleUser} from 'react-icons/fa6';
@@ -22,6 +23,7 @@ export default function UpdateInformation(props: MyProfileData) {
 
     const [error, setError] = useState('');
 
+    const {dispatchNotif} = useContext(FlagDispatchContext);
     const {refresh} = useRouter();
 
     async function updateInfoCallback(e: FormEvent<HTMLFormElement>) {
@@ -38,14 +40,18 @@ export default function UpdateInformation(props: MyProfileData) {
 
             const res = await updateProfile(payload);
             if (res.error) return setError(res.error);
+
+            dispatchNotif('Successfully updated user information.');
         }
 
         if (email !== props.email) {
             const res = await updateEmail(email);
             if (res.error) return setError(res.error);
+
+            dispatchNotif('Confirmation email sent.');
         }
 
-        setError(''); // TODO: push success notif?
+        setError('');
         refresh();
     }
 

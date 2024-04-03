@@ -3,11 +3,13 @@ import {createContext} from 'react';
 
 type FlagDispatchContext = {
     rejectFlag: () => void,
-    acceptFlag: () => void
+    acceptFlag: () => void,
+    dispatchNotif: (m: string) => void
 }
 
 const FlagDispatchContext = createContext<FlagDispatchContext>({
     rejectFlag: () => {},
-    acceptFlag: () => {}
+    acceptFlag: () => {},
+    dispatchNotif: () => {}
 });
 export default FlagDispatchContext;

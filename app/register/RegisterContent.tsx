@@ -24,6 +24,8 @@ export default function RegisterContent() {
         e.preventDefault();
 
         const res = await register(email, name);
+        if (name.length <= 1)
+            return setError('Please specify a name longer than 1 character.')
 
         if ('error' in res) return setError(res.error!);
 

@@ -1,14 +1,13 @@
 'use client'
 
 import {FormEvent, useState} from 'react';
-import {useRouter} from 'next/navigation';
-import {register} from '@/util/users';
+import {registerWithEmailVerification} from '@/util/users';
 
 // Components
 import IconInput from '@/components/IconInput';
 
 // Icons
-import {FaCircleUser} from 'react-icons/fa6';
+import {FaCircleUser, FaEnvelope} from 'react-icons/fa6';
 import {FaEnvelopeOpen} from 'react-icons/fa';
 
 
@@ -17,56 +16,70 @@ export default function RegisterContent() {
     const [email, setEmail] = useState('');
 
     const [error, setError] = useState('');
-
-    const router = useRouter();
+    const [registered, setRegistered] = useState(false);
 
     async function registerCallback(e: FormEvent) {
         e.preventDefault();
 
-        const res = await register(email, name);
         if (name.length <= 1)
             return setError('Please specify a name longer than 1 character.')
 
+        const res = await registerWithEmailVerification(email, name);
         if ('error' in res) return setError(res.error!);
 
-        router.push('/profile');
-        router.refresh();
+        setRegistered(true);
     }
 
-    return (
-        <form
-            className="flex flex-col gap-2 max-w-xl items-center mx-auto"
-            onSubmit={registerCallback}
-        >
-            <IconInput
-                icon={FaCircleUser}
-                type="text"
-                placeholder="Team name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
+    return !registered ? (
+        <>
+            <h1 className="text-2xl font-bold mb-6 text-center">
+                Register for b01lers CTF
+            </h1>
+            <p className="text-center text-primary mb-8">
+                Please register one account per team.
+            </p>
 
-            <IconInput
-                icon={FaEnvelopeOpen}
-                className="w-full bg-black/40 px-4 py-2 rounded border border-secondary"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-
-            {error && (
-                <p className="text-sm text-theme-bright">
-                    {error}
-                </p>
-            )}
-
-            <button
-                className="bg-theme-bright px-6 py-2 rounded text-white font-semibold w-max mt-4"
-                type="submit"
+            <form
+                className="flex flex-col gap-2 max-w-xl items-center mx-auto"
+                onSubmit={registerCallback}
             >
-                Register
-            </button>
-        </form>
+                <IconInput
+                    icon={FaCircleUser}
+                    type="text"
+                    placeholder="Team name"
+                    value={name}
+                    required
+                    onChange={(e) => setName(e.target.value)}
+                />
+
+                <IconInput
+                    icon={FaEnvelopeOpen}
+                    className="w-full bg-black/40 px-4 py-2 rounded border border-secondary"
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+
+                {error && (
+                    <p className="text-sm text-theme-bright">
+                        {error}
+                    </p>
+                )}
+
+                <button
+                    className="bg-theme-bright px-6 py-2 rounded text-white font-semibold w-max mt-4"
+                    type="submit"
+                >
+                    Register
+                </button>
+            </form>
+        </>
+    ) : (
+        <h1 className="text-primary font-semibold text-2xl flex gap-4 items-center justify-center">
+            <FaEnvelope />
+            Verification email sent!
+        </h1>
     )
 }

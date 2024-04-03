@@ -5,3 +5,4 @@ email:
     options:
       apiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxx-xxxxxxxx'
       domain: 'email.b01lers.com'
+logoUrl: 'https://b01lersc.tf/icon.svg'

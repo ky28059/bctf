@@ -18,18 +18,6 @@ export type RateLimitResponse = {
     }
 }
 
-export type BadLoginTokenResponse = {
-    kind: 'badTokenVerification',
-    message: 'The token provided is invalid.',
-    data: null
-}
-
-export type EmailAlreadyExistsResponse = {
-    kind: 'badKnownEmail',
-    message: 'An account with this email already exists.',
-    data: null
-}
-
 export type CTFNotStartedResponse = {
     kind: 'badNotStarted',
     message: 'The CTF has not started yet.',

@@ -1,4 +1,4 @@
-origin: https://ctf.b01lers.com:9000
+origin: https://b01lersc.tf
 divisions:
   open: Open
   purdue: Purdue
@@ -7,6 +7,10 @@ divisionACLs:
     value: purdue.edu
     divisions:
       - purdue
+  - match: any
+    value: ''
+    divisions:
+      - open
 tokenKey: 'QhYjh15x6mUg1Vc0ilHo8e+UV1v5eRFXUITCpYRj95M='
 startTime: 1712923200000
 endTime: 1713096000000

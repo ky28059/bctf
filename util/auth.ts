@@ -76,8 +76,14 @@ export async function registerWithEmailVerification(email: string, name: string)
     return {ok: true};
 }
 
+type EmailChangeVerifiedResponse = {
+    kind: 'goodEmailSet',
+    message: 'The email was successfully updated.',
+    data: null
+}
+
 export async function verify(verifyToken: string) {
-    const res: RegisterResponse | BadTokenVerificationResponse = await (await fetch(`${process.env.API_BASE}/auth/verify`, {
+    const res: RegisterResponse | BadTokenVerificationResponse | EmailChangeVerifiedResponse = await (await fetch(`${process.env.API_BASE}/auth/verify`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({verifyToken})

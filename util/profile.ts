@@ -87,3 +87,28 @@ export async function updateProfile(payload: UpdateProfilePayload) {
 
     return {ok: true};
 }
+
+type UpdateEmailResponse = {
+    kind: 'goodVerifySent',
+    message: 'The account verification email was sent.',
+    data: null
+}
+
+export async function updateEmail(email: string) {
+    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    if (!token)
+        return {error: 'Not authenticated.'};
+
+    const emailRes: UpdateEmailResponse = await (await fetch(`${process.env.API_BASE}/users/me/auth/email`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({email})
+    })).json();
+
+    // TODO?
+
+    return {ok: true};
+}

@@ -8,7 +8,7 @@ import IconInput from '@/components/IconInput';
 import DivisionSelector from '@/app/profile/DivisionSelector';
 
 // Utils
-import {MyProfileData, updateProfile, UpdateProfilePayload} from '@/util/profile';
+import {MyProfileData, updateEmail, updateProfile, UpdateProfilePayload} from '@/util/profile';
 
 // Icons
 import {FaCircleUser} from 'react-icons/fa6';
@@ -37,11 +37,12 @@ export default function UpdateInformation(props: MyProfileData) {
             if (division !== props.division) payload.division = division;
 
             const res = await updateProfile(payload);
-            if ('error' in res) return setError(res.error!);
+            if (res.error) return setError(res.error);
         }
 
         if (email !== props.email) {
-            // TODO
+            const res = await updateEmail(email);
+            if (res.error) return setError(res.error);
         }
 
         setError(''); // TODO: push success notif?

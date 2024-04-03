@@ -12,6 +12,9 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
     const rejectVideoRefs = useRef<HTMLVideoElement[]>([]);
     const acceptVideoRefs = useRef<HTMLVideoElement[]>([]);
 
+    const specialRejectVideoRef = useRef<HTMLVideoElement>(null);
+    const wrongFlagsSubmitted = useRef(0);
+
     const rejectQueue = useRef<HTMLVideoElement[]>([]);
     const acceptQueue = useRef<HTMLVideoElement[]>([]);
 
@@ -34,9 +37,17 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
             rejectQueue.current = shuffle(available);
         }
 
+        // Play a special video at 10 wrong flags submitted in a row!
+        if (specialRejectVideoRef.current && wrongFlagsSubmitted.current === 10) {
+            rejectQueue.current.unshift(specialRejectVideoRef.current);
+            wrongFlagsSubmitted.current = 0;
+        }
+
         const video = rejectQueue.current.shift()!;
         video.currentTime = 0;
         void video.play();
+
+        wrongFlagsSubmitted.current++;
     }
 
     function acceptFlag() {
@@ -50,6 +61,8 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
         const video = acceptQueue.current.shift()!;
         video.currentTime = 0;
         void video.play();
+
+        wrongFlagsSubmitted.current = 0;
     }
 
     function appendToRejectVideos(r: HTMLVideoElement) {
@@ -62,7 +75,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
 
     return (
         <FlagDispatchContext.Provider value={{rejectFlag, acceptFlag, dispatchNotif}}>
-            {Array(4).fill(0).map((_, i) => (
+            {Array(3).fill(0).map((_, i) => (
                 <video
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToRejectVideos}
@@ -82,8 +95,16 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
                     <source src={`/assets/videos/success${i + 1}-chrome.webm`} type="video/webm" />
                 </video>
             ))}
+            <video
+                className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
+                ref={specialRejectVideoRef}
+            >
+                <source src="/assets/videos/failed4-safari.mov" type='video/mp4; codecs="hvc1"' />
+                <source src="/assets/videos/failed4-chrome.webm" type="video/webm" />
+            </video>
 
-            <div className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8 pointer-events-none">
+            <div
+                className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8 pointer-events-none">
                 {notifs}
             </div>
 
@@ -92,7 +113,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
     )
 }
 
-function Notification(props: {success?: boolean, children: ReactNode}) {
+function Notification(props: { success?: boolean, children: ReactNode }) {
     return (
         <Transition
             appear

@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import {cookies} from 'next/headers';
-import {logout} from '@/util/users';
+import {logout} from '@/util/auth';
 
 // Components
 import Profile from '@/app/profile/Profile';

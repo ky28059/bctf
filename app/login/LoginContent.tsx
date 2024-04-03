@@ -2,7 +2,7 @@
 
 import {useLayoutEffect, useState} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
-import {login} from '@/util/users';
+import {login} from '@/util/auth';
 
 // Components
 import IconInput from '@/components/IconInput';

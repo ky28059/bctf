@@ -2,7 +2,7 @@
 
 import {useState} from 'react';
 import {useRouter} from 'next/navigation';
-import {logout} from '@/util/users';
+import {logout} from '@/util/auth';
 
 // Components
 import CenteredModal from '@/components/CenteredModal';

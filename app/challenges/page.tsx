@@ -10,7 +10,7 @@ import CTFNotStarted from '@/components/CTFNotStarted';
 // Utils
 import {getChallenges} from '@/util/challenges';
 import {getMyProfile} from '@/util/profile';
-import {logout} from '@/util/users';
+import {logout} from '@/util/auth';
 import {AUTH_COOKIE_NAME} from '@/util/config';
 
 

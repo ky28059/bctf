@@ -4,6 +4,12 @@ export type BadTokenResponse = {
     data: null
 }
 
+export type BadTokenVerificationResponse = {
+    kind: 'badTokenVerification',
+    message: 'The token provided is invalid.',
+    data: null
+}
+
 export type UserNotFoundResponse = {
     kind: 'badUnknownUser',
     message: 'The user does not exist.',

@@ -4,6 +4,7 @@ import {cookies} from 'next/headers';
 import {redirect} from 'next/navigation';
 
 // Utils
+import type {BadTokenVerificationResponse} from '@/util/errors';
 import {AUTH_COOKIE_NAME} from '@/util/config';
 
 
@@ -75,6 +76,18 @@ export async function registerWithEmailVerification(email: string, name: string)
     return {ok: true};
 }
 
+export async function verify(verifyToken: string) {
+    const res: RegisterResponse | BadTokenVerificationResponse = await (await fetch(`${process.env.API_BASE}/auth/verify`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({verifyToken})
+    })).json();
+
+    console.log(verifyToken, res);
+
+    return res;
+}
+
 type LoginResponse = {
     kind: 'goodLogin',
     message: string,
@@ -83,14 +96,8 @@ type LoginResponse = {
     }
 }
 
-export type BadLoginTokenResponse = {
-    kind: 'badTokenVerification',
-    message: 'The token provided is invalid.',
-    data: null
-}
-
 export async function login(token: string) {
-    const res: LoginResponse | BadLoginTokenResponse = await (await fetch(`${process.env.API_BASE}/auth/login`, {
+    const res: LoginResponse | BadTokenVerificationResponse = await (await fetch(`${process.env.API_BASE}/auth/login`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({teamToken: token})

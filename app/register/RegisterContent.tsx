@@ -1,7 +1,7 @@
 'use client'
 
 import {FormEvent, useState} from 'react';
-import {registerWithEmailVerification} from '@/util/users';
+import {registerWithEmailVerification} from '@/util/auth';
 
 // Components
 import IconInput from '@/components/IconInput';

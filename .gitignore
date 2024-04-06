@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -20,6 +18,8 @@
 *.pem
 .idea
 
+# rCTF
+/data
 /conf.d/04-email.yaml
 
 # debug
@@ -27,8 +27,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+.env*
 
 # vercel
 .vercel

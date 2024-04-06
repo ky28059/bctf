@@ -24,7 +24,7 @@ export default function ScoreboardEntry(props: LeaderboardEntry & ScoreboardEntr
             <div className={'table-cell h-6 text-white relative py-1 border-t border-tertiary transition duration-100 ' + (props.selected ? 'bg-white/10' : 'group-hover:bg-white/10')}>
                 <div
                     className="absolute inset-0 bg-theme my-1.5"
-                     style={{width: `${props.percent}%`}}
+                    style={{width: `${props.percent}%`}}
                 />
                 <p className="relative text-sm pl-2 py-1">{props.score} points</p>
             </div>

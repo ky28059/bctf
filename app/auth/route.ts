@@ -17,7 +17,7 @@ export function GET(req: NextRequest) {
     const uri = params.get('redirect_uri');
 
     if (!token || !state || !uri || !ALLOWED_REDIRECTS.includes(uri))
-        return NextResponse.redirect('/login');
+        return NextResponse.redirect(new URL('/login', req.url));
 
     return NextResponse.redirect(`${uri}?state=${encodeURIComponent(state)}&token=${encodeURIComponent(token)}`);
 }

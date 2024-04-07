@@ -9,7 +9,7 @@ const ALLOWED_REDIRECTS = [`${process.env.KLODD_URL}/auth`];
  * "pseudo-oauth" functionality for Klodd.
  * See {@link https://klodd.tjcsec.club/install-guide/prerequisites/}.
  */
-export default function GET(req: NextRequest) {
+export function GET(req: NextRequest) {
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
 
     const params = req.nextUrl.searchParams;

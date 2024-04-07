@@ -9,7 +9,7 @@ type SponsorProps = {
 }
 export default function Sponsor(props: SponsorProps) {
     return (
-        <div className="relative flex gap-8 items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6 border border-tertiary hover:border-secondary transition duration-200">
+        <div className="relative flex flex-col md:flex-row gap-x-8 gap-y-6 md:items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6 border border-tertiary hover:border-secondary transition duration-200">
             <a
                 className="absolute inset-0"
                 href={props.href}

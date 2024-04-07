@@ -24,7 +24,7 @@ export default async function Header() {
                 <a href="#sponsors" className="px-4 py-2 uppercase hover:underline">Sponsors</a>
             </div>
 
-            <a href="#rules" className="text-inherit text-4xl mt-12 mb-16 text-primary">
+            <a href="#rules" className="text-inherit text-4xl mt-12 sm:mb-16 text-primary">
                 <BsChevronCompactDown className="animate-bounce" />
                 <span className="sr-only">Jump to Rules</span>
             </a>

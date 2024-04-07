@@ -10,7 +10,7 @@ export default async function Home() {
             <Header />
 
             <div className="bg-black/40 py-16 mb-12 backdrop-blur-sm border-t border-tertiary">
-                <div className="container">
+                <div className="px-6 sm:container">
                     <Rules />
                     <Prizes />
                 </div>

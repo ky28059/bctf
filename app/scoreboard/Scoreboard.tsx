@@ -25,7 +25,7 @@ export default function Scoreboard(props: LeaderboardData & {name?: string}) {
     }
 
     return (
-        <section className="bg-black/30 flex flex-col px-12 py-8 rounded-md backdrop-blur-sm">
+        <section className="bg-black/30 flex flex-col px-4 sm:px-12 py-8 rounded-md backdrop-blur-sm">
             <div className="table">
                 <div className="table-header-group">
                     <div className="table-row text-white font-semibold">

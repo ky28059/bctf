@@ -10,15 +10,15 @@ export default function ScoreboardGraph(props: {graph: GraphEntryData[]}) {
     const [focused, setFocused] = useState('');
 
     return (
-        <div className="h-[32rem] bg-black/30 rounded p-8 backdrop-blur-sm">
+        <div className="h-[32rem] bg-black/30 rounded p-4 sm:p-8 backdrop-blur-sm">
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                     width={500}
                     height={300}
                     margin={{
                         top: 20,
-                        right: 30,
-                        left: 20,
+                        right: 20,
+                        left: 10,
                         bottom: 5,
                     }}
                 >
@@ -26,11 +26,15 @@ export default function ScoreboardGraph(props: {graph: GraphEntryData[]}) {
                     <XAxis
                         dataKey="time"
                         type="number"
+                        className="text-sm"
                         allowDuplicatedCategory={false}
                         domain={['auto', 'auto']}
                         tickFormatter={(t) => DateTime.fromMillis(t).toLocaleString()}
                     />
-                    <YAxis dataKey="score" />
+                    <YAxis
+                        dataKey="score"
+                        className="text-sm"
+                    />
                     <Tooltip
                         labelFormatter={(t) => DateTime.fromMillis(t).toLocaleString(DateTime.DATETIME_FULL)}
                         wrapperClassName="!bg-background !border-tertiary rounded !px-4 !py-2 text-sm [&>ul]:!pt-1"

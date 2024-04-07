@@ -22,7 +22,7 @@ export default function Timer(props: TimerProps) {
     // If the CTF is over
     if (time > ctfEnd) return (
         <div className="mb-6">
-            <div className="bg-black/15 mt-1 text-6xl font-medium px-5 py-3 rounded font-mono mb-1">
+            <div className="bg-black/15 mt-1 text-5xl sm:text-6xl font-medium px-5 py-3 rounded font-mono mb-1">
                 00
                 <span className="text-primary">:</span>
                 00
@@ -43,7 +43,7 @@ export default function Timer(props: TimerProps) {
 
     return (
         <div className="mb-6">
-            <div className="bg-black/15 mt-1 text-6xl font-medium px-5 py-3 rounded font-mono mb-1">
+            <div className="bg-black/15 mt-1 text-5xl sm:text-6xl font-medium px-5 py-3 rounded font-mono mb-1">
                 {!mounted ? '00' : diff.days.toString().padStart(2, '0')}
                 <span className="text-primary">:</span>
                 {!mounted ? '00' : diff.hours.toString().padStart(2, '0')}

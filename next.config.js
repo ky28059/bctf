@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        API_BASE: process.env.NODE_ENV === 'development'
-            ? 'https://platform.lac.tf/api/v1'
-            : 'http://ctf.b01lers.com:9000/api/v1',
+        API_BASE: 'http://ctf.b01lers.com:9000/api/v1',
         KLODD_URL: 'https://klodd.localhost.direct' // TODO
     },
     logging: {

@@ -37,8 +37,8 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
             rejectQueue.current = shuffle(available);
         }
 
-        // Play a special video at 10 wrong flags submitted in a row!
-        if (specialRejectVideoRef.current && wrongFlagsSubmitted.current === 10) {
+        // Play a special video at 15 wrong flags submitted in a row
+        if (specialRejectVideoRef.current && wrongFlagsSubmitted.current === 15) {
             rejectQueue.current.unshift(specialRejectVideoRef.current);
             wrongFlagsSubmitted.current = 0;
         }

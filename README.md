@@ -15,6 +15,8 @@ for styling certain things that we don't have full control over (ex. the email t
 - `03-db.yaml` defines config options for rCTF's underlying databases.
 - `04-email.yaml` defines config options for email verification. This includes an API key so isn't committed, but an
 example is included in `04-email.example.yaml`.
+- `05-uploads.yaml` defines config options for GCS uploads. This includes a private key and service account email so
+isn't committed, but an example is included in `05-uploads.example.yaml`.
 
 To run just the frontend, first install dependencies with
 ```bash

@@ -1,0 +1,9 @@
+uploadProvider:
+  name: 'uploads/gcs'
+  options:
+    credentials:
+      private_key: |-
+        -----BEGIN PRIVATE KEY-----
+        ABCDABCD
+        -----END PRIVATE KEY-----
+      client_email: service-account-name@project-id.iam.gserviceaccount.com

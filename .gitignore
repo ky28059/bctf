@@ -21,6 +21,7 @@
 # rCTF
 /data
 /conf.d/04-email.yaml
+/conf.d/05-uploads.yaml
 
 # debug
 npm-debug.log*

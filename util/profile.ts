@@ -94,12 +94,18 @@ type UpdateEmailResponse = {
     data: null
 }
 
+type DivisionNotAllowedResponse = {
+    kind: 'badEmailChangeDivision',
+    message: 'You are not allowed to stay in your division with this email.',
+    data: null
+}
+
 export async function updateEmail(email: string) {
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
     if (!token)
         return {error: 'Not authenticated.'};
 
-    const emailRes: UpdateEmailResponse = await (await fetch(`${process.env.API_BASE}/users/me/auth/email`, {
+    const emailRes: UpdateEmailResponse | DivisionNotAllowedResponse = await (await fetch(`${process.env.API_BASE}/users/me/auth/email`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -108,7 +114,8 @@ export async function updateEmail(email: string) {
         body: JSON.stringify({email})
     })).json();
 
-    // TODO?
+    if (emailRes.kind !== 'goodVerifySent')
+        return {error: emailRes.message};
 
     return {ok: true};
 }

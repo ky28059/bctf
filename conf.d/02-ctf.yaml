@@ -7,6 +7,7 @@ divisionACLs:
     value: purdue.edu
     divisions:
       - purdue
+      - open
   - match: any
     value: ''
     divisions:

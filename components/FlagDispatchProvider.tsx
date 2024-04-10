@@ -12,7 +12,9 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
     const rejectVideoRefs = useRef<HTMLVideoElement[]>([]);
     const acceptVideoRefs = useRef<HTMLVideoElement[]>([]);
 
-    const specialRejectVideoRef = useRef<HTMLVideoElement>(null);
+    const appleBottomJeansRef = useRef<HTMLVideoElement>(null);
+    const gunRef = useRef<HTMLVideoElement>(null);
+
     const wrongFlagsSubmitted = useRef(0);
 
     const rejectQueue = useRef<HTMLVideoElement[]>([]);
@@ -38,8 +40,13 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
         }
 
         // Play a special video at 15 wrong flags submitted in a row
-        if (specialRejectVideoRef.current && wrongFlagsSubmitted.current === 15) {
-            rejectQueue.current.unshift(specialRejectVideoRef.current);
+        if (appleBottomJeansRef.current && wrongFlagsSubmitted.current === 15) {
+            rejectQueue.current.unshift(appleBottomJeansRef.current);
+        }
+
+        // Play another special video at 30 wrong flags submitted in a row
+        if (gunRef.current && wrongFlagsSubmitted.current >= 30) {
+            rejectQueue.current.unshift(gunRef.current);
             wrongFlagsSubmitted.current = 0;
         }
 
@@ -95,12 +102,20 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
                     <source src={`/assets/videos/success${i + 1}-chrome.webm`} type="video/webm" />
                 </video>
             ))}
+
             <video
                 className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
-                ref={specialRejectVideoRef}
+                ref={appleBottomJeansRef}
             >
-                <source src="/assets/videos/failedspecial-safari.mov" type='video/mp4; codecs="hvc1"' />
-                <source src="/assets/videos/failedspecial-chrome.webm" type="video/webm" />
+                <source src="/assets/videos/special-safari.mov" type='video/mp4; codecs="hvc1"' />
+                <source src="/assets/videos/special-chrome.webm" type="video/webm" />
+            </video>
+            <video
+                className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
+                ref={gunRef}
+            >
+                <source src="/assets/videos/special2-safari.mov" type='video/mp4; codecs="hvc1"' />
+                <source src="/assets/videos/special2-chrome.webm" type="video/webm" />
             </video>
 
             <div

@@ -2,7 +2,7 @@
 const nextConfig = {
     env: {
         API_BASE: 'http://ctf.b01lers.com:9000/api/v1',
-        KLODD_URL: 'https://klodd.localhost.direct' // TODO
+        KLODD_URL: 'https://instancer.b01lersc.tf'
     },
     logging: {
         fetches: {

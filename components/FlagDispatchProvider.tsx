@@ -75,7 +75,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
 
     return (
         <FlagDispatchContext.Provider value={{rejectFlag, acceptFlag, dispatchNotif}}>
-            {Array(3).fill(0).map((_, i) => (
+            {Array(5).fill(0).map((_, i) => (
                 <video
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToRejectVideos}
@@ -99,8 +99,8 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
                 className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                 ref={specialRejectVideoRef}
             >
-                <source src="/assets/videos/failed4-safari.mov" type='video/mp4; codecs="hvc1"' />
-                <source src="/assets/videos/failed4-chrome.webm" type="video/webm" />
+                <source src="/assets/videos/failedspecial-safari.mov" type='video/mp4; codecs="hvc1"' />
+                <source src="/assets/videos/failedspecial-chrome.webm" type="video/webm" />
             </video>
 
             <div

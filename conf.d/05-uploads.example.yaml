@@ -1,6 +1,7 @@
 uploadProvider:
   name: 'uploads/gcs'
   options:
+    bucketName: uploads
     credentials:
       private_key: |-
         -----BEGIN PRIVATE KEY-----

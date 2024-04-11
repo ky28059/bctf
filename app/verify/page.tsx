@@ -16,7 +16,7 @@ export default async function Verify({searchParams}: {searchParams: {token: stri
     const res = await verify(searchParams.token);
     if (res.kind === 'goodEmailSet')
         return redirect('/profile');
-    if (res.kind !== 'goodRegister')
+    if (res.kind !== 'goodRegister' && res.kind !== 'goodVerify')
         return redirect('/register');
 
     const profile = await getMyProfile(res.data.authToken);

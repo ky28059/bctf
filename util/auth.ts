@@ -60,15 +60,11 @@ type EmailVerificationResponse = {
 }
 
 export async function registerWithEmailVerification(email: string, name: string) {
-    console.log({email, name});
-
     const res: EmailVerificationResponse | RegisterError = await (await fetch(`${process.env.API_BASE}/auth/register`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, name})
     })).json();
-
-    console.log(res);
 
     if (res.kind !== 'goodVerifySent')
         return {error: res.message};
@@ -120,4 +116,23 @@ export async function login(token: string) {
 export async function logout() {
     cookies().delete(AUTH_COOKIE_NAME);
     return redirect('/');
+}
+
+type UnknownEmailResponse = {
+    kind: 'badUnknownEmail',
+    message: 'The account does not exist.',
+    data: null
+}
+
+export async function recover(email: string) {
+    const res: EmailVerificationResponse | UnknownEmailResponse = await (await fetch(`${process.env.API_BASE}/auth/recover`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email})
+    })).json();
+
+    if (res.kind !== 'goodVerifySent')
+        return {error: res.message}
+
+    return {ok: true};
 }

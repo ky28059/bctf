@@ -2,6 +2,7 @@
 
 import {useLayoutEffect, useState} from 'react';
 import {useRouter, useSearchParams} from 'next/navigation';
+import Link from 'next/link';
 import {login} from '@/util/auth';
 
 // Components
@@ -56,6 +57,13 @@ export default function LoginContent() {
                     {error}
                 </p>
             )}
+
+            <Link
+                className="text-theme-bright text-left font-medium mr-auto mt-0.5 hover:text-theme transition duration-200"
+                href="/recover"
+            >
+                Lost your team token?
+            </Link>
 
             <button
                 className="bg-theme-bright px-6 py-2 rounded text-white font-semibold w-max mt-4"

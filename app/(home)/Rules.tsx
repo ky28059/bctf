@@ -35,8 +35,10 @@ export default function Rules() {
                 </li>
                 <li>
                     Do not attempt to attack or interfere with other teams or any servers used in this competition that
-                    are not explicitly designated for being hacked in a problem. Do not perform any sort of online
-                    bruteforce against any of our systems.
+                    are not explicitly designated for being hacked in a problem.
+                </li>
+                <li>
+                    Do not perform any sort of online bruteforce against any of our systems.
                 </li>
                 <li>Learn as much as you can, and have a good time!</li>
                 <li>Pay it forward.</li>

@@ -26,7 +26,9 @@ export default function ScoreboardEntry(props: LeaderboardEntry & ScoreboardEntr
                     className="absolute inset-0 bg-theme my-1.5"
                     style={{width: `${props.percent}%`}}
                 />
-                <p className="relative text-sm pl-2 py-1">{props.score} points</p>
+                <p className="relative text-sm pl-2 py-1">
+                    {props.score} point{props.score !== 1 ? 's' : ''}
+                </p>
             </div>
         </div>
     )

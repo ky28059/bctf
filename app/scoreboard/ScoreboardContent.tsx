@@ -1,6 +1,7 @@
 'use client'
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
 
 // Components
 import ScoreboardGraph from '@/app/scoreboard/ScoreboardGraph';
@@ -47,6 +48,14 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
         setPage(page);
     }
 
+    // Re-fetch and merge scoreboard data periodically
+    const {refresh} = useRouter();
+    useEffect(() => {
+        refresh(); // TODO: don't call this always to avoid excess rerenders?
+        const id = setInterval(() => refresh(), 1000 * 60);
+        return () => clearInterval(id);
+    }, []);
+
     return (
         <>
             <ScoreboardGraph graph={graph} />
@@ -66,4 +75,26 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
             </div>
         </>
     )
+}
+
+function scoreboardEqual(a: LeaderboardData, b: LeaderboardData) {
+    if (a.total !== b.total) return false;
+
+    return a.leaderboard.every((d, i) => d.id === b.leaderboard[i].id
+        && d.name === b.leaderboard[i].name
+        && d.score === b.leaderboard[i].score);
+}
+
+function graphsEqual(a: GraphEntryData[], b: GraphEntryData[]) {
+    if (a.length !== b.length) return false;
+
+    for (let i = 0; i < a.length; i++) {
+        if (a[i].name !== b[i].name) return false;
+        if (a[i].id !== b[i].id) return false;
+
+        const pointsEqual = a[i].points.every((p, j) => p.score === b[i].points[j].score && p.time === b[i].points[j].time);
+        if (!pointsEqual) return false;
+    }
+
+    return true;
 }

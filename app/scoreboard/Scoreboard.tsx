@@ -1,9 +1,5 @@
 'use client'
 
-import {useEffect} from 'react';
-import {useRouter} from 'next/navigation';
-
-// Components
 import ScoreboardEntry from '@/app/scoreboard/ScoreboardEntry';
 import Pagination from '@/components/Pagination';
 
@@ -20,14 +16,6 @@ type ScoreboardProps = LeaderboardData & {
 export default function Scoreboard(props: ScoreboardProps) {
     const maxScore = props.leaderboard[0]?.score ?? 0;
     const maxPage = Math.ceil(props.total / SCOREBOARD_PAGE_SIZE);
-
-    // Re-fetch and merge scoreboard data periodically
-    const {refresh} = useRouter();
-    useEffect(() => {
-        refresh();
-        const id = setInterval(() => refresh(), 1000 * 60);
-        return () => clearInterval(id);
-    }, []);
 
     return (
         <section className="w-full bg-black/30 flex flex-col px-4 sm:px-12 py-8 rounded-md backdrop-blur-sm">

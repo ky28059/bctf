@@ -23,7 +23,7 @@ export default async function ScoreboardPage() {
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
     const profile = token
         ? await getMyProfile(token)
-        : undefined; // TODO?
+        : undefined;
 
     return (scoreboard.kind === 'goodLeaderboard' && graph.kind === 'goodLeaderboard') ? (
         <div className="container pt-32 pb-14 flex flex-col gap-4">

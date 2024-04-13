@@ -1,6 +1,7 @@
 'use client'
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
 
 // Components
 import ScoreboardEntry from '@/app/scoreboard/ScoreboardEntry';
@@ -23,6 +24,14 @@ export default function Scoreboard(props: LeaderboardData & {name?: string}) {
         setLeaderboard(res.data?.leaderboard ?? []);
         setPage(page);
     }
+
+    // Re-fetch and merge scoreboard data periodically
+    const {refresh} = useRouter();
+    useEffect(() => {
+        refresh();
+        const id = setInterval(() => refresh(), 1000 * 60);
+        return () => clearInterval(id);
+    }, []);
 
     return (
         <section className="bg-black/30 flex flex-col px-4 sm:px-12 py-8 rounded-md backdrop-blur-sm">

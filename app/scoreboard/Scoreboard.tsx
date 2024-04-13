@@ -11,10 +11,10 @@ import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
 type ScoreboardProps = LeaderboardData & {
     name?: string,
     page: number,
-    setPage: (p: number) => void
+    setPage: (p: number) => void,
+    maxScore: number
 }
 export default function Scoreboard(props: ScoreboardProps) {
-    const maxScore = props.leaderboard[0]?.score ?? 0;
     const maxPage = Math.ceil(props.total / SCOREBOARD_PAGE_SIZE);
 
     return (
@@ -32,7 +32,7 @@ export default function Scoreboard(props: ScoreboardProps) {
                     <ScoreboardEntry
                         {...d}
                         rank={(props.page * SCOREBOARD_PAGE_SIZE) + i + 1}
-                        percent={d.score / maxScore * 100}
+                        percent={Math.max(d.score / props.maxScore * 100, 0.25)}
                         selected={d.name === props.name}
                         key={d.id}
                     />

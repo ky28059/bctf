@@ -71,6 +71,7 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
                     name={props.name}
                     page={page}
                     setPage={updatePage}
+                    maxScore={props.scoreboard.leaderboard[0]?.score ?? 0}
                 />
             </div>
         </>

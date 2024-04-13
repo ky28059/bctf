@@ -27,7 +27,7 @@ export default function DivisionSelector(props: DivisionSelectorProps) {
                 <PiCaretUpDown className="absolute right-2 inset-y-0 my-auto text-secondary" />
             </Listbox.Button>
 
-            <AnimatedListbox className="absolute text-sm w-full mt-0.5 bg-background shadow-lg overflow-hidden rounded divide-y divide-tertiary">
+            <AnimatedListbox className="absolute text-sm w-full mt-0.5 bg-background shadow-lg overflow-hidden rounded divide-y divide-tertiary z-10">
                 <p className="px-6 py-1 text-secondary select-none">
                     Division
                 </p>

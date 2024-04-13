@@ -50,7 +50,7 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
         <>
             <ScoreboardGraph graph={graph} />
 
-            <div className="flex gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
                 <ScoreboardFilters
                     division={division}
                     setDivision={updateDivision}

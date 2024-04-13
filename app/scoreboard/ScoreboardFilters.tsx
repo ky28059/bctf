@@ -9,7 +9,7 @@ type ScoreboardFiltersProps = {
 }
 export default function ScoreboardFilters(props: ScoreboardFiltersProps) {
     return (
-        <div className="bg-black/30 rounded p-6 h-max flex-none w-80 flex flex-col sticky top-20">
+        <div className="bg-black/30 rounded p-6 h-max flex-none w-full lg:w-72 xl:w-80 flex flex-col lg:sticky lg:top-20">
             <label className="text-sm text-primary mb-1.5">
                 Filter by division
             </label>

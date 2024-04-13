@@ -35,7 +35,7 @@ export default function Scoreboard(props: ScoreboardProps) {
                 <div className="table-header-group">
                     <div className="table-row text-white font-semibold">
                         <div className="table-cell text-right pr-6 pl-2 text-primary">#</div>
-                        <div className="table-cell text-right w-80 pr-8">Team</div>
+                        <div className="table-cell text-right w-56 xl:w-72 pr-8">Team</div>
                         <div className="table-cell">Points</div>
                     </div>
                 </div>

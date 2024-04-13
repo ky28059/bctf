@@ -2,9 +2,7 @@ import type {Metadata} from 'next';
 import {cookies} from 'next/headers';
 
 // Components
-import Scoreboard from '@/app/scoreboard/Scoreboard';
-import ScoreboardGraph from '@/app/scoreboard/ScoreboardGraph';
-import ScoreboardFilters from '@/app/scoreboard/ScoreboardFilters';
+import ScoreboardContent from '@/app/scoreboard/ScoreboardContent';
 import CTFNotStarted from '@/components/CTFNotStarted';
 
 // Utils
@@ -28,15 +26,11 @@ export default async function ScoreboardPage() {
 
     return (scoreboard.kind === 'goodLeaderboard' && graph.kind === 'goodLeaderboard') ? (
         <div className="container pt-32 pb-14 flex flex-col gap-4">
-            <ScoreboardGraph graph={graph.data.graph} />
-
-            <div className="flex gap-4">
-                <ScoreboardFilters />
-                <Scoreboard
-                    {...scoreboard.data}
-                    name={profile?.data?.name}
-                />
-            </div>
+            <ScoreboardContent
+                graph={graph.data.graph}
+                scoreboard={scoreboard.data}
+                name={profile?.data?.name}
+            />
         </div>
     ) : (
         <CTFNotStarted />

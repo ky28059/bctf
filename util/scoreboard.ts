@@ -47,8 +47,10 @@ type GraphResponse = {
     }
 }
 
-export async function getGraph(): Promise<GraphResponse | CTFNotStartedResponse> {
-    const res = await fetch(`${process.env.API_BASE}/leaderboard/graph?limit=10`, {
+export async function getGraph(division?: string): Promise<GraphResponse | CTFNotStartedResponse> {
+    const endpoint = `${process.env.API_BASE}/leaderboard/graph?limit=10` + (division && division !== 'all' ? `&division=${division}` : '');
+
+    const res = await fetch(endpoint, {
         cache: 'no-store'
     });
     return res.json();

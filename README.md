@@ -17,6 +17,7 @@ for styling certain things that we don't have full control over (ex. the email t
 example is included in `04-email.example.yaml`.
 - `05-uploads.yaml` defines config options for GCS uploads. This includes a private key and service account email so
 isn't committed, but an example is included in `05-uploads.example.yaml`.
+- `06-secrets.yaml` defines secret rCTF values such as the token key.
 
 To run just the frontend, first install dependencies with
 ```bash

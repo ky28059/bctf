@@ -22,6 +22,7 @@
 /data
 /conf.d/04-email.yaml
 /conf.d/05-uploads.yaml
+/conf.d/06-secrets.yaml
 
 # debug
 npm-debug.log*

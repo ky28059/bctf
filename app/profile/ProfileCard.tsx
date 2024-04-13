@@ -2,6 +2,7 @@ import type {ReactNode} from 'react';
 import type {IconType} from 'react-icons';
 import type {ProfileData} from '@/util/profile';
 import type {Challenge} from '@/util/challenges';
+import type {CTFConfig} from '@/util/config';
 
 // Components
 import ProfileStats from '@/app/profile/ProfileStats';
@@ -14,7 +15,13 @@ import {MdBarChart} from 'react-icons/md';
 import {pluralize} from '@/util/strings';
 
 
-export default function ProfileCard(props: ProfileData & {challs?: Challenge[] | null}) {
+type ProfileCardProps = ProfileData & {
+    challs?: Challenge[] | null,
+    config: CTFConfig
+}
+export default function ProfileCard(props: ProfileCardProps) {
+    const divisionName = props.config.divisions[props.division];
+
     return (
         <div className="bg-black/30 pl-12 pr-12 lg:pr-4 py-8 rounded-md flex flex-col lg:flex-row">
             <div className="flex-grow w-full">
@@ -27,7 +34,7 @@ export default function ProfileCard(props: ProfileData & {challs?: Challenge[] |
                 </ProfileCardStatistic>
                 <ProfileCardStatistic icon={MdBarChart}>
                     {props.divisionPlace ? (
-                        `${pluralize(props.divisionPlace)} place in the ${props.division} division`
+                        `${pluralize(props.divisionPlace)} place in the ${divisionName} division`
                     ) : (
                         'Unranked'
                     )}
@@ -40,7 +47,7 @@ export default function ProfileCard(props: ProfileData & {challs?: Challenge[] |
                     )}
                 </ProfileCardStatistic>
                 <ProfileCardStatistic icon={FaAddressBook}>
-                    {props.division} division
+                    {divisionName} division
                 </ProfileCardStatistic>
             </div>
 

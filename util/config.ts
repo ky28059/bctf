@@ -4,7 +4,7 @@ export const SCOREBOARD_PAGE_SIZE = 100;
 export const AUTH_COOKIE_NAME = 'ctf_clearance';
 
 
-type CtfConfig = {
+export type CTFConfig = {
     // Controlled by `01-ui.yaml`; for the most part, we don't care about these.
     ctfName: string,
     meta: {
@@ -23,7 +23,7 @@ type CtfConfig = {
 type ConfigResponse = {
     kind: 'goodClientConfig',
     message: 'The client config was retrieved.',
-    data: CtfConfig
+    data: CTFConfig
 }
 
 export async function getConfig(): Promise<ConfigResponse> {

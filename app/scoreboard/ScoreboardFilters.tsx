@@ -1,11 +1,13 @@
 'use client'
 
 import DivisionSelector from '@/app/profile/DivisionSelector';
+import type {CTFConfig} from '@/util/config';
 
 
 type ScoreboardFiltersProps = {
     division: string,
-    setDivision: (s: string) => void
+    setDivision: (s: string) => void,
+    config: CTFConfig
 }
 export default function ScoreboardFilters(props: ScoreboardFiltersProps) {
     return (
@@ -15,7 +17,8 @@ export default function ScoreboardFilters(props: ScoreboardFiltersProps) {
             </label>
             <DivisionSelector
                 {...props}
-                divisions={['all', 'open', 'purdue']}
+                divisions={['all', ...Object.keys(props.config.divisions)]}
+                divisionNames={{all: 'All', ...props.config.divisions}}
             />
         </div>
     )

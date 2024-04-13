@@ -11,7 +11,8 @@ import {PiCaretUpDown} from 'react-icons/pi';
 type DivisionSelectorProps = {
     division: string,
     setDivision: (d: string) => void,
-    divisions: string[]
+    divisions: string[],
+    divisionNames: {[id: string]: string}
 }
 export default function DivisionSelector(props: DivisionSelectorProps) {
     return (
@@ -23,7 +24,7 @@ export default function DivisionSelector(props: DivisionSelectorProps) {
         >
             <Listbox.Button className="relative text-left w-full bg-black/40 pl-12 pr-4 py-2 rounded border border-secondary">
                 <FaAddressBook className="absolute left-4 inset-y-0 my-auto" />
-                {props.division}
+                {props.divisionNames[props.division]}
                 <PiCaretUpDown className="absolute right-2 inset-y-0 my-auto text-secondary" />
             </Listbox.Button>
 
@@ -38,7 +39,7 @@ export default function DivisionSelector(props: DivisionSelectorProps) {
                         value={d}
                         key={d}
                     >
-                        {d}
+                        {props.divisionNames[d]}
                     </Listbox.Option>
                 ))}
             </AnimatedListbox>

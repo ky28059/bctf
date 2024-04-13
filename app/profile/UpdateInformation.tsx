@@ -8,6 +8,7 @@ import IconInput from '@/components/IconInput';
 import DivisionSelector from '@/app/profile/DivisionSelector';
 
 // Utils
+import type {CTFConfig} from '@/util/config';
 import {MyProfileData, updateEmail, updateProfile, UpdateProfilePayload} from '@/util/profile';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 
@@ -16,7 +17,7 @@ import {FaCircleUser} from 'react-icons/fa6';
 import {FaEnvelopeOpen} from 'react-icons/fa';
 
 
-export default function UpdateInformation(props: MyProfileData) {
+export default function UpdateInformation(props: MyProfileData & {config: CTFConfig}) {
     const [name, setName] = useState(props.name);
     const [email, setEmail] = useState(props.email);
     const [division, setDivision] = useState(props.division);
@@ -86,6 +87,7 @@ export default function UpdateInformation(props: MyProfileData) {
                     division={division}
                     setDivision={setDivision}
                     divisions={props.allowedDivisions}
+                    divisionNames={props.config.divisions}
                 />
 
                 <button

@@ -8,7 +8,7 @@ import CTFNotStarted from '@/components/CTFNotStarted';
 // Utils
 import {getGraph, getScoreboard} from '@/util/scoreboard';
 import {getMyProfile} from '@/util/profile';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import {AUTH_COOKIE_NAME, getConfig} from '@/util/config';
 
 
 export const metadata: Metadata = {
@@ -24,11 +24,14 @@ export default async function ScoreboardPage() {
         ? await getMyProfile(token)
         : undefined;
 
+    const config = await getConfig();
+
     return (scoreboard.kind === 'goodLeaderboard' && graph.kind === 'goodLeaderboard') ? (
         <div className="container pt-32 pb-14 flex flex-col gap-4">
             <ScoreboardContent
                 graph={graph.data.graph}
                 scoreboard={scoreboard.data}
+                config={config.data}
                 name={profile?.data?.name}
             />
         </div>

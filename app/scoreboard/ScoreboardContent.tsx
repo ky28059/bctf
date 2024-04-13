@@ -9,12 +9,13 @@ import Scoreboard from '@/app/scoreboard/Scoreboard';
 
 // Utils
 import {getGraph, getScoreboard, GraphEntryData, LeaderboardData} from '@/util/scoreboard';
-import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
+import {CTFConfig, SCOREBOARD_PAGE_SIZE} from '@/util/config';
 
 
 type ScoreboardContentProps = {
     graph: GraphEntryData[],
     scoreboard: LeaderboardData,
+    config: CTFConfig,
     name?: string
 }
 export default function ScoreboardContent(props: ScoreboardContentProps) {
@@ -54,6 +55,7 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
                 <ScoreboardFilters
                     division={division}
                     setDivision={updateDivision}
+                    config={props.config}
                 />
                 <Scoreboard
                     {...scoreboard}

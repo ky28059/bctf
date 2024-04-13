@@ -7,7 +7,7 @@ import {getChallenges} from '@/util/challenges';
 
 // Utils
 import type {ProfileData} from '@/util/profile';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import {AUTH_COOKIE_NAME, getConfig} from '@/util/config';
 
 
 export default async function Profile(props: ProfileData) {
@@ -16,9 +16,15 @@ export default async function Profile(props: ProfileData) {
         ? await getChallenges(token)
         : null;
 
+    const config = await getConfig();
+
     return (
         <div className="flex flex-col gap-4 flex-grow">
-            <ProfileCard {...props} challs={challs?.data} />
+            <ProfileCard
+                {...props}
+                challs={challs?.data}
+                config={config.data}
+            />
             <ProfileSolves {...props} />
         </div>
     )

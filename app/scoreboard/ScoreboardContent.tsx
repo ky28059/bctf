@@ -26,6 +26,9 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
     const [scoreboard, setScoreboard] = useState(props.scoreboard);
     const [page, setPage] = useState(0);
 
+    // The max score in the current division
+    const [maxScore, setMaxScore] = useState(props.scoreboard.leaderboard[0]?.score ?? 0);
+
     async function updateDivision(div: string) {
         const graphRes = await getGraph(div);
         if (graphRes.kind !== 'goodLeaderboard') return;
@@ -35,6 +38,8 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
 
         setGraph(graphRes.data.graph);
         setScoreboard(scoreboardRes.data);
+
+        setMaxScore(scoreboardRes.data.leaderboard[0]?.score ?? 0);
         setPage(0);
 
         setDivision(div);
@@ -71,7 +76,7 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
                     name={props.name}
                     page={page}
                     setPage={updatePage}
-                    maxScore={props.scoreboard.leaderboard[0]?.score ?? 0}
+                    maxScore={maxScore}
                 />
             </div>
         </>

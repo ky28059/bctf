@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useRouter} from 'next/navigation';
 
 // Components
@@ -8,22 +8,18 @@ import ScoreboardEntry from '@/app/scoreboard/ScoreboardEntry';
 import Pagination from '@/components/Pagination';
 
 // Utils
-import {getScoreboard, LeaderboardData} from '@/util/scoreboard';
+import {LeaderboardData} from '@/util/scoreboard';
 import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
 
 
-export default function Scoreboard(props: LeaderboardData & {name?: string}) {
-    const [leaderboard, setLeaderboard] = useState(props.leaderboard);
-    const [page, setPage] = useState(0);
-
+type ScoreboardProps = LeaderboardData & {
+    name?: string,
+    page: number,
+    setPage: (p: number) => void
+}
+export default function Scoreboard(props: ScoreboardProps) {
     const maxScore = props.leaderboard[0]?.score ?? 0;
     const maxPage = Math.ceil(props.total / SCOREBOARD_PAGE_SIZE);
-
-    async function updatePage(page: number) {
-        const res = await getScoreboard(page * SCOREBOARD_PAGE_SIZE);
-        setLeaderboard(res.data?.leaderboard ?? []);
-        setPage(page);
-    }
 
     // Re-fetch and merge scoreboard data periodically
     const {refresh} = useRouter();
@@ -44,10 +40,10 @@ export default function Scoreboard(props: LeaderboardData & {name?: string}) {
                     </div>
                 </div>
 
-                {leaderboard.map((d, i) => (
+                {props.leaderboard.map((d, i) => (
                     <ScoreboardEntry
                         {...d}
-                        rank={(page * SCOREBOARD_PAGE_SIZE) + i + 1}
+                        rank={(props.page * SCOREBOARD_PAGE_SIZE) + i + 1}
                         percent={d.score / maxScore * 100}
                         selected={d.name === props.name}
                         key={d.id}
@@ -56,9 +52,9 @@ export default function Scoreboard(props: LeaderboardData & {name?: string}) {
             </div>
 
             <Pagination
-                page={page}
+                page={props.page}
+                setPage={props.setPage}
                 maxPage={maxPage}
-                setPage={updatePage}
             />
         </section>
     )

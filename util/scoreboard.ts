@@ -21,8 +21,11 @@ type LeaderboardResponse = {
     data: LeaderboardData
 }
 
-export async function getScoreboard(offset: number = 0): Promise<LeaderboardResponse | CTFNotStartedResponse> {
-    const res = await fetch(`${process.env.API_BASE}/leaderboard/now?limit=${SCOREBOARD_PAGE_SIZE}&offset=${offset}`, {
+export async function getScoreboard(offset: number = 0, division?: string): Promise<LeaderboardResponse | CTFNotStartedResponse> {
+    const endpoint = `${process.env.API_BASE}/leaderboard/now?limit=${SCOREBOARD_PAGE_SIZE}&offset=${offset}`
+        + (division && division !== 'all' ? `&division=${division}` : '');
+
+    const res = await fetch(endpoint, {
         cache: 'no-store'
     });
     return res.json();

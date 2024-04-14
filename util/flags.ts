@@ -22,7 +22,7 @@ export async function attemptSubmit(
     flag: string
 ) {
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
-    if (!token) return {error: 'Missing token'};
+    if (!token) return {kind: 'badToken', message: 'Missing token'}; // TODO: hacky?
 
     const res: GoodFlagResponse | BadFlagResponse | CTFEndedResponse = await (await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {
         method: 'POST',
@@ -33,8 +33,5 @@ export async function attemptSubmit(
         body: JSON.stringify({flag})
     })).json();
 
-    if (res.kind === 'badEnded')
-        return {error: res.message};
-
-    return {ok: res.kind === 'goodFlag'};
+    return res;
 }

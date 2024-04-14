@@ -58,7 +58,7 @@ Further config options can be edited in `/util/config.ts`:
 export const SOLVES_PAGE_SIZE = 10;
 export const SCOREBOARD_PAGE_SIZE = 100;
 
-export const AUTH_COOKIE_NAME = 'ctf_clearance'
+export const AUTH_COOKIE_NAME = 'ctf_clearance';
 ```
 - `SOLVES_PAGE_SIZE` — The number of solves to show on each page of the solves modal.
 - `SCOREBOARD_PAGE_SIZE` — The number of teams to show on each page of the scoreboard.

@@ -15,7 +15,7 @@ type FlagSubmissionInputProps = {
 }
 export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
     const [flag, setFlag] = useState('');
-    const {acceptFlag, rejectFlag} = useContext(FlagDispatchContext);
+    const {acceptFlag, rejectFlag, dispatchNotif} = useContext(FlagDispatchContext);
 
     const {refresh} = useRouter();
 
@@ -25,12 +25,13 @@ export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
         const res = await attemptSubmit(props.challenge.id, flag);
         setFlag('');
 
-        if (res.ok) {
+        if (res.kind === 'goodFlag') {
             acceptFlag();
             refresh();
-        } else {
-            // TODO: handle "ctf ended" error?
+        } else if (res.kind === 'badFlag') {
             rejectFlag();
+        } else {
+            dispatchNotif(res.message!, false);
         }
     }
 

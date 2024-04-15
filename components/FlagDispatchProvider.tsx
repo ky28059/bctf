@@ -118,8 +118,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
                 <source src="/assets/videos/special2-chrome.webm" type="video/webm" />
             </video>
 
-            <div
-                className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8 pointer-events-none">
+            <div className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8 pointer-events-none z-20">
                 {notifs}
             </div>
 

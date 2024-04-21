@@ -1,12 +1,12 @@
 'use client'
 
-import {FormEvent, useContext, useState} from 'react';
-import {useRouter} from 'next/navigation';
+import { FormEvent, useContext, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 
 // Utils
-import type {Challenge} from '@/util/challenges';
-import {attemptSubmit} from '@/util/flags';
+import type { Challenge } from '@/util/challenges';
+import { attemptSubmit } from '@/util/flags';
 
 
 type FlagSubmissionInputProps = {
@@ -15,9 +15,9 @@ type FlagSubmissionInputProps = {
 }
 export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
     const [flag, setFlag] = useState('');
-    const {acceptFlag, rejectFlag, dispatchNotif} = useContext(FlagDispatchContext);
+    const { acceptFlag, rejectFlag, dispatchNotif } = useContext(FlagDispatchContext);
 
-    const {refresh} = useRouter();
+    const router = useRouter();
 
     async function submitFlag(e: FormEvent) {
         e.preventDefault();
@@ -27,7 +27,7 @@ export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
 
         if (res.kind === 'goodFlag') {
             acceptFlag();
-            refresh();
+            router.refresh();
         } else if (res.kind === 'badFlag') {
             rejectFlag();
         } else {

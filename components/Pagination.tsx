@@ -1,5 +1,5 @@
-import {useMemo} from 'react';
-import {FaChevronLeft, FaChevronRight} from 'react-icons/fa6';
+import { useMemo } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 
 
 type PaginationProps = {
@@ -8,7 +8,7 @@ type PaginationProps = {
     setPage: (n: number) => void
 }
 export default function Pagination(props: PaginationProps) {
-    const {page, maxPage, setPage} = props;
+    const { page, maxPage, setPage } = props;
     const visiblePages = 9;
 
     function decrementPage() {
@@ -113,7 +113,7 @@ type PaginationItemProps = {
     i: number
 }
 function PaginationItem(props: PaginationItemProps) {
-    const {page, setPage, i} = props;
+    const { page, setPage, i } = props;
 
     return (
         <button

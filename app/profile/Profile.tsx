@@ -1,13 +1,13 @@
-import {cookies} from 'next/headers';
+import { cookies } from 'next/headers';
 
 // Components
 import ProfileCard from '@/app/profile/ProfileCard';
 import ProfileSolves from '@/app/profile/ProfileSolves';
-import {getChallenges} from '@/util/challenges';
+import { getChallenges } from '@/util/challenges';
 
 // Utils
-import type {ProfileData} from '@/util/profile';
-import {AUTH_COOKIE_NAME, getConfig} from '@/util/config';
+import type { ProfileData } from '@/util/profile';
+import { AUTH_COOKIE_NAME, getConfig } from '@/util/config';
 
 
 export default async function Profile(props: ProfileData) {

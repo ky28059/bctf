@@ -1,6 +1,6 @@
-import type {Metadata} from 'next';
-import {cookies} from 'next/headers';
-import {redirect} from 'next/navigation';
+import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 // Components
 import Filters from '@/app/challenges/Filters';
@@ -9,9 +9,9 @@ import DisplayToggle from '@/app/challenges/DisplayToggle';
 import CTFNotStarted from '@/components/CTFNotStarted';
 
 // Utils
-import {getChallenges} from '@/util/challenges';
-import {getMyProfile} from '@/util/profile';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import { getChallenges } from '@/util/challenges';
+import { getMyProfile } from '@/util/profile';
+import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
 export const metadata: Metadata = {

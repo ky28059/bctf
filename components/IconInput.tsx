@@ -1,12 +1,12 @@
-import type {InputHTMLAttributes} from 'react';
-import type {IconType} from 'react-icons';
+import type { InputHTMLAttributes } from 'react';
+import type { IconType } from 'react-icons';
 
 
 type IconInputProps = InputHTMLAttributes<HTMLInputElement> & {
     icon: IconType
 }
 export default function IconInput(props: IconInputProps) {
-    const {icon: Icon, ...inputProps} = props;
+    const { icon: Icon, ...inputProps } = props;
 
     return (
         <div className="relative w-full">

@@ -1,5 +1,5 @@
-import {NextRequest, NextResponse} from 'next/server';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import { NextRequest, NextResponse } from 'next/server';
+import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
 export function middleware(request: NextRequest) {

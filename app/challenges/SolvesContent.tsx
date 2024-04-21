@@ -1,18 +1,18 @@
 'use client'
 
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 // Components
 import Solve from '@/app/challenges/Solve';
 import Pagination from '@/components/Pagination';
 
 // Utils
-import {SOLVES_PAGE_SIZE} from '@/util/config';
-import {getSolves, SolveData} from '@/util/solves';
-import type {Challenge} from '@/util/challenges';
+import { SOLVES_PAGE_SIZE } from '@/util/config';
+import { getSolves, SolveData } from '@/util/solves';
+import type { Challenge } from '@/util/challenges';
 
 // Icons
-import {FaRegClock} from 'react-icons/fa6';
+import { FaRegClock } from 'react-icons/fa6';
 
 
 type SolvesContentProps = {

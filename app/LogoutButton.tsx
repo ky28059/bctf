@@ -1,8 +1,8 @@
 'use client'
 
-import {useState} from 'react';
-import {useRouter} from 'next/navigation';
-import {logout} from '@/util/auth';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { logout } from '@/util/auth';
 
 // Components
 import CenteredModal from '@/components/CenteredModal';
@@ -10,12 +10,12 @@ import CenteredModal from '@/components/CenteredModal';
 
 export default function LogoutButton() {
     const [open, setOpen] = useState(false);
-    const {refresh} = useRouter();
+    const router = useRouter();
 
     async function logoutCallback() {
         setOpen(false);
         await logout();
-        refresh();
+        router.refresh();
     }
 
     return (

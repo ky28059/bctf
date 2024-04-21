@@ -1,14 +1,14 @@
-import type {Metadata} from 'next';
-import {notFound} from 'next/navigation';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 // Components
 import Profile from '@/app/profile/Profile';
 
 // Utils
-import {getProfile} from '@/util/profile';
+import { getProfile } from '@/util/profile';
 
 
-export async function generateMetadata({params}: {params: {id: string}}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const data = await getProfile(params.id);
     if (data.kind === 'badUnknownUser') return notFound();
 
@@ -17,7 +17,7 @@ export async function generateMetadata({params}: {params: {id: string}}): Promis
     }
 }
 
-export default async function ProfilePage({params}: {params: {id: string}}) {
+export default async function ProfilePage({ params }: { params: { id: string } }) {
     const data = await getProfile(params.id);
     if (data.kind === 'badUnknownUser') return notFound();
 

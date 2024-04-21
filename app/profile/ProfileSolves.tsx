@@ -1,4 +1,4 @@
-import type {ProfileData} from '@/util/profile';
+import type { ProfileData } from '@/util/profile';
 import ProfileSolve from '@/app/profile/ProfileSolve';
 
 

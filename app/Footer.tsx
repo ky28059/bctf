@@ -1,15 +1,15 @@
 'use client'
 
-import {useContext} from 'react';
+import { useContext } from 'react';
 import PreferencesContext from '@/contexts/PreferencesContext';
 
 
 export default function Footer() {
-    const {preferences, setPreferences} = useContext(PreferencesContext);
+    const { preferences, setPreferences } = useContext(PreferencesContext);
 
     function toggleAnimations() {
         preferences.animations = !preferences.animations;
-        setPreferences({...preferences});
+        setPreferences({ ...preferences });
     }
 
     return (

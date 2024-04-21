@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import LoginContent from '@/app/login/LoginContent';
 
 

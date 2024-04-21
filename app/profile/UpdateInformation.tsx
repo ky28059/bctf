@@ -1,29 +1,29 @@
 'use client'
 
-import {FormEvent, useContext, useState} from 'react';
-import {useRouter} from 'next/navigation';
+import { FormEvent, useContext, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 // Components
 import IconInput from '@/components/IconInput';
 import DivisionSelector from '@/app/profile/DivisionSelector';
 
 // Utils
-import type {CTFConfig} from '@/util/config';
-import {MyProfileData, updateEmail, updateProfile, UpdateProfilePayload} from '@/util/profile';
+import type { CTFConfig } from '@/util/config';
+import { MyProfileData, updateEmail, updateProfile, UpdateProfilePayload } from '@/util/profile';
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 
 // Icons
-import {FaCircleUser} from 'react-icons/fa6';
-import {FaEnvelopeOpen} from 'react-icons/fa';
+import { FaCircleUser } from 'react-icons/fa6';
+import { FaEnvelopeOpen } from 'react-icons/fa';
 
 
-export default function UpdateInformation(props: MyProfileData & {config: CTFConfig}) {
+export default function UpdateInformation(props: MyProfileData & { config: CTFConfig }) {
     const [name, setName] = useState(props.name);
     const [email, setEmail] = useState(props.email);
     const [division, setDivision] = useState(props.division);
 
-    const {dispatchNotif} = useContext(FlagDispatchContext);
-    const {refresh} = useRouter();
+    const { dispatchNotif } = useContext(FlagDispatchContext);
+    const { refresh } = useRouter();
 
     async function updateInfoCallback(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();

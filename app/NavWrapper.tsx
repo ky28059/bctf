@@ -1,10 +1,10 @@
 'use client'
 
-import type {ReactNode} from 'react';
-import {useScroll} from '@/hooks/useScroll';
+import type { ReactNode } from 'react';
+import { useScroll } from '@/hooks/useScroll';
 
 
-export default function NavWrapper(props: {children: ReactNode}) {
+export default function NavWrapper(props: { children: ReactNode }) {
     const scroll = useScroll();
 
     return (

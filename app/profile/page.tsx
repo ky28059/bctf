@@ -1,14 +1,14 @@
-import type {Metadata} from 'next';
-import {cookies} from 'next/headers';
-import {redirect} from 'next/navigation';
+import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 // Components
 import Profile from '@/app/profile/Profile';
 import MyProfileInfo from '@/app/profile/MyProfileInfo';
 
 // Utils
-import {getMyProfile} from '@/util/profile';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import { getMyProfile } from '@/util/profile';
+import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
 export const metadata: Metadata = {

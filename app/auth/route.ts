@@ -1,6 +1,6 @@
-import {NextRequest, NextResponse} from 'next/server';
-import {cookies} from 'next/headers';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
 const ALLOWED_REDIRECTS = [`${process.env.KLODD_URL}/auth`];

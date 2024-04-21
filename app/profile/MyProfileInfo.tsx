@@ -1,11 +1,11 @@
-import type {MyProfileData} from '@/util/profile';
+import type { MyProfileData } from '@/util/profile';
 
 // Components
 import TeamInvite from '@/app/profile/TeamInvite';
 import UpdateInformation from '@/app/profile/UpdateInformation';
 
 // Utils
-import {getConfig} from '@/util/config';
+import { getConfig } from '@/util/config';
 
 
 /**

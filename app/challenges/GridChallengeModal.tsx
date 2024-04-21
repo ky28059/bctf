@@ -1,9 +1,9 @@
 'use client'
 
-import type {ReactNode} from 'react';
-import {Tab} from '@headlessui/react';
+import type { ReactNode } from 'react';
+import { Tab } from '@headlessui/react';
 import Markdown from 'react-markdown';
-import type {Challenge} from '@/util/challenges';
+import type { Challenge } from '@/util/challenges';
 
 // Components
 import CenteredModal from '@/components/CenteredModal';
@@ -11,7 +11,7 @@ import FlagSubmissionInput from '@/app/challenges/FlagSubmissionInput';
 import SolvesContent from '@/app/challenges/SolvesContent';
 
 // Icons
-import {FaDownload} from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa';
 
 
 type GridChallengeModalProps = {
@@ -75,7 +75,7 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
     )
 }
 
-function ChallengeTab(props: {children: ReactNode}) {
+function ChallengeTab(props: { children: ReactNode }) {
     return (
         <Tab className="rounded-t ui-selected:border-t ui-selected:border-x ui-not-selected:border-b ui-not-selected:text-primary transition duration-200 border-secondary px-4 py-2">
             {props.children}

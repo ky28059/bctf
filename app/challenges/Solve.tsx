@@ -1,9 +1,9 @@
-import type {SolveData} from '@/util/solves';
+import type { SolveData } from '@/util/solves';
 import Link from 'next/link';
-import {DateTime} from 'luxon';
+import { DateTime } from 'luxon';
 
 
-export default function Solve(props: SolveData & {rank: number}) {
+export default function Solve(props: SolveData & { rank: number }) {
     return (
         <div className="table-row">
             <div className="table-cell py-2 pr-2 text-secondary text-right text-sm">

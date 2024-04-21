@@ -1,5 +1,5 @@
-import type {Solve} from '@/util/profile';
-import {DateTime} from 'luxon';
+import type { Solve } from '@/util/profile';
+import { DateTime } from 'luxon';
 
 
 export default function ProfileSolve(props: Solve) {

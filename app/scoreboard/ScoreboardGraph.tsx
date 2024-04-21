@@ -1,12 +1,12 @@
 'use client'
 
-import {useMemo, useState} from 'react';
-import {DateTime} from 'luxon';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
-import type {GraphEntryData} from '@/util/scoreboard';
+import { useState } from 'react';
+import { DateTime } from 'luxon';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import type { GraphEntryData } from '@/util/scoreboard';
 
 
-export default function ScoreboardGraph(props: {graph: GraphEntryData[]}) {
+export default function ScoreboardGraph(props: { graph: GraphEntryData[] }) {
     const [focused, setFocused] = useState('');
 
     return (
@@ -53,7 +53,7 @@ export default function ScoreboardGraph(props: {graph: GraphEntryData[]}) {
                             stroke={colors[i]}
                             strokeOpacity={!focused ? 1 : focused === p.name ? 1 : 0.1}
                             strokeWidth={!focused ? 1 : focused === p.name ? 2 : 1}
-                            dot={{r: 0}}
+                            dot={{ r: 0 }}
                         />
                     ))}
                 </LineChart>

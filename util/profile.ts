@@ -1,8 +1,8 @@
 'use server'
 
-import type {BadTokenResponse, RateLimitResponse, UserNotFoundResponse} from '@/util/errors';
-import {cookies} from 'next/headers';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import type { BadTokenResponse, RateLimitResponse, UserNotFoundResponse } from '@/util/errors';
+import { cookies } from 'next/headers';
+import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
 export type ProfileData = {
@@ -47,7 +47,7 @@ export async function getProfile(id: string): Promise<ProfileResponse<ProfileDat
 
 export async function getMyProfile(token: string): Promise<ProfileResponse<MyProfileData> | BadTokenResponse> {
     const res = await fetch(`${process.env.API_BASE}/users/me`, {
-        headers: {'Authorization': `Bearer ${token}`}
+        headers: { 'Authorization': `Bearer ${token}` }
     });
     return res.json();
 }
@@ -71,7 +71,7 @@ export type UpdateProfilePayload = {
 export async function updateProfile(payload: UpdateProfilePayload) {
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
     if (!token)
-        return {error: 'Not authenticated.'};
+        return { error: 'Not authenticated.' };
 
     const res: UpdateUserResponse | RateLimitResponse = await (await fetch(`${process.env.API_BASE}/users/me`, {
         method: 'PATCH',
@@ -83,9 +83,9 @@ export async function updateProfile(payload: UpdateProfilePayload) {
     })).json();
 
     if (res.kind === 'badRateLimit')
-        return {error: `You are doing this too fast! Try again in ${res.data.timeLeft} ms.`};
+        return { error: `You are doing this too fast! Try again in ${res.data.timeLeft} ms.` };
 
-    return {ok: true};
+    return { ok: true };
 }
 
 type UpdateEmailResponse = {
@@ -103,7 +103,7 @@ type DivisionNotAllowedResponse = {
 export async function updateEmail(email: string) {
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
     if (!token)
-        return {error: 'Not authenticated.'};
+        return { error: 'Not authenticated.' };
 
     const emailRes: UpdateEmailResponse | DivisionNotAllowedResponse = await (await fetch(`${process.env.API_BASE}/users/me/auth/email`, {
         method: 'PUT',
@@ -111,11 +111,11 @@ export async function updateEmail(email: string) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({email})
+        body: JSON.stringify({ email })
     })).json();
 
     if (emailRes.kind !== 'goodVerifySent')
-        return {error: emailRes.message};
+        return { error: emailRes.message };
 
-    return {ok: true};
+    return { ok: true };
 }

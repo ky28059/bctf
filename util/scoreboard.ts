@@ -1,7 +1,7 @@
 'use server'
 
-import type {CTFNotStartedResponse} from '@/util/errors';
-import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
+import type { CTFNotStartedResponse } from '@/util/errors';
+import { SCOREBOARD_PAGE_SIZE } from '@/util/config';
 
 
 export type LeaderboardEntry = {

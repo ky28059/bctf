@@ -4,8 +4,8 @@ import ScoreboardEntry from '@/app/scoreboard/ScoreboardEntry';
 import Pagination from '@/components/Pagination';
 
 // Utils
-import {LeaderboardData} from '@/util/scoreboard';
-import {SCOREBOARD_PAGE_SIZE} from '@/util/config';
+import { LeaderboardData } from '@/util/scoreboard';
+import { SCOREBOARD_PAGE_SIZE } from '@/util/config';
 
 
 type ScoreboardProps = LeaderboardData & {

@@ -1,4 +1,4 @@
-import {FaRegClock} from 'react-icons/fa6';
+import { FaRegClock } from 'react-icons/fa6';
 
 
 export default function CTFNotStarted() {

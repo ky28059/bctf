@@ -1,4 +1,4 @@
-import {IoMdCloseCircle} from 'react-icons/io';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 
 export default function NotFound() {

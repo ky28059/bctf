@@ -1,11 +1,11 @@
 'use client'
 
-import {ReactNode, useContext, useMemo} from 'react';
+import { ReactNode, useContext, useMemo } from 'react';
 import FilterContext from '@/contexts/FilterContext';
 
 // Types
-import type {Challenge as ChallengeData} from '@/util/challenges';
-import type {Solve} from '@/util/profile';
+import type { Challenge as ChallengeData } from '@/util/challenges';
+import type { Solve } from '@/util/profile';
 
 
 type FiltersProps = {
@@ -13,15 +13,15 @@ type FiltersProps = {
     solves: Solve[]
 }
 export default function Filters(props: FiltersProps) {
-    const {filter, setFilter} = useContext(FilterContext);
+    const { filter, setFilter } = useContext(FilterContext);
 
     function toggleShowSolved() {
-        setFilter({...filter, showSolved: !filter.showSolved});
+        setFilter({ ...filter, showSolved: !filter.showSolved });
     }
 
     // Mapping of {categoryName: # of challenges in that category}
     const totals = useMemo(() => {
-        const res: {[category: string]: number} = {};
+        const res: { [category: string]: number } = {};
 
         for (const c of props.challenges) {
             if (!(c.category in res)) res[c.category] = 0;
@@ -33,7 +33,7 @@ export default function Filters(props: FiltersProps) {
 
     // Mapping of {categoryName: # of solved challenges in that category}
     const solved = useMemo(() => {
-        const res: {[category: string]: number} = {};
+        const res: { [category: string]: number } = {};
 
         for (const s of props.solves) {
             if (!(s.category in res)) res[s.category] = 0;
@@ -71,11 +71,11 @@ export default function Filters(props: FiltersProps) {
 
 type FilterCategoryProps = {
     category: string,
-    totals: { [category: string]: number},
-    solved: { [category: string]: number}
+    totals: { [category: string]: number },
+    solved: { [category: string]: number }
 }
 function FilterCategory(props: FilterCategoryProps) {
-    const {filter, setFilter} = useContext(FilterContext);
+    const { filter, setFilter } = useContext(FilterContext);
 
     function toggleCategory() {
         if (filter.categories.has(props.category))
@@ -83,7 +83,7 @@ function FilterCategory(props: FilterCategoryProps) {
         else
             filter.categories.add(props.category)
 
-        setFilter({...filter});
+        setFilter({ ...filter });
     }
 
     return (

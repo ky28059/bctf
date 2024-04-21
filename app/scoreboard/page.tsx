@@ -1,14 +1,14 @@
-import type {Metadata} from 'next';
-import {cookies} from 'next/headers';
+import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 
 // Components
 import ScoreboardContent from '@/app/scoreboard/ScoreboardContent';
 import CTFNotStarted from '@/components/CTFNotStarted';
 
 // Utils
-import {getGraph, getScoreboard} from '@/util/scoreboard';
-import {getMyProfile} from '@/util/profile';
-import {AUTH_COOKIE_NAME, getConfig} from '@/util/config';
+import { getGraph, getScoreboard } from '@/util/scoreboard';
+import { getMyProfile } from '@/util/profile';
+import { AUTH_COOKIE_NAME, getConfig } from '@/util/config';
 
 
 export const metadata: Metadata = {

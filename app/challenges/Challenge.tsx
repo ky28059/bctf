@@ -1,18 +1,18 @@
 'use client'
 
-import {useState} from 'react';
+import { useState } from 'react';
 import Markdown from 'react-markdown';
-import {BiCheck} from 'react-icons/bi';
+import { BiCheck } from 'react-icons/bi';
 
 // Components
 import SolvesModal from '@/app/challenges/SolvesModal';
 import FlagSubmissionInput from '@/app/challenges/FlagSubmissionInput';
 
 // Utils
-import type {Challenge} from '@/util/challenges';
+import type { Challenge } from '@/util/challenges';
 
 
-export default function Challenge(props: Challenge & {solved: boolean}) {
+export default function Challenge(props: Challenge & { solved: boolean }) {
     const [showSolves, setShowSolves] = useState(false);
 
     return (

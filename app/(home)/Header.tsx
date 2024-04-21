@@ -1,6 +1,6 @@
 import Timer from '@/app/(home)/Timer';
-import {BsChevronCompactDown} from 'react-icons/bs';
-import {getConfig} from '@/util/config';
+import { BsChevronCompactDown } from 'react-icons/bs';
+import { getConfig } from '@/util/config';
 
 
 export default async function Header() {

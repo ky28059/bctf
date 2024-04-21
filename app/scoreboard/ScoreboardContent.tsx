@@ -1,7 +1,7 @@
 'use client'
 
-import {useEffect, useState} from 'react';
-import {useRouter} from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 // Components
 import ScoreboardGraph from '@/app/scoreboard/ScoreboardGraph';
@@ -9,8 +9,8 @@ import ScoreboardFilters from '@/app/scoreboard/ScoreboardFilters';
 import Scoreboard from '@/app/scoreboard/Scoreboard';
 
 // Utils
-import {getGraph, getScoreboard, GraphEntryData, LeaderboardData} from '@/util/scoreboard';
-import {CTFConfig, SCOREBOARD_PAGE_SIZE} from '@/util/config';
+import { getGraph, getScoreboard, GraphEntryData, LeaderboardData } from '@/util/scoreboard';
+import { CTFConfig, SCOREBOARD_PAGE_SIZE } from '@/util/config';
 
 
 type ScoreboardContentProps = {
@@ -54,10 +54,10 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
     }
 
     // Re-fetch and merge scoreboard data periodically
-    const {refresh} = useRouter();
+    const router = useRouter();
     useEffect(() => {
-        refresh(); // TODO: don't call this always to avoid excess rerenders?
-        const id = setInterval(() => refresh(), 1000 * 60);
+        router.refresh(); // TODO: don't call this always to avoid excess rerenders?
+        const id = setInterval(() => router.refresh(), 1000 * 60);
         return () => clearInterval(id);
     }, []);
 

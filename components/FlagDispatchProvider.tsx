@@ -1,14 +1,14 @@
 'use client'
 
-import {Fragment, ReactElement, ReactNode, useRef, useState} from 'react';
-import {Transition} from '@headlessui/react';
+import { Fragment, ReactElement, ReactNode, useRef, useState } from 'react';
+import { Transition } from '@headlessui/react';
 
 // Utils
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
-import {shuffle} from '@/util/random';
+import { shuffle } from '@/util/random';
 
 
-export default function FlagDispatchProvider(props: {children: ReactNode}) {
+export default function FlagDispatchProvider(props: { children: ReactNode }) {
     const rejectVideoRefs = useRef<HTMLVideoElement[]>([]);
     const acceptVideoRefs = useRef<HTMLVideoElement[]>([]);
 
@@ -81,7 +81,7 @@ export default function FlagDispatchProvider(props: {children: ReactNode}) {
     }
 
     return (
-        <FlagDispatchContext.Provider value={{rejectFlag, acceptFlag, dispatchNotif}}>
+        <FlagDispatchContext.Provider value={{ rejectFlag, acceptFlag, dispatchNotif }}>
             {Array(6).fill(0).map((_, i) => (
                 <video
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"

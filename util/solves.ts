@@ -1,6 +1,6 @@
 'use server'
 
-import {SOLVES_PAGE_SIZE} from '@/util/config';
+import { SOLVES_PAGE_SIZE } from '@/util/config';
 
 
 export type SolveData = {

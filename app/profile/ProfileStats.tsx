@@ -1,6 +1,6 @@
 'use client'
 
-import {useMemo} from 'react';
+import { useMemo } from 'react';
 import {
     PolarAngleAxis,
     PolarGrid,
@@ -11,25 +11,25 @@ import {
 } from 'recharts';
 
 // Types
-import type {ProfileData} from '@/util/profile';
-import type {Challenge} from '@/util/challenges';
+import type { ProfileData } from '@/util/profile';
+import type { Challenge } from '@/util/challenges';
 
 
-export default function ProfileStats(props: ProfileData & {challs: Challenge[]}) {
+export default function ProfileStats(props: ProfileData & { challs: Challenge[] }) {
     const data = useMemo(() => {
-        const res: {[name: string]: {solves: number, total: number}} = {};
+        const res: { [name: string]: { solves: number, total: number } } = {};
 
         for (const c of props.challs) {
-            if (!res[c.category]) res[c.category] = {solves: 0, total: 0};
+            if (!res[c.category]) res[c.category] = { solves: 0, total: 0 };
             res[c.category].total++;
         }
 
         for (const c of props.solves) {
-            if (!res[c.category]) res[c.category] = {solves: 0, total: 0};
+            if (!res[c.category]) res[c.category] = { solves: 0, total: 0 };
             res[c.category].solves++;
         }
 
-        return Object.entries(res).map(([name, data]) => ({name, percent: data.solves / data.total}));
+        return Object.entries(res).map(([name, data]) => ({ name, percent: data.solves / data.total }));
     }, [props.solves]);
 
     return (
@@ -46,7 +46,7 @@ export default function ProfileStats(props: ProfileData & {challs: Challenge[]})
                 <Tooltip
                     wrapperClassName="!bg-background rounded !border-secondary"
                     labelClassName="text-primary"
-                    allowEscapeViewBox={{x: true, y: true}}
+                    allowEscapeViewBox={{ x: true, y: true }}
                     formatter={(percent: number, _) => [(percent * 100).toFixed(2) + '%', 'Percent solved']}
                 />
             </RadarChart>

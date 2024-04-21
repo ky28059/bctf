@@ -1,14 +1,14 @@
 'use client'
 
-import {FormEvent, useState} from 'react';
-import {recover} from '@/util/auth';
+import { FormEvent, useState } from 'react';
+import { recover } from '@/util/auth';
 
 // Components
 import IconInput from '@/components/IconInput';
 
 // Icons
-import {FaEnvelope} from 'react-icons/fa6';
-import {FaEnvelopeOpen} from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa6';
+import { FaEnvelopeOpen } from 'react-icons/fa';
 
 
 export default function RecoverContent() {

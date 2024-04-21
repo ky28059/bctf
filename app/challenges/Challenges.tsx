@@ -1,6 +1,6 @@
 'use client'
 
-import {useContext, useMemo} from 'react';
+import { useContext, useMemo } from 'react';
 
 // Components
 import Challenge from '@/app/challenges/Challenge';
@@ -11,8 +11,8 @@ import FilterContext from '@/contexts/FilterContext';
 import PreferencesContext from '@/contexts/PreferencesContext';
 
 // Utils
-import type {Challenge as ChallengeData} from '@/util/challenges';
-import type {Solve} from '@/util/profile';
+import type { Challenge as ChallengeData } from '@/util/challenges';
+import type { Solve } from '@/util/profile';
 
 
 type ChallengesProps = {
@@ -20,8 +20,8 @@ type ChallengesProps = {
     solves: Solve[]
 }
 export default function Challenges(props: ChallengesProps) {
-    const {filter} = useContext(FilterContext);
-    const {preferences} = useContext(PreferencesContext);
+    const { filter } = useContext(FilterContext);
+    const { preferences } = useContext(PreferencesContext);
 
     const solved = new Set(props.solves.map(s => s.name));
 
@@ -40,7 +40,7 @@ export default function Challenges(props: ChallengesProps) {
     // Group challenges by category for grid layout
     // TODO: abstraction with `Filters`, efficiency?
     const grouped = useMemo(() => {
-        const res: {[category: string]: ChallengeData[]} = {};
+        const res: { [category: string]: ChallengeData[] } = {};
 
         for (const c of filtered) {
             if (!(c.category in res)) res[c.category] = [];

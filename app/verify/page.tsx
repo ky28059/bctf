@@ -1,15 +1,19 @@
-import type {Metadata} from 'next';
-import {verify} from '@/util/auth';
-import {getMyProfile} from '@/util/profile';
-import {redirect} from 'next/navigation';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+
+// Components
 import VerifyButton from '@/app/verify/VerifyButton';
+
+// Utils
+import { verify } from '@/util/auth';
+import { getMyProfile } from '@/util/profile';
 
 
 export const metadata: Metadata = {
     title: 'Verify'
 }
 
-export default async function Verify({searchParams}: {searchParams: {token: string}}) {
+export default async function Verify({ searchParams }: { searchParams: { token: string } }) {
     if (!searchParams.token)
         return redirect('/register');
 

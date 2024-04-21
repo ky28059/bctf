@@ -1,4 +1,4 @@
-import type {CTFEndedResponse} from '@/util/errors';
+import type { CTFEndedResponse } from '@/util/errors';
 
 
 export type Challenge = {
@@ -26,7 +26,7 @@ type ChallengesResponse = {
 
 export async function getChallenges(token: string): Promise<ChallengesResponse | CTFEndedResponse> {
     const res = await fetch(`${process.env.API_BASE}/challs`, {
-        headers: {'Authorization': `Bearer ${token}`}
+        headers: { 'Authorization': `Bearer ${token}` }
     });
     return await res.json();
 }

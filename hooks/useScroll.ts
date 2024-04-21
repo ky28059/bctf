@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 
 // Returns the current vertical scroll of the window, in pixels.

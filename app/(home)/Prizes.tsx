@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import SectionHeader from '@/components/SectionHeader';
 
 
@@ -44,7 +44,7 @@ export default function Prizes() {
     )
 }
 
-function PrizeTable(props: {children: ReactNode, division: string}) {
+function PrizeTable(props: { children: ReactNode, division: string }) {
     return (
         <div className="table w-full text-sm border border-secondary">
             <div className="table-header-group">

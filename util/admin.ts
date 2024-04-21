@@ -1,10 +1,10 @@
-import type {Challenge} from '@/util/challenges';
-import type {BadTokenResponse} from '@/util/errors';
+import type { Challenge } from '@/util/challenges';
+import type { BadTokenResponse } from '@/util/errors';
 
 
 export type AdminChallenge = Challenge & {
     flag: string,
-    points: {min: number, max: number}
+    points: { min: number, max: number }
 }
 
 type AdminChallengesResponse = {

@@ -1,11 +1,11 @@
 'use client'
 
-import {useContext, useEffect, useRef} from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import PreferencesContext from '@/contexts/PreferencesContext';
 
 
 export default function Equalizer() {
-    const {preferences} = useContext(PreferencesContext);
+    const { preferences } = useContext(PreferencesContext);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     function draw(dt: number) {
@@ -102,7 +102,7 @@ function rgbToHSL(rgb: string) {
     rgb = rgb.replace(/^\s*#|\s*$/g, '');
 
     // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
-    if (rgb.length == 3){
+    if (rgb.length === 3) {
         rgb = rgb.replace(/(.)/g, '$1$1');
     }
 
@@ -133,7 +133,7 @@ function rgbToHSL(rgb: string) {
         s = (delta / (1 - Math.abs(2 * l - 1)));
     }
 
-    return {h, s, l} satisfies HSL
+    return { h, s, l } satisfies HSL
 }
 
 // expects an object and returns a string
@@ -142,11 +142,12 @@ type HSL = {
     s: number,
     l: number
 }
+
 function hslToRGB(hsl: HSL) {
-    const {h, s, l} = hsl;
-    const c = (1 - Math.abs(2*l - 1)) * s;
-    const x = c * ( 1 - Math.abs((h / 60 ) % 2 - 1 ));
-    const m = l - c/ 2;
+    const { h, s, l } = hsl;
+    const c = (1 - Math.abs(2 * l - 1)) * s;
+    const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    const m = l - c / 2;
 
     let r, g, b;
     if (h < 60) {
@@ -179,7 +180,7 @@ function hslToRGB(hsl: HSL) {
     g = normalize_rgb_value(g, m);
     b = normalize_rgb_value(b, m);
 
-    return rgbToHex(r,g,b);
+    return rgbToHex(r, g, b);
 }
 
 function normalize_rgb_value(color: number, m: number) {

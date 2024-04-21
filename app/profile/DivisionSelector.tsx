@@ -1,18 +1,18 @@
 'use client'
 
-import {Listbox} from '@headlessui/react';
+import { Listbox } from '@headlessui/react';
 import AnimatedListbox from '@/components/AnimatedListbox';
 
 // Icons
-import {FaAddressBook} from 'react-icons/fa6';
-import {PiCaretUpDown} from 'react-icons/pi';
+import { FaAddressBook } from 'react-icons/fa6';
+import { PiCaretUpDown } from 'react-icons/pi';
 
 
 type DivisionSelectorProps = {
     division: string,
     setDivision: (d: string) => void,
     divisions: string[],
-    divisionNames: {[id: string]: string}
+    divisionNames: { [id: string]: string }
 }
 export default function DivisionSelector(props: DivisionSelectorProps) {
     return (

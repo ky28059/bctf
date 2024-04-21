@@ -1,11 +1,11 @@
 'use client'
 
-import {useContext} from 'react';
+import { useContext } from 'react';
 import PreferencesContext from '@/contexts/PreferencesContext';
 
 
 export default function ScrollableBackground() {
-    const {preferences} = useContext(PreferencesContext);
+    const { preferences } = useContext(PreferencesContext);
 
     return (
         <img

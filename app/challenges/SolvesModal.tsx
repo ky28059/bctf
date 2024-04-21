@@ -4,7 +4,7 @@ import CenteredModal from '@/components/CenteredModal';
 import SolvesContent from '@/app/challenges/SolvesContent';
 
 // Utils
-import type {Challenge} from '@/util/challenges';
+import type { Challenge } from '@/util/challenges';
 
 
 type SolvesModalProps = {

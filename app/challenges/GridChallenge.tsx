@@ -1,12 +1,12 @@
 'use client'
 
-import {useState} from 'react';
-import type {Challenge} from '@/util/challenges';
+import { useState } from 'react';
+import type { Challenge } from '@/util/challenges';
 import GridChallengeModal from '@/app/challenges/GridChallengeModal';
-import {BiCheck} from 'react-icons/bi';
+import { BiCheck } from 'react-icons/bi';
 
 
-export default function GridChallenge(props: Challenge & {solved: boolean}) {
+export default function GridChallenge(props: Challenge & { solved: boolean }) {
     const [open, setOpen] = useState(false);
 
     return (

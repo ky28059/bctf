@@ -15,7 +15,7 @@ export type CTFConfig = {
 
     // Controlled by `02-ctf.yaml`
     origin: string,
-    divisions: {[id: string]: string}, // {id: name}
+    divisions: { [id: string]: string }, // {id: name}
     startTime: number, // epoch ms
     endTime: number, // epoch ms
 }

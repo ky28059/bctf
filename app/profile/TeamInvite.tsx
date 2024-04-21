@@ -1,10 +1,10 @@
 'use client'
 
-import {Disclosure} from '@headlessui/react';
-import {BsChevronUp} from 'react-icons/bs';
+import { Disclosure } from '@headlessui/react';
+import { BsChevronUp } from 'react-icons/bs';
 
 
-export default function TeamInvite(props: {token: string}) {
+export default function TeamInvite(props: { token: string }) {
     const url = `https://b01lersc.tf/login?token=${encodeURIComponent(props.token)}`;
 
     function copy() {

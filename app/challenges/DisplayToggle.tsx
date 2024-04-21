@@ -1,17 +1,17 @@
 'use client'
 
-import {useContext} from 'react';
+import { useContext } from 'react';
 import PreferencesContext from '@/contexts/PreferencesContext';
 
 // Icons
-import {IoGrid, IoMenu} from 'react-icons/io5';
+import { IoGrid, IoMenu } from 'react-icons/io5';
 
 
 export default function DisplayToggle() {
-    const {preferences, setPreferences} = useContext(PreferencesContext);
+    const { preferences, setPreferences } = useContext(PreferencesContext);
 
     function setGrid(grid: boolean) {
-        setPreferences({...preferences, grid});
+        setPreferences({ ...preferences, grid });
     }
 
     return (

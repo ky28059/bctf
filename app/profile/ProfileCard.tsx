@@ -1,18 +1,18 @@
-import type {ReactNode} from 'react';
-import type {IconType} from 'react-icons';
-import type {ProfileData} from '@/util/profile';
-import type {Challenge} from '@/util/challenges';
-import type {CTFConfig} from '@/util/config';
+import type { ReactNode } from 'react';
+import type { IconType } from 'react-icons';
+import type { ProfileData } from '@/util/profile';
+import type { Challenge } from '@/util/challenges';
+import type { CTFConfig } from '@/util/config';
 
 // Components
 import ProfileStats from '@/app/profile/ProfileStats';
 
 // Icons
-import {FaAddressBook, FaTrophy} from 'react-icons/fa6';
-import {MdBarChart} from 'react-icons/md';
+import { FaAddressBook, FaTrophy } from 'react-icons/fa6';
+import { MdBarChart } from 'react-icons/md';
 
 // Utils
-import {pluralize} from '@/util/strings';
+import { pluralize } from '@/util/strings';
 
 
 type ProfileCardProps = ProfileData & {

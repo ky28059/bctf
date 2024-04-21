@@ -1,4 +1,4 @@
-import {useLayoutEffect, useState} from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 
 // Utility hook to allow dynamic client components to display static data before hydration and avoid hydration errors.

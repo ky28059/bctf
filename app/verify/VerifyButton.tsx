@@ -1,19 +1,19 @@
 'use client'
 
-import {useRouter} from 'next/navigation';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import { useRouter } from 'next/navigation';
+import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
 type VerifyButtonProps = {
     authToken: string
 }
 export default function VerifyButton(props: VerifyButtonProps) {
-    const {replace, refresh} = useRouter();
+    const router = useRouter();
 
     async function confirmLogin() {
         document.cookie = `${AUTH_COOKIE_NAME}=${props.authToken};`;
-        replace('/profile');
-        refresh();
+        router.replace('/profile');
+        router.refresh();
     }
 
     return (

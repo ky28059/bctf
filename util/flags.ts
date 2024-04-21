@@ -1,8 +1,8 @@
 'use server'
 
-import type {CTFEndedResponse} from '@/util/errors';
-import {cookies} from 'next/headers';
-import {AUTH_COOKIE_NAME} from '@/util/config';
+import type { CTFEndedResponse } from '@/util/errors';
+import { cookies } from 'next/headers';
+import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
 type GoodFlagResponse = {
@@ -22,7 +22,7 @@ export async function attemptSubmit(
     flag: string
 ) {
     const token = cookies().get(AUTH_COOKIE_NAME)?.value;
-    if (!token) return {kind: 'badToken', message: 'Missing token'}; // TODO: hacky?
+    if (!token) return { kind: 'badToken', message: 'Missing token' }; // TODO: hacky?
 
     const res: GoodFlagResponse | BadFlagResponse | CTFEndedResponse = await (await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {
         method: 'POST',
@@ -30,7 +30,7 @@ export async function attemptSubmit(
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({flag})
+        body: JSON.stringify({ flag })
     })).json();
 
     return res;

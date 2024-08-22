@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
-    "@headlessui/tailwindcss": "^0.2.0",
+    "@headlessui/react": "^2.1.2",
+    "@headlessui/tailwindcss": "^0.2.1",
     "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
     "luxon": "^3.5.0",
     "next": "^14.2.5",
     "postcss": "^8.4.41",

@@ -1,24 +1,23 @@
 'use client'
 
-import { Fragment, ReactNode } from 'react';
-import { Listbox, Transition } from '@headlessui/react';
+import type { ReactNode } from 'react';
+import { ListboxOptions } from '@headlessui/react';
+import clsx from 'clsx';
 
 
-// A reusable component to wrap a dropdown animation around a `Listbox.Options`.
+// A reusable component to wrap a dropdown animation around a `ListboxOptions`.
 export default function AnimatedListbox(props: { children: ReactNode, className?: string }) {
     return (
-        <Transition
-            as={Fragment}
-            enter="transition duration-150 ease-out"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition duration-100 ease-out"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+        <ListboxOptions
+            transition
+            anchor="bottom"
+            // modal={false}
+            className={clsx(
+                'w-[var(--button-width)] data-[closed]:opacity-0 data-[enter]:duration-150 data-[enter]:data-[closed]:opacity-100 data-[leave]:duration-100 ease-out',
+                props.className
+            )}
         >
-            <Listbox.Options className={props.className}>
-                {props.children}
-            </Listbox.Options>
-        </Transition>
+            {props.children}
+        </ListboxOptions>
     )
 }

@@ -14,7 +14,7 @@ import FilterProvider from '@/components/FilterProvider';
 import PreferencesProvider from '@/components/PreferencesProvider';
 import FlagDispatchProvider from '@/components/FlagDispatchProvider';
 
-import './globals.css';
+import '@/app/globals.css';
 
 
 const inter = Inter({ subsets: ['latin'] })

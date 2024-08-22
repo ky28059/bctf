@@ -8,7 +8,10 @@ export default async function Header() {
 
     return (
         <header className="container flex flex-col items-center justify-center h-screen">
-            <img src="/assets/logo.svg" />
+            <img
+                src="/assets/logo-uwu.png"
+                className="-mb-7 max-h-96"
+            />
             <Timer
                 startTime={config.data.startTime}
                 endTime={config.data.endTime}
@@ -24,7 +27,7 @@ export default async function Header() {
                 <a href="#sponsors" className="px-4 py-2 uppercase hover:underline">Sponsors</a>
             </div>
 
-            <a href="#rules" className="text-inherit text-4xl mt-12 sm:mb-16 text-primary">
+            <a href="#rules" className="text-inherit text-4xl mt-6 sm:mt-12 sm:mb-8 text-primary">
                 <BsChevronCompactDown className="animate-bounce" />
                 <span className="sr-only">Jump to Rules</span>
             </a>

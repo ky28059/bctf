@@ -23,14 +23,17 @@ To run just the frontend, first install dependencies with
 ```bash
 npm i
 ```
-In `next.config.js`, set `env.API_URL` to the public API URL of the rCTF instance, and `KLODD_URL` to the public URL of
+In `next.config.js`, set `RCTF_BASE` to the public URL of the backend rCTF instance, and `KLODD_URL` to the public URL of
 the Klodd instancer frontend:
 ```js
+const RCTF_BASE = 'http://ctf.b01lers.com:9000';
+
 const nextConfig = {
     env: {
-        API_BASE: 'http://ctf.b01lers.com:9000/api/v1',
+        API_BASE: `${RCTF_BASE}/api/v1`,
         KLODD_URL: 'https://klodd.localhost.direct'
-    }
+    },
+    // ...
 }
 ```
 Then, run
@@ -49,7 +52,7 @@ RCTF_GIT_REF=master
 
 You can then start both the rCTF backend and production frontend instance simultaneously with
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ### Configuring

@@ -1,7 +1,9 @@
+const RCTF_BASE = 'http://ctf.b01lers.com:9000';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        API_BASE: 'http://ctf.b01lers.com:9000/api/v1',
+        API_BASE: `${RCTF_BASE}/api/v1`,
         KLODD_URL: 'https://instancer.b01lersc.tf'
     },
     logging: {
@@ -15,6 +17,10 @@ const nextConfig = {
             {
                 source: '/api/v1/:path*',
                 destination: `${this.env.API_BASE}/:path*`
+            },
+            {
+                source: '/uploads',
+                destination: `${RCTF_BASE}/uploads`,
             }
         ]
     }

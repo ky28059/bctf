@@ -29,7 +29,9 @@ export default function ProfileStats(props: ProfileData & { challs: Challenge[] 
             res[c.category].solves++;
         }
 
-        return Object.entries(res).map(([name, data]) => ({ name, percent: data.solves / data.total }));
+        return Object.entries(res)
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([name, data]) => ({ name, percent: data.solves / data.total }));
     }, [props.solves]);
 
     return (

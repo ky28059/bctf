@@ -48,7 +48,7 @@ export default function Filters(props: FiltersProps) {
             <h2 className="font-semibold mb-1">Filters</h2>
 
             <div className="flex flex-col gap-1 pl-2 mb-3">
-                {Object.keys(totals).map((c) => (
+                {Object.keys(totals).sort((a, b) => a.localeCompare(b)).map((c) => (
                     <FilterCategory
                         key={c}
                         category={c}

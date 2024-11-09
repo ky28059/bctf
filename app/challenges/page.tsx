@@ -11,6 +11,7 @@ import CTFNotStarted from '@/components/CTFNotStarted';
 // Utils
 import { getChallenges } from '@/util/challenges';
 import { getMyProfile } from '@/util/profile';
+import { getAdminChallenges } from '@/util/admin';
 import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
@@ -27,20 +28,46 @@ export default async function ChallengesPage() {
     if (profile.kind === 'badToken')
         return redirect('/logout');
 
-    return challenges.kind === 'goodChallenges' ? (
+    if (challenges.kind !== 'goodChallenges') return (
+        <CTFNotStarted />
+    );
+
+    // Support non-standard properties by sourcing them from the admin endpoint.
+    const adminData = await getAdminChallData();
+    let challs = challenges.data;
+
+    if (adminData) {
+        // Filter out challs with prereqs that are not met yet
+        const solved = new Set(profile.data.solves.map((c) => c.id));
+        challs = challs.filter((c) => !adminData[c.id].prereqs || adminData[c.id].prereqs!.every((p) => solved.has(p)));
+
+        // Inject desired properties back into client challenges
+        for (const c of challs) {
+            c.difficulty = adminData[c.id].difficulty;
+        }
+    }
+
+    return (
         <div className="container relative pt-32 pb-14 flex flex-col md:flex-row gap-6">
             <Filters
-                challenges={challenges.data}
+                challenges={challs}
                 solves={profile.data.solves}
             />
             <Challenges
-                challenges={challenges.data}
+                challenges={challs}
                 solves={profile.data.solves}
             />
 
             <DisplayToggle />
         </div>
-    ) : (
-        <CTFNotStarted />
-    )
+    );
+}
+
+async function getAdminChallData() {
+    if (!process.env.ADMIN_TOKEN) return;
+
+    const res = await getAdminChallenges(process.env.ADMIN_TOKEN);
+    if (res.kind === 'badToken') return;
+
+    return Object.fromEntries(res.data.map((c) => [c.id, c]));
 }

@@ -11,6 +11,8 @@ export type Challenge = {
     sortWeight: number,
     solves: number,
     points: number,
+
+    difficulty?: string, // Non-standard
 }
 
 type FileData = {

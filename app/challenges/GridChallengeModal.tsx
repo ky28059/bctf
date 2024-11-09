@@ -37,7 +37,7 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
 
                 <Tab.Panels>
                     <Tab.Panel>
-                        <h1 className="text-2xl text-center mb-2">
+                        <h1 className="text-2xl text-center mb-2 [overflow-wrap:anywhere]">
                             {props.challenge.name}
                         </h1>
                         <p className="text-lg text-center text-primary mb-6">

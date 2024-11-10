@@ -41,7 +41,7 @@ export default async function ChallengesPage() {
         const solved = new Set(profile.data.solves.map((c) => c.id));
         challs = challs.filter((c) => !adminData[c.id].prereqs || adminData[c.id].prereqs!.every((p) => solved.has(p)));
 
-        // Inject desired properties back into client challenges
+        // Inject additional properties back into client challenges
         for (const c of challs) {
             c.difficulty = adminData[c.id].difficulty;
         }
@@ -67,7 +67,7 @@ async function getAdminChallData() {
     if (!process.env.ADMIN_TOKEN) return;
 
     const res = await getAdminChallenges(process.env.ADMIN_TOKEN);
-    if (res.kind === 'badToken') return;
+    if (res.kind !== 'goodChallenges') return;
 
     return Object.fromEntries(res.data.map((c) => [c.id, c]));
 }

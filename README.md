@@ -55,6 +55,25 @@ You can then start both the rCTF backend and production frontend instance simult
 docker compose up -d --build
 ```
 
+### Non-standard properties (experimental)
+On top of supporting all the standard `Challenge` object fields provided by rCTF, this frontend also supports a subset
+of non-standard fields if they are present; see [`b01lers/rctf-deploy-action`](https://github.com/b01lers/rctf-deploy-action)
+for a complete list.
+
+The underlying mechanism for this is that:
+- Challenges are created via `PUT` requests to `/api/v1/admin/challs/{id}` on the rCTF backend with the challenge
+  metadata as a JSON body, and the JSON data is stored in the challenge database as-is (extra properties included).
+- When non-admin users fetch `/api/v1/challs`, however, challenges are [cleaned to only return rCTF's standard properties](https://github.com/redpwn/rctf/blob/master/server/api/challs/get.js#L15)
+  (see the clean function [here](https://github.com/redpwn/rctf/blob/master/server/challenges/index.ts#L16)).
+
+Then, this frontend fetches the admin challenges endpoint and manually injects (or otherwise handles) any additional
+properties before returning them to the client. To this end, if you want to support `prereqs` or other non-standard rCTF
+properties in your deployment, make sure you have an `env` file exporting an admin auth token like so:
+```env
+ADMIN_TOKEN=...
+```
+If you want to customize which additional properties are supported, see the [challenges page](https://github.com/ky28059/bctf/blob/main/app/challenges/page.tsx).
+
 ### Configuring
 Further config options can be edited in `/util/config.ts`:
 ```ts

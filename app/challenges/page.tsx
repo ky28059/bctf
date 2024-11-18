@@ -44,6 +44,7 @@ export default async function ChallengesPage() {
         // Inject additional properties back into client challenges
         for (const c of challs) {
             c.difficulty = adminData[c.id].difficulty;
+            c.tags = adminData[c.id].tags;
         }
     }
 

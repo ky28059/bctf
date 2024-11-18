@@ -11,8 +11,11 @@ export type Challenge = {
     sortWeight: number,
     solves: number,
     points: number,
+} & Partial<NonStandardChallProps>
 
-    difficulty?: string, // Non-standard
+type NonStandardChallProps = {
+    difficulty: string,
+    tags: string[],
 }
 
 type FileData = {

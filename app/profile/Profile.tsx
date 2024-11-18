@@ -11,7 +11,9 @@ import { AUTH_COOKIE_NAME, getConfig } from '@/util/config';
 
 
 export default async function Profile(props: ProfileData) {
-    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    const c = await cookies();
+    const token = c.get(AUTH_COOKIE_NAME)?.value;
+
     const challs = token
         ? await getChallenges(token)
         : null;

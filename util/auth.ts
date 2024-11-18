@@ -47,7 +47,8 @@ export async function register(email: string, name: string) {
     if (res.kind !== 'goodRegister')
         return { error: res.message };
 
-    cookies().set(AUTH_COOKIE_NAME, res.data.authToken);
+    const c = await cookies();
+    c.set(AUTH_COOKIE_NAME, res.data.authToken);
 
     return { ok: true };
 }
@@ -116,13 +117,16 @@ export async function login(token: string) {
     if (res.kind !== 'goodLogin')
         return { error: res.message };
 
-    cookies().set(AUTH_COOKIE_NAME, res.data.authToken);
+    const c = await cookies();
+    c.set(AUTH_COOKIE_NAME, res.data.authToken);
 
     return { ok: true };
 }
 
 export async function logout() {
-    cookies().delete(AUTH_COOKIE_NAME);
+    const c = await cookies();
+    c.delete(AUTH_COOKIE_NAME);
+
     return redirect('/');
 }
 

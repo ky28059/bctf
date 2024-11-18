@@ -16,10 +16,12 @@ export const metadata: Metadata = {
 }
 
 export default async function ScoreboardPage() {
+    const c = await cookies();
+
     const scoreboard = await getScoreboard();
     const graph = await getGraph();
 
-    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    const token = c.get(AUTH_COOKIE_NAME)?.value;
     const profile = token
         ? await getMyProfile(token)
         : undefined;

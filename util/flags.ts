@@ -21,7 +21,9 @@ export async function attemptSubmit(
     id: string,
     flag: string
 ) {
-    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    const c = await cookies();
+    const token = c.get(AUTH_COOKIE_NAME)?.value;
+
     if (!token) return { kind: 'badToken', message: 'Missing token' }; // TODO: hacky?
 
     const res: GoodFlagResponse | BadFlagResponse | CTFEndedResponse = await (await fetch(`${process.env.API_BASE}/challs/${id}/submit`, {

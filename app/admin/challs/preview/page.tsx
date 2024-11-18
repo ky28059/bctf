@@ -13,7 +13,9 @@ import { getAdminChallenges } from '@/util/admin';
 
 
 export default async function AdminChallengesPreview() {
-    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    const c = await cookies();
+
+    const token = c.get(AUTH_COOKIE_NAME)?.value;
     if (!token) return redirect('/');
 
     const challenges = await getAdminChallenges(token);

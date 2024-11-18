@@ -20,7 +20,8 @@ export const metadata: Metadata = {
 }
 
 export default async function ChallengesPage() {
-    const token = cookies().get(AUTH_COOKIE_NAME)!.value;
+    const c = await cookies();
+    const token = c.get(AUTH_COOKIE_NAME)!.value;
 
     const challenges = await getChallenges(token);
     const profile = await getMyProfile(token);

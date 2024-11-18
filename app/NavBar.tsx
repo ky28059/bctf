@@ -9,8 +9,9 @@ import LogoutButton from '@/app/LogoutButton';
 import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
-export default function NavBar() {
-    const authed = cookies().has(AUTH_COOKIE_NAME);
+export default async function NavBar() {
+    const c = await cookies();
+    const authed = c.has(AUTH_COOKIE_NAME);
 
     return (
         <NavWrapper>

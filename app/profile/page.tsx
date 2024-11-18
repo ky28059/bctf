@@ -16,7 +16,9 @@ export const metadata: Metadata = {
 }
 
 export default async function ProfilePage() {
-    const token = cookies().get(AUTH_COOKIE_NAME)!.value;
+    const c = await cookies();
+
+    const token = c.get(AUTH_COOKIE_NAME)!.value;
     const data = await getMyProfile(token);
 
     if (data.kind === 'badToken')

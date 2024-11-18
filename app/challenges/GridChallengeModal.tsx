@@ -40,6 +40,23 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                         <h1 className="text-2xl text-center mb-2 [overflow-wrap:anywhere]">
                             {props.challenge.name}
                         </h1>
+                        {props.challenge.tags && props.challenge.tags.length > 0 && (
+                            <div className="flex gap-1.5 justify-center mb-1">
+                                {props.challenge.tags.map((t) => (
+                                    <span key={t}
+                                          className="text-xs bg-theme-bright/30 text-theme-bright rounded-full font-semibold px-2 py-0.5">
+                                        {t}
+                                    </span>
+                                ))}
+                                {/*
+                                {props.challenge.difficulty && (
+                                    <span className="text-sm bg-theme-bright/30 text-theme-bright rounded-full font-semibold px-2 py-0.5">
+                                        {props.challenge.difficulty}
+                                    </span>
+                                )}
+                                */}
+                            </div>
+                        )}
                         <p className="text-lg text-center text-primary mb-6">
                             {props.challenge.points}
                         </p>

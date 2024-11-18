@@ -69,7 +69,9 @@ export type UpdateProfilePayload = {
     division?: string
 }
 export async function updateProfile(payload: UpdateProfilePayload) {
-    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    const c = await cookies();
+
+    const token = c.get(AUTH_COOKIE_NAME)?.value;
     if (!token)
         return { error: 'Not authenticated.' };
 
@@ -101,7 +103,9 @@ type DivisionNotAllowedResponse = {
 }
 
 export async function updateEmail(email: string) {
-    const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+    const c = await cookies();
+
+    const token = c.get(AUTH_COOKIE_NAME)?.value;
     if (!token)
         return { error: 'Not authenticated.' };
 

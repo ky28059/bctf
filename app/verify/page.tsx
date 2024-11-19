@@ -13,11 +13,12 @@ export const metadata: Metadata = {
     title: 'Verify'
 }
 
-export default async function Verify({ searchParams }: { searchParams: { token: string } }) {
-    if (!searchParams.token)
+export default async function Verify({ searchParams }: { searchParams: Promise<{ token: string }> }) {
+    const token = (await searchParams).token;
+    if (!token)
         return redirect('/register');
 
-    const res = await verify(searchParams.token);
+    const res = await verify(token);
     if (res.kind === 'goodEmailSet')
         return redirect('/profile');
     if (res.kind !== 'goodRegister' && res.kind !== 'goodVerify')

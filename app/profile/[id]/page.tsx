@@ -8,8 +8,8 @@ import Profile from '@/app/profile/Profile';
 import { getProfile } from '@/util/profile';
 
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-    const data = await getProfile(params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+    const data = await getProfile((await params).id);
     if (data.kind === 'badUnknownUser') return notFound();
 
     return {
@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
 }
 
-export default async function ProfilePage({ params }: { params: { id: string } }) {
-    const data = await getProfile(params.id);
+export default async function ProfilePage({ params }: { params: Promise<{ id: string }> }) {
+    const data = await getProfile((await params).id);
     if (data.kind === 'badUnknownUser') return notFound();
 
     return (

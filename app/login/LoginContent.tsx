@@ -1,7 +1,7 @@
 'use client'
 
-import { useLayoutEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { login } from '@/util/auth';
 
@@ -12,20 +12,14 @@ import IconInput from '@/components/IconInput';
 import { FaAddressCard } from 'react-icons/fa6';
 
 
-export default function LoginContent() {
+type LoginContentProps = {
+    error?: string
+}
+export default function LoginContent(props: LoginContentProps) {
     const [teamToken, setTeamToken] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(props.error ?? '');
 
     const router = useRouter();
-    const params = useSearchParams();
-
-    // Automatically sign in if the `token` URL search parameter is set.
-    useLayoutEffect(() => {
-        const token = params.get('token');
-        if (!token) return;
-
-        void loginCallback(token);
-    }, [params.get('token')]);
 
     async function loginCallback(teamToken: string) {
         const res = await login(teamToken);

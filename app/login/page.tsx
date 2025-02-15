@@ -14,7 +14,7 @@ export default async function Login({ searchParams }: { searchParams: Promise<{ 
     const error = (await searchParams).error;
 
     // Automatically sign in if the `token` search parameter is set.
-    if (token) return redirect(`/login-handler?token=${token}`)
+    if (token) return redirect(`/login-handler?token=${encodeURIComponent(token)}`)
 
     return (
         <div className="container pt-32 pb-24">

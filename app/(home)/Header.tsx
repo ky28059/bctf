@@ -24,7 +24,7 @@ export default async function Header() {
             <div className="flex divide-x divide-primary text-sm">
                 <a href="#rules" className="px-4 py-2 uppercase hover:underline">Rules</a>
                 <a href="#prizes" className="px-4 py-2 uppercase hover:underline">Prizes</a>
-                <a href="#sponsors" className="px-4 py-2 uppercase hover:underline">Sponsors</a>
+                {/* <a href="#sponsors" className="px-4 py-2 uppercase hover:underline">Sponsors</a> */}
             </div>
 
             <a href="#rules" className="text-inherit text-4xl mt-6 sm:mt-12 sm:mb-8 text-primary">

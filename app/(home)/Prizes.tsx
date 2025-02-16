@@ -16,6 +16,11 @@ export default function Prizes() {
                 Prizes
             </SectionHeader>
 
+            <p className="text-primary">
+                TBD
+            </p>
+
+            {/*
             <div className="flex flex-col lg:flex-row gap-4 mb-4">
                 <PrizeTable division="Open">
                     {openDivisionPrizes.map((p, i) => (
@@ -40,6 +45,7 @@ export default function Prizes() {
                 Prize transfers will be arranged with Venmo or Cashapp and can only be transferred to an entity in
                 the United States.
             </p>
+            */}
         </>
     )
 }

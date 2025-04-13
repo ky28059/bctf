@@ -38,6 +38,15 @@ export default function Sponsors() {
             </Sponsor>
 
             <Sponsor
+                href="https://cloud.google.com/"
+                src="/assets/sponsors/google-cloud.png"
+                name="Google Cloud"
+            >
+                Infra sponsored by <a href="https://goo.gle/ctfsponsorship" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">goo.gle/ctfsponsorship</a>.
+            </Sponsor>
+
+            {/*
+            <Sponsor
                 href="https://www.cerias.purdue.edu/"
                 src="/assets/sponsors/CERIAS.png"
                 name="CERIAS"
@@ -49,6 +58,7 @@ export default function Sponsors() {
                 faculty, students and industry partners to design, build and maintain trusted cyber/cyber-physical systems.
                 CERIAS serves as an unbiased resource to the worldwide community.
             </Sponsor>
+            */}
         </section>
     )
 }

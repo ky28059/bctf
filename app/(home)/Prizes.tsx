@@ -3,12 +3,7 @@ import SectionHeader from '@/components/SectionHeader';
 
 
 export default function Prizes() {
-    const openDivisionPrizes = ['$400', '$200', '$100'];
-    const purdueDivisionPrizes = [
-        '4x Three Month Tryhackme Premium Vouchers',
-        '4x Two Month Tryhackme Premium Vouchers',
-        '4x One month Tryhackme Premium Vouchers'
-    ];
+    const openDivisionPrizes = ['$600', '$300', '$100'];
 
     return (
         <>
@@ -16,11 +11,6 @@ export default function Prizes() {
                 Prizes
             </SectionHeader>
 
-            <p className="text-primary">
-                TBD
-            </p>
-
-            {/*
             <div className="flex flex-col lg:flex-row gap-4 mb-4">
                 <PrizeTable division="Open">
                     {openDivisionPrizes.map((p, i) => (
@@ -30,22 +20,15 @@ export default function Prizes() {
                         </div>
                     ))}
                 </PrizeTable>
-
-                <PrizeTable division="Purdue">
-                    {purdueDivisionPrizes.map((p, i) => (
-                        <div className="table-row bg-black/20 divide-x divide-secondary" key={i}>
-                            <div className="table-cell p-2 border-t border-secondary text-right">{i + 1}.</div>
-                            <div className="table-cell px-4 py-2 border-t border-secondary">{p}</div>
-                        </div>
-                    ))}
-                </PrizeTable>
             </div>
 
-            <p className="text-sm text-primary">
-                Prize transfers will be arranged with Venmo or Cashapp and can only be transferred to an entity in
-                the United States.
+            <p className="mb-3">
+                There will also be a $100 prize for the top 5 challenge writeups submitted after the competition.
             </p>
-            */}
+
+            <p className="text-sm text-primary">
+                Prize transfers can only be arranged with entities in the United States.
+            </p>
         </>
     )
 }

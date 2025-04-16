@@ -16,14 +16,15 @@ export default function Rules() {
                     Each team must have a valid email address that should serve as the point of contact.
                 </li>
                 <li>
-                    For the <strong>Open</strong> division: there is no limit on team size, and teams can be from
-                    anywhere.
+                    There is no limit on team size, and teams can be from anywhere.
                 </li>
+                {/*
                 <li>
                     For the <strong>Purdue</strong> division: teams must be composed of current Purdue students to be
                     eligible for prizes, and there is a maximum team size of 4. Sign up with a @purdue.edu email to
                     gain access to the Purdue division.
                 </li>
+                */}
                 <li>
                     Flags are of the format{' '}
                     <code className="bg-black/40 px-2 py-1 text-primary rounded">{'bctf{[ -~]+}'}</code>{' '}

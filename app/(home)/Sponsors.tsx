@@ -29,7 +29,7 @@ export default function Sponsors() {
             >
                 OtterSec secures critical blockchain infrastructure — from custom compilers to novel virtual machines,
                 we review a wide range of difficult targets. Our team consists largely of CTF players that enjoy solving
-                hard problems. If that sounds like you, please apply through our careers page.
+                hard problems. If that sounds like you, please apply through our <a href="https://osec.io/careers" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">careers page</a>.
             </Sponsor>
 
             <Sponsor

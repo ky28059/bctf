@@ -23,6 +23,24 @@ export default function Sponsors() {
             </Sponsor>
 
             <Sponsor
+                href="https://osec.io/"
+                src="/assets/sponsors/ottersec.svg"
+                name="OtterSec"
+            >
+                OtterSec secures critical blockchain infrastructure — from custom compilers to novel virtual machines,
+                we review a wide range of difficult targets. Our team consists largely of CTF players that enjoy solving
+                hard problems. If that sounds like you, please apply through our careers page.
+            </Sponsor>
+
+            <Sponsor
+                href="https://cloud.google.com/"
+                src="/assets/sponsors/google-cloud.png"
+                name="Google Cloud"
+            >
+                Infra sponsored by <a href="https://goo.gle/ctfsponsorship" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">goo.gle/ctfsponsorship</a>.
+            </Sponsor>
+
+            <Sponsor
                 href="https://www.cc-sw.com/"
                 src="/assets/sponsors/caesar-creek.jpg"
                 name="Caesar Creek Software"
@@ -38,11 +56,19 @@ export default function Sponsors() {
             </Sponsor>
 
             <Sponsor
-                href="https://cloud.google.com/"
-                src="/assets/sponsors/google-cloud.png"
-                name="Google Cloud"
+                href="https://www.blackwired.com/"
+                src="/assets/sponsors/blackwired_combined.png"
+                name="Blackwired"
             >
-                Infra sponsored by <a href="https://goo.gle/ctfsponsorship" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">goo.gle/ctfsponsorship</a>.
+                Blackwired's solutions are designed to shield what matters most to your organization. Our cyber
+                solutions deliver enterprises, governments, and managed service providers an unparalleled balance of
+                security and value. ThirdWatch, a Blackwired solution, provides an intuitive, real-time command center
+                that maps Direct Threat Risk Management while consolidating and prioritizing attack vectors. Designed
+                for rapid decision making, it transforms complex security data into a refined, actionable visual
+                interface, ensuring you stay ahead of emerging threats with unmatched clarity and control. Unlike
+                traditional security solutions that rely on intrusive scans or reactive measures, ThirdWatch monitors
+                potential hazards in real-time, providing organizations with preventative and comprehensive 360° and 3D
+                visualization of their risk exposure.
             </Sponsor>
 
             {/*

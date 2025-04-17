@@ -84,6 +84,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
         <FlagDispatchContext.Provider value={{ rejectFlag, acceptFlag, dispatchNotif }}>
             {Array(6).fill(0).map((_, i) => (
                 <video
+                    hidden
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToRejectVideos}
                     onPlay={(e) => e.currentTarget.hidden = false}
@@ -96,6 +97,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
             ))}
             {Array(4).fill(0).map((_, i) => (
                 <video
+                    hidden
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToAcceptVideos}
                     onPlay={(e) => e.currentTarget.hidden = false}
@@ -108,6 +110,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
             ))}
 
             <video
+                hidden
                 className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                 ref={appleBottomJeansRef}
                 onPlay={(e) => e.currentTarget.hidden = false}
@@ -117,6 +120,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
                 <source src="/assets/videos/special-chrome.webm" type="video/webm" />
             </video>
             <video
+                hidden
                 className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                 ref={gunRef}
                 onPlay={(e) => e.currentTarget.hidden = false}

@@ -95,7 +95,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
                     <source src={`/assets/videos/failed${i + 1}-chrome.webm`} type="video/webm" />
                 </video>
             ))}
-            {Array(4).fill(0).map((_, i) => (
+            {Array(6).fill(0).map((_, i) => (
                 <video
                     hidden
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"

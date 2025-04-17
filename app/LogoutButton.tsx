@@ -21,7 +21,7 @@ export default function LogoutButton() {
     return (
         <>
             <button
-                className="px-4 py-2 border-b-2 transition duration-200 border-primary text-primary hover:border-white hover:text-white"
+                className="flex-none px-4 py-2 border-b-2 transition duration-200 border-primary text-primary hover:border-white hover:text-white"
                 onClick={() => setOpen(true)}
             >
                 Log out

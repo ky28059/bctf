@@ -12,6 +12,8 @@ const config: Config = {
         extend: {
             animation: {
                 "loop-scroll": "loop-scroll 45s linear infinite",
+                "mark-rotate": "mark-rotate 8s ease-in-out alternate infinite",
+                "mark-pivot-rotate": "mark-pivot-rotate 9s ease-in-out alternate infinite"
             },
             keyframes: {
                 "loop-scroll": {
@@ -23,6 +25,14 @@ const config: Config = {
                         transform: "translateY(calc(0.3526 * var(--tw-scale-y) * max(100vh, 100vw))) translateX(calc(0.075 * var(--tw-scale-x) * max(100vh, 100vw))) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))"
                     },
                 },
+                "mark-rotate": {
+                    from: { transform: 'rotateY(-30deg)' },
+                    to: { transform: 'rotateY(30deg)' }
+                },
+                "mark-pivot-rotate": {
+                    from: { transform: 'rotateZ(8deg)' },
+                    to: { transform: 'rotateZ(-8deg)' }
+                }
             },
             colors: {
                 background: '#111',

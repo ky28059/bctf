@@ -43,8 +43,7 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                         {props.challenge.tags && props.challenge.tags.length > 0 && (
                             <div className="flex gap-1.5 justify-center mb-1">
                                 {props.challenge.tags.map((t) => (
-                                    <span key={t}
-                                          className="text-xs bg-theme-bright/30 text-theme-bright rounded-full font-semibold px-2 py-0.5">
+                                    <span key={t} className="text-xs bg-theme-bright/30 text-theme-bright rounded-full font-semibold px-2 py-0.5">
                                         {t}
                                     </span>
                                 ))}

@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, ReactElement, ReactNode, useRef, useState } from 'react';
+import { Fragment, ReactElement, ReactNode, useRef, useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 
 // Utils
@@ -74,11 +74,18 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
 
     function appendToRejectVideos(r: HTMLVideoElement) {
         rejectVideoRefs.current.push(r);
+        r.hidden = true;
     }
 
     function appendToAcceptVideos(r: HTMLVideoElement) {
         acceptVideoRefs.current.push(r);
+        r.hidden = true;
     }
+
+    useEffect(() => {
+        appleBottomJeansRef.current!.hidden = true;
+        gunRef.current!.hidden = true;
+    }, []);
 
     return (
         <FlagDispatchContext.Provider value={{ rejectFlag, acceptFlag, dispatchNotif }}>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext } from 'react';
-import { DM_Mono, Geist_Mono, Martian_Mono, Reddit_Mono, Roboto_Mono } from 'next/font/google';
+import { Reddit_Mono } from 'next/font/google';
 import { DateTime } from 'luxon';
 import { useIsMounted } from '@/hooks/useIsMounted';
 import CurrentTimeContext from '@/contexts/CurrentTimeContext';

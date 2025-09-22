@@ -35,7 +35,7 @@ export default function DivisionSelector(props: DivisionSelectorProps) {
 
                 {props.divisions.map((d) => (
                     <Listbox.Option
-                        className="px-6 py-1 cursor-pointer text-primary hover:text-white hover:bg-blue-500/30 ui-selected:bg-blue-500 ui-selected:text-white transition duration-200"
+                        className="px-6 py-1 cursor-pointer text-primary hover:text-white hover:bg-blue-500/30 data-selected:bg-blue-500 data-selected:text-white transition duration-200"
                         value={d}
                         key={d}
                     >

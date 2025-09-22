@@ -18,7 +18,7 @@ export default function Challenge(props: Challenge & { solved: boolean }) {
     return (
         <div className="bg-black/50 px-6 py-4 rounded border border-tertiary backdrop-blur-sm">
             <div className="flex items-center gap-2">
-                <h3 className="font-semibold [overflow-wrap:anywhere] flex gap-2">
+                <h3 className="font-semibold wrap-anywhere flex gap-2">
                     {props.category}/{props.name}
                     {props.tags && props.tags.length > 0 && (
                         <div>

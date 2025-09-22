@@ -36,7 +36,7 @@ export default function ProfileStats(props: ProfileData & { challs: Challenge[] 
     }, [props.solves]);
 
     return (
-        <ResponsiveContainer height={275} className="flex-none text-xs lg:!w-[350px] ml-4 lg:ml-6 lg:-my-6">
+        <ResponsiveContainer height={275} className="flex-none text-xs lg:w-[350px]! ml-4 lg:ml-6 lg:-my-6">
             <RadarChart data={data}>
                 <PolarGrid opacity={0.5} />
                 <PolarAngleAxis dataKey="name" />

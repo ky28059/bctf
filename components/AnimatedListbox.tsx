@@ -14,7 +14,7 @@ export default function AnimatedListbox(props: AnimatedListboxProps) {
     return (
         <ListboxOptions
             transition
-            className={`transition ease-out duration-100 data-[closed]:opacity-0` + (props.className ? ` ${props.className}` : '')}
+            className={`transition ease-out duration-100 data-closed:opacity-0` + (props.className ? ` ${props.className}` : '')}
             modal={props.modal ?? false}
         >
             {props.children}

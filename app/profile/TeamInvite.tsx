@@ -22,9 +22,9 @@ export default function TeamInvite(props: { token: string }) {
 
             <Disclosure as="div" className="flex flex-col gap-2">
                 <div className="flex gap-2">
-                    <Disclosure.Button className="w-full flex items-center gap-2 bg-black/30 px-3 py-2 rounded text-primary text-sm font-semibold hover:text-white hover:bg-black/40 transition duration-200">
+                    <Disclosure.Button className="group w-full flex items-center gap-2 bg-black/30 px-3 py-2 rounded text-primary text-sm font-semibold hover:text-white hover:bg-black/40 transition duration-200">
                         Reveal
-                        <BsChevronUp className="bg-black/30 p-0.5 rounded-full ml-auto ui-open:rotate-180 transition duration-200" />
+                        <BsChevronUp className="bg-black/30 p-0.5 rounded-full ml-auto group-aria-expanded:rotate-180 transition duration-200" />
                     </Disclosure.Button>
 
                     <button

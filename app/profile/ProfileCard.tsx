@@ -24,7 +24,7 @@ export default function ProfileCard(props: ProfileCardProps) {
 
     return (
         <div className="bg-black/30 pl-12 pr-12 lg:pr-4 py-8 rounded-md flex flex-col lg:flex-row">
-            <div className="flex-grow w-full">
+            <div className="grow w-full">
                 <h1 className="text-2xl font-bold border-b border-secondary pb-1 mb-4">
                     {props.name}
                 </h1>

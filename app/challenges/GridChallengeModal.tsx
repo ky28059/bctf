@@ -32,12 +32,12 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                     <ChallengeTab>
                         {props.challenge.solves} Solve{props.challenge.solves === 1 ? '' : 's'}
                     </ChallengeTab>
-                    <div className="border-b border-secondary flex-grow" />
+                    <div className="border-b border-secondary grow" />
                 </Tab.List>
 
                 <Tab.Panels>
                     <Tab.Panel>
-                        <h1 className="text-2xl text-center mb-2 [overflow-wrap:anywhere]">
+                        <h1 className="text-2xl text-center mb-2 wrap-anywhere">
                             {props.challenge.name}
                         </h1>
                         {props.challenge.tags && props.challenge.tags.length > 0 && (
@@ -93,7 +93,7 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
 
 function ChallengeTab(props: { children: ReactNode }) {
     return (
-        <Tab className="rounded-t ui-selected:border-t ui-selected:border-x ui-not-selected:border-b ui-not-selected:text-primary transition duration-200 border-secondary px-4 py-2">
+        <Tab className="rounded-t border-b text-primary aria-selected:border-t aria-selected:border-x aria-selected:border-b-transparent aria-selected:text-white transition duration-200 border-secondary px-4 py-2">
             {props.children}
         </Tab>
     )

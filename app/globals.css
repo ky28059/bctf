@@ -1,7 +1,53 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 :root {
     color-scheme: dark;
+}
+
+@layer base {
+    button {
+        @apply cursor-pointer;
+    }
+}
+
+@theme {
+    --color-background: #111;
+    --color-theme: #c22026;
+    --color-theme-dark: #9A1B1F;
+    --color-theme-bright: #ff1e1e;
+    --color-success: #0dd157;
+    --color-primary: #BABABA;
+    --color-secondary: #757575;
+    --color-tertiary: #404040;
+
+    /* CTF background scroll animation */
+    --animate-loop-scroll: loop-scroll 45s linear infinite;
+
+    @keyframes loop-scroll {
+        0% {
+            transform: translateY(0) translateX(0) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+        }
+        100% {
+            /* Translate x: 7.5 * scale
+               Translate y: 35.26 * scale */
+            transform: translateY(calc(0.3526 * var(--tw-scale-y) * max(100vh, 100vw))) translateX(calc(0.075 * var(--tw-scale-x) * max(100vh, 100vw))) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+        }
+    }
+
+    --animate-mark-rotate: mark-rotate 8s ease-in-out alternate infinite;
+    --animate-mark-pivot-rotate: mark-pivot-rotate 9s ease-in-out alternate infinite;
+
+    @keyframes mark-rotate {
+        0% { transform: rotateY(-30deg) }
+        100% { transform: rotateY(30deg) }
+    }
+
+    @keyframes mark-pivot-rotate {
+        0% { transform: rotateZ(8deg) }
+        100% { transform: rotateZ(-8deg) }
+    }
+}
+
+@utility container {
+    margin: 0 auto;
 }

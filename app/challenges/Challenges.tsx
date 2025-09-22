@@ -51,7 +51,7 @@ export default function Challenges(props: ChallengesProps) {
     }, [filtered]);
 
     return (
-        <div className="flex flex-col gap-3 flex-grow min-w-0">
+        <div className="flex flex-col gap-3 grow min-w-0">
             {preferences.grid ? Object.entries(grouped).map(([category, challs]) => (
                 <section key={category}>
                     <h2 className="text-2xl font-mono mb-3">

@@ -31,7 +31,7 @@ export default async function Header() {
                 b<span style={martian.style} className="text-white/65 text-[5.6rem] mt-1.5">01</span>lers CTF
                 <AiFillFlag className="text-theme ml-2" />
             </h1>
-            <div className="absolute translate-x-1/2 translate-y-1/2 animate-mark-pivot-rotate -z-10 opacity-60">
+            <div className="absolute animate-mark-pivot-rotate -z-10 opacity-60">
                 <img
                     src="/assets/logo-new.png"
                     className="max-h-[80vh] animate-mark-rotate drop-shadow-[0_0px_4px_#ff1e1e]"

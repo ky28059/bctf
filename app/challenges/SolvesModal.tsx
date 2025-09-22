@@ -19,7 +19,7 @@ export default function SolvesModal(props: SolvesModalProps) {
             isOpen={props.open}
             setIsOpen={props.setOpen}
         >
-            <h1 className="flex gap-2 items-center text-2xl font-bold mb-4 [overflow-wrap:anywhere]">
+            <h1 className="flex gap-2 items-center text-2xl font-bold mb-4 wrap-anywhere">
                 Solves for {props.challenge.name}
 
                 <span className="flex-none text-sm px-2 py-0.5 bg-theme-bright/25 text-theme-bright font-semibold rounded-full">

@@ -10,7 +10,7 @@ export default function ScoreboardGraph(props: { graph: GraphEntryData[] }) {
     const [focused, setFocused] = useState<string | undefined>(undefined);
 
     return (
-        <div className="h-[32rem] bg-black/30 rounded p-4 sm:p-8 backdrop-blur-sm">
+        <div className="h-128 bg-black/30 rounded p-4 sm:p-8 backdrop-blur-sm">
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                     width={500}
@@ -37,7 +37,7 @@ export default function ScoreboardGraph(props: { graph: GraphEntryData[] }) {
                     />
                     <Tooltip
                         labelFormatter={(t) => DateTime.fromMillis(t).toLocaleString(DateTime.DATETIME_FULL)}
-                        wrapperClassName="!bg-background !border-tertiary rounded !px-4 !py-2 text-sm [&>ul]:!pt-1"
+                        wrapperClassName="!bg-background !border-tertiary rounded px-4! py-2! text-sm [&>ul]:pt-1!"
                         labelClassName="text-xs pb-1 text-secondary border-b border-secondary"
                     />
                     <Legend

@@ -21,7 +21,7 @@ export default async function Profile(props: ProfileData) {
     const config = await getConfig();
 
     return (
-        <div className="flex flex-col gap-4 flex-grow">
+        <div className="flex flex-col gap-4 grow">
             <ProfileCard
                 {...props}
                 challs={challs?.data}

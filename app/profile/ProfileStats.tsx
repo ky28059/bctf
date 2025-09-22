@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import {
     PolarAngleAxis,
     PolarGrid,
+    PolarRadiusAxis,
     Radar,
     RadarChart,
     ResponsiveContainer,
@@ -39,6 +40,7 @@ export default function ProfileStats(props: ProfileData & { challs: Challenge[] 
             <RadarChart data={data}>
                 <PolarGrid opacity={0.5} />
                 <PolarAngleAxis dataKey="name" />
+                <PolarRadiusAxis domain={[0, 1]} axisLine={false} tick={false} />
                 <Radar
                     dataKey="percent"
                     stroke="#c22026"

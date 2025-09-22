@@ -54,12 +54,12 @@ export default function ScoreboardContent(props: ScoreboardContentProps) {
     }
 
     // Re-fetch and merge scoreboard data periodically
-    const router = useRouter();
-    useEffect(() => {
-        router.refresh(); // TODO: don't call this always to avoid excess rerenders?
-        const id = setInterval(() => router.refresh(), 1000 * 60);
-        return () => clearInterval(id);
-    }, []);
+    // const router = useRouter();
+    // useEffect(() => {
+    //     router.refresh(); // TODO: don't call this always to avoid excess rerenders?
+    //     const id = setInterval(() => router.refresh(), 1000 * 60);
+    //     return () => clearInterval(id);
+    // }, []);
 
     return (
         <>

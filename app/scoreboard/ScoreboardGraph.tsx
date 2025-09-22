@@ -7,7 +7,7 @@ import type { GraphEntryData } from '@/util/scoreboard';
 
 
 export default function ScoreboardGraph(props: { graph: GraphEntryData[] }) {
-    const [focused, setFocused] = useState('');
+    const [focused, setFocused] = useState<string | undefined>(undefined);
 
     return (
         <div className="h-[32rem] bg-black/30 rounded p-4 sm:p-8 backdrop-blur-sm">
@@ -42,7 +42,7 @@ export default function ScoreboardGraph(props: { graph: GraphEntryData[] }) {
                     />
                     <Legend
                         onMouseEnter={(data) => setFocused(data.value)}
-                        onMouseLeave={() => setFocused('')}
+                        onMouseLeave={() => setFocused(undefined)}
                     />
                     {props.graph.map((p, i) => (
                         <Line

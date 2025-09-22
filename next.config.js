@@ -1,4 +1,4 @@
-const RCTF_BASE = 'http://ctf.b01lers.com:9000';
+const RCTF_BASE = 'https://rctf-internal.b01lers.com';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,7 +16,7 @@ const nextConfig = {
         return [
             {
                 source: '/api/v1/:path*',
-                destination: `${this.env.API_BASE}/:path*`
+                destination: `${RCTF_BASE}/api/v1/:path*`
             },
             {
                 source: '/uploads',
@@ -26,4 +26,4 @@ const nextConfig = {
     }
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;

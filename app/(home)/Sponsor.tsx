@@ -17,7 +17,7 @@ export default function Sponsor(props: SponsorProps) {
                 rel="noopener noreferrer"
             />
             <img
-                className="w-48 h-max flex-none"
+                className="w-48 flex-none"
                 src={props.src}
                 alt={props.name}
             />

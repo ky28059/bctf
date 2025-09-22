@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react';
-import { Tab } from '@headlessui/react';
+import { Tab, TabGroup, TabList, TabPanels, TabPanel } from '@headlessui/react';
 import Markdown from 'react-markdown';
 import type { Challenge } from '@/util/challenges';
 
@@ -26,17 +26,17 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
             isOpen={props.open}
             setIsOpen={props.setOpen}
         >
-            <Tab.Group>
-                <Tab.List className="mb-6 flex">
+            <TabGroup>
+                <TabList className="mb-6 flex">
                     <ChallengeTab>Challenge</ChallengeTab>
                     <ChallengeTab>
                         {props.challenge.solves} Solve{props.challenge.solves === 1 ? '' : 's'}
                     </ChallengeTab>
                     <div className="border-b border-secondary grow" />
-                </Tab.List>
+                </TabList>
 
-                <Tab.Panels>
-                    <Tab.Panel>
+                <TabPanels>
+                    <TabPanel>
                         <h1 className="text-2xl text-center mb-2 wrap-anywhere">
                             {props.challenge.name}
                         </h1>
@@ -80,20 +80,20 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                         )}
 
                         <FlagSubmissionInput challenge={props.challenge} />
-                    </Tab.Panel>
+                    </TabPanel>
 
-                    <Tab.Panel>
+                    <TabPanel>
                         <SolvesContent challenge={props.challenge} />
-                    </Tab.Panel>
-                </Tab.Panels>
-            </Tab.Group>
+                    </TabPanel>
+                </TabPanels>
+            </TabGroup>
         </CenteredModal>
     )
 }
 
 function ChallengeTab(props: { children: ReactNode }) {
     return (
-        <Tab className="rounded-t border-b text-primary aria-selected:border-t aria-selected:border-x aria-selected:border-b-transparent aria-selected:text-white transition duration-200 border-secondary px-4 py-2">
+        <Tab className="rounded-t border-b text-primary aria-selected:border-t aria-selected:border-x aria-selected:border-b-transparent aria-selected:text-white transition-[color] duration-200 border-secondary px-4 py-2 focus:outline-none">
             {props.children}
         </Tab>
     )

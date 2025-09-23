@@ -118,7 +118,7 @@ export async function login(token: string) {
         return { error: res.message };
 
     const c = await cookies();
-    c.set(AUTH_COOKIE_NAME, res.data.authToken);
+    c.set(AUTH_COOKIE_NAME, res.data.authToken, { maxAge: 16070400 }); // ~6 months
 
     return { ok: true };
 }

@@ -37,6 +37,7 @@ export default function ScoreboardGraph(props: { graph: GraphEntryData[] }) {
                     />
                     <Tooltip
                         labelFormatter={(t) => DateTime.fromMillis(t).toLocaleString(DateTime.DATETIME_FULL)}
+                        itemSorter={(t) => -(t.value ?? 0)}
                         wrapperClassName="bg-background! border-tertiary! rounded px-4! py-2! text-sm [&>ul]:pt-1!"
                         labelClassName="text-xs pb-1 text-secondary border-b border-secondary"
                     />

@@ -43,6 +43,7 @@ export default function ScoreboardGraph(props: { graph: GraphEntryData[] }) {
                     <Legend
                         onMouseEnter={(data) => setFocused(data.value)}
                         onMouseLeave={() => setFocused(undefined)}
+                        itemSorter={(data) => props.graph.findIndex(s => s.name === data.value)}
                     />
                     {props.graph.map((p, i) => (
                         <Line

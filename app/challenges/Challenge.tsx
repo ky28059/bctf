@@ -50,9 +50,11 @@ export default function Challenge(props: Challenge & { solved: boolean }) {
 
             <hr className="my-3 border-secondary" />
 
-            <Markdown className="text-sm break-words space-y-2 [&_a]:text-theme-bright [&_a:hover]:underline [&_code]:px-2 [&_code]:py-1 [&_code]:bg-black/40 [&_code]:text-primary [&_code]:rounded">
-                {props.description}
-            </Markdown>
+            <div className="text-sm break-words space-y-2 [&_a]:text-theme-bright [&_a:hover]:underline [&_code]:px-2 [&_code]:py-1 [&_code]:bg-black/40 [&_code]:text-primary [&_code]:rounded">
+                <Markdown>
+                    {props.description}
+                </Markdown>
+            </div>
 
             <FlagSubmissionInput
                 challenge={props}

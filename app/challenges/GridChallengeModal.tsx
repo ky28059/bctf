@@ -60,9 +60,11 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
                             {props.challenge.points}
                         </p>
 
-                        <Markdown className="text-sm break-words space-y-2 [&_a]:text-theme-bright [&_a:hover]:underline [&_code]:px-2 [&_code]:py-1 [&_code]:bg-black/40 [&_code]:text-primary [&_code]:rounded mb-6">
-                            {props.challenge.description}
-                        </Markdown>
+                        <div className="text-sm break-words space-y-2 [&_a]:text-theme-bright [&_a:hover]:underline [&_code]:px-2 [&_code]:py-1 [&_code]:bg-black/40 [&_code]:text-primary [&_code]:rounded mb-6">
+                            <Markdown>
+                                {props.challenge.description}
+                            </Markdown>
+                        </div>
 
                         {props.challenge.files.length > 0 && (
                             <div className="flex flex-wrap gap-2 mb-4">

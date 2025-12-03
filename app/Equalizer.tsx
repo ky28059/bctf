@@ -176,14 +176,14 @@ function hslToRGB(hsl: HSL) {
         b = x;
     }
 
-    r = normalize_rgb_value(r, m);
-    g = normalize_rgb_value(g, m);
-    b = normalize_rgb_value(b, m);
+    r = normalizeRGBValue(r, m);
+    g = normalizeRGBValue(g, m);
+    b = normalizeRGBValue(b, m);
 
     return rgbToHex(r, g, b);
 }
 
-function normalize_rgb_value(color: number, m: number) {
+function normalizeRGBValue(color: number, m: number) {
     return Math.max(
         Math.floor((color + m) * 255),
         0

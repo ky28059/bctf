@@ -48,7 +48,7 @@ export async function register(email: string, name: string) {
         return { error: res.message };
 
     const c = await cookies();
-    c.set(AUTH_COOKIE_NAME, res.data.authToken);
+    c.set(AUTH_COOKIE_NAME, res.data.authToken, { maxAge: 16070400 });
 
     return { ok: true };
 }

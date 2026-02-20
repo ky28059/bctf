@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: ReactNode }) {
     return (
-        <html lang="en" className="h-full overflow-y-scroll scroll-smooth">
+        <html lang="en" className="h-full scroll-smooth">
             <body
-                className="bg-linear-to-b/srgb from-background from-25% to-theme bg-fixed text-white h-full flex flex-col"
+                className="group bg-linear-to-b/srgb from-background from-25% to-theme bg-fixed text-white h-full flex flex-col overflow-y-scroll"
                 style={inter.style}
             >
                 <TimeProvider>

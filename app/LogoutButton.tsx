@@ -29,8 +29,8 @@ export default function LogoutButton() {
 
             <CenteredModal
                 className="relative bg-background rounded-lg px-12 py-8 text-white shadow-lg w-full max-w-xl max-h-[90%]"
-                isOpen={open}
-                setIsOpen={setOpen}
+                open={open}
+                setOpen={setOpen}
             >
                 <h1 className="text-2xl font-bold mb-4">
                     Log out

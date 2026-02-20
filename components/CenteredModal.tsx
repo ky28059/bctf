@@ -1,34 +1,26 @@
 import type { ReactNode } from 'react';
-import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
+import { Dialog } from 'radix-ui';
 
 
-// A reusable component to wrap a transition and dialog overlay around a screen-centered div.
 type CenteredModalProps = {
-    isOpen: boolean,
-    setIsOpen: (isOpen: boolean) => void,
+    open: boolean,
+    setOpen: (open: boolean) => void,
     className: string,
     children: ReactNode
 }
 export default function CenteredModal(props: CenteredModalProps) {
-    const { isOpen, setIsOpen, className, children } = props;
-
     return (
-        <Dialog
-            className="fixed z-40 inset-0 flex items-center justify-center"
-            open={isOpen}
-            onClose={() => setIsOpen(false)}
+        <Dialog.Root
+            open={props.open}
+            onOpenChange={props.setOpen}
         >
-            <DialogBackdrop
-                transition
-                className="fixed inset-0 bg-black/40 transition duration-300 data-closed:duration-200 ease-out data-closed:ease-in data-closed:opacity-0"
-            />
+            <Dialog.Portal>
+                <Dialog.Overlay className="fixed inset-0 bg-black/85 animate-dialog-overlay data-[state=closed]:animate-dialog-overlay-out" />
 
-            <DialogPanel
-                transition
-                className={className + ' transition duration-300 data-closed:duration-200 ease-out data-closed:ease-in data-closed:scale-95 data-closed:opacity-0'}
-            >
-                {children}
-            </DialogPanel>
-        </Dialog>
+                <Dialog.Content className={props.className + ' fixed top-1/2 left-1/2 -translate-1/2 animate-dialog-content data-[state=closed]:animate-dialog-content-out focus:outline-none'}>
+                    {props.children}
+                </Dialog.Content>
+            </Dialog.Portal>
+        </Dialog.Root>
     )
 }

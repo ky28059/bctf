@@ -1,6 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react';
+import { Dialog } from 'radix-ui';
 import { Tab, TabGroup, TabList, TabPanels, TabPanel } from '@headlessui/react';
 import Markdown from 'react-markdown';
 import type { Challenge } from '@/util/challenges';
@@ -22,9 +23,9 @@ type GridChallengeModalProps = {
 export default function GridChallengeModal(props: GridChallengeModalProps) {
     return (
         <CenteredModal
-            className="relative bg-background rounded-lg p-10 text-white shadow-lg w-full max-w-xl max-h-[90%]"
-            isOpen={props.open}
-            setIsOpen={props.setOpen}
+            className="bg-background rounded-lg p-10 text-white shadow-lg w-full max-w-xl max-h-[90%]"
+            open={props.open}
+            setOpen={props.setOpen}
         >
             <TabGroup>
                 <TabList className="mb-6 flex">
@@ -37,9 +38,9 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
 
                 <TabPanels>
                     <TabPanel>
-                        <h1 className="text-2xl text-center mb-2 wrap-anywhere">
+                        <Dialog.Title className="text-2xl text-center mb-2 wrap-anywhere">
                             {props.challenge.name}
-                        </h1>
+                        </Dialog.Title>
                         {props.challenge.tags && props.challenge.tags.length > 0 && (
                             <div className="flex gap-1.5 justify-center mb-1">
                                 {props.challenge.tags.map((t) => (

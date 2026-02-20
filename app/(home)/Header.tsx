@@ -47,7 +47,7 @@ export default async function Header() {
                 endTime={config.data.endTime}
             />
 
-            <a href="#rules" className="absolute inset-x-0 mx-auto w-max bottom-12 text-inherit text-4xl text-primary">
+            <a href="#rules" className="absolute inset-x-0 mx-auto w-max bottom-12 text-4xl text-primary">
                 <BsChevronCompactDown className="animate-bounce" />
                 <span className="sr-only">Jump to Rules</span>
             </a>

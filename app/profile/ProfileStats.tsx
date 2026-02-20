@@ -40,7 +40,7 @@ export default function ProfileStats(props: ProfileData & { challs: Challenge[] 
             <RadarChart data={data}>
                 <PolarGrid opacity={0.5} />
                 <PolarAngleAxis dataKey="name" />
-                <PolarRadiusAxis domain={[0, 1]} axisLine={false} tick={false} />
+                <PolarRadiusAxis allowDecimals domain={[0, 1]} axisLine={false} tick={false} />
                 <Radar
                     dataKey="percent"
                     stroke="#c22026"
@@ -48,10 +48,10 @@ export default function ProfileStats(props: ProfileData & { challs: Challenge[] 
                     fillOpacity={0.6}
                 />
                 <Tooltip
-                    wrapperClassName="!bg-background rounded !border-secondary"
+                    wrapperClassName="bg-background! rounded border-secondary!"
                     labelClassName="text-primary"
                     allowEscapeViewBox={{ x: true, y: true }}
-                    formatter={(percent: number, _) => [(percent * 100).toFixed(2) + '%', 'Percent solved']}
+                    formatter={(percent: number | undefined, _) => [((percent ?? 0) * 100).toFixed(2) + '%', 'Percent solved']}
                 />
             </RadarChart>
         </ResponsiveContainer>

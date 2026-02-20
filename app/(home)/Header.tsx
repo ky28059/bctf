@@ -28,7 +28,7 @@ export default async function Header() {
                 className="flex text-5xl md:text-8xl font-bold text-white/50 bg-clip-text mb-4 mt-16 drop-shadow-md"
                 style={hubot.style}
             >
-                b<span style={martian.style} className="text-white/65 text-[5.6rem] mt-1.5">01</span>lers CTF
+                b<span style={martian.style} className="text-white/65 text-[0.925em] mt-[0.075em]">01</span>lers CTF
                 <AiFillFlag className="text-theme ml-2" />
             </h1>
             <div className="absolute animate-mark-pivot-rotate -z-10 opacity-60">

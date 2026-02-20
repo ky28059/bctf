@@ -9,6 +9,7 @@ export default function Sponsors() {
                 Sponsors
             </SectionHeader>
 
+            {/*
             <Sponsor
                 href="https://www.zellic.io/"
                 src="/assets/sponsors/zellic.svg"
@@ -69,20 +70,6 @@ export default function Sponsors() {
                 traditional security solutions that rely on intrusive scans or reactive measures, ThirdWatch monitors
                 potential hazards in real-time, providing organizations with preventative and comprehensive 360° and 3D
                 visualization of their risk exposure.
-            </Sponsor>
-
-            {/*
-            <Sponsor
-                href="https://www.cerias.purdue.edu/"
-                src="/assets/sponsors/CERIAS.png"
-                name="CERIAS"
-            >
-                The Center for Education and Research in Information Assurance and Security (CERIAS), a cross-cutting
-                institute at Purdue University, is the world’s foremost interdisciplinary academic center for cyber and
-                cyber-physical systems; more than a hundred researchers addressing issues of security, privacy, resiliency,
-                trusted electronics, autonomy and explainable artificial intelligence. CERIAS brings together world-class
-                faculty, students and industry partners to design, build and maintain trusted cyber/cyber-physical systems.
-                CERIAS serves as an unbiased resource to the worldwide community.
             </Sponsor>
             */}
         </section>

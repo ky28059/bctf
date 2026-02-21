@@ -25,12 +25,12 @@
 
     @keyframes loop-scroll {
         0% {
-            transform: translateY(0) translateX(0) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+            transform: translateY(0) translateX(0)
         }
         100% {
             /* Translate x: 7.5 * scale
                Translate y: 35.26 * scale */
-            transform: translateY(calc(0.3526 * var(--tw-scale-y) * max(100vh, 100vw))) translateX(calc(0.075 * var(--tw-scale-x) * max(100vh, 100vw))) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+            transform: translateY(calc(0.3526 * max(100vh, 100vw))) translateX(calc(0.075 * max(100vh, 100vw)))
         }
     }
 
@@ -57,11 +57,6 @@
     --animate-slide-right-fade: slide-right-fade 400ms cubic-bezier(0.16, 1, 0.3, 1);
     --animate-slide-down-fade: slide-down-fade 400ms cubic-bezier(0.16, 1, 0.3, 1);
     --animate-slide-left-fade: slide-left-fade 400ms cubic-bezier(0.16, 1, 0.3, 1);
-
-    @keyframes loop-scroll {
-        0% { transform: translateX(0) }
-        100% { transform: translateX(calc(-100% / 3)) }
-    }
 
     @keyframes dialog-overlay-show {
         from { opacity: 0 }

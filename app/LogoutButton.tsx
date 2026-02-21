@@ -2,10 +2,13 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { logout } from '@/util/auth';
+import { Dialog } from 'radix-ui';
 
 // Components
 import CenteredModal from '@/components/CenteredModal';
+
+// Utils
+import { logout } from '@/util/auth';
 
 
 export default function LogoutButton() {
@@ -28,13 +31,13 @@ export default function LogoutButton() {
             </button>
 
             <CenteredModal
-                className="relative bg-background rounded-lg px-12 py-8 text-white shadow-lg w-full max-w-xl max-h-[90%]"
+                className="bg-background rounded-lg px-12 py-8 text-white shadow-lg w-full max-w-xl max-h-[90%]"
                 open={open}
                 setOpen={setOpen}
             >
-                <h1 className="text-2xl font-bold mb-4">
+                <Dialog.Title className="text-2xl font-bold mb-4">
                     Log out
-                </h1>
+                </Dialog.Title>
                 <p className="text-primary mb-4">
                     This will log you out on your current device.
                 </p>

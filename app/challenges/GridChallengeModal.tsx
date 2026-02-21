@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react';
-import { Dialog, Tabs } from 'radix-ui';
+import { Dialog, Tabs, VisuallyHidden } from 'radix-ui';
 import Markdown from 'react-markdown';
 import type { Challenge } from '@/util/challenges';
 
@@ -27,9 +27,9 @@ export default function GridChallengeModal(props: GridChallengeModalProps) {
             setOpen={props.setOpen}
         >
             <Tabs.Root>
-                <Dialog.Title>
-                    {props.challenge.name}
-                </Dialog.Title>
+                <VisuallyHidden.Root>
+                    <Dialog.Title>{props.challenge.name}</Dialog.Title>
+                </VisuallyHidden.Root>
 
                 <Tabs.List className="mb-6 flex">
                     <ChallengeTab value="description">

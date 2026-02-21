@@ -31,7 +31,7 @@ export default function RootLayout(props: { children: ReactNode }) {
     return (
         <html lang="en" className="h-full scroll-smooth">
             <body
-                className="group bg-linear-to-b/srgb from-background from-25% to-theme bg-fixed text-white h-full flex flex-col overflow-y-scroll"
+                className="bg-linear-to-b/srgb from-background from-25% to-theme bg-fixed text-white h-full flex flex-col overflow-y-scroll"
                 style={inter.style}
             >
                 <TimeProvider>

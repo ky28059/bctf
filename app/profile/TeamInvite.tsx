@@ -1,7 +1,7 @@
 'use client'
 
 import { Collapsible } from 'radix-ui';
-import { BsChevronUp } from 'react-icons/bs';
+import { BsChevronDown } from 'react-icons/bs';
 
 
 export default function TeamInvite(props: { token: string }) {
@@ -24,7 +24,7 @@ export default function TeamInvite(props: { token: string }) {
                 <div className="flex gap-2">
                     <Collapsible.Trigger className="group w-full flex items-center gap-2 bg-black/30 px-3 py-2 rounded text-primary text-sm font-semibold hover:text-white hover:bg-black/40 transition duration-200">
                         Reveal
-                        <BsChevronUp className="bg-black/30 p-0.5 rounded-full ml-auto group-data-[state=open]:rotate-180 transition duration-200" />
+                        <BsChevronDown className="bg-black/30 p-0.5 rounded-full ml-auto group-data-[state=open]:rotate-180 transition duration-250" />
                     </Collapsible.Trigger>
 
                     <button

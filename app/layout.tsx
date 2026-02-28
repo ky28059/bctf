@@ -13,6 +13,7 @@ import TimeProvider from '@/components/TimeProvider';
 import FilterProvider from '@/components/FilterProvider';
 import PreferencesProvider from '@/components/PreferencesProvider';
 import FlagDispatchProvider from '@/components/FlagDispatchProvider';
+import ToastProvider from '@/components/ToastProvider';
 
 import '@/app/globals.css';
 
@@ -38,13 +39,15 @@ export default function RootLayout(props: { children: ReactNode }) {
                     <FilterProvider>
                         <PreferencesProvider>
                             <FlagDispatchProvider>
-                                <ScrollableBackground />
+                                <ToastProvider>
+                                    <ScrollableBackground />
 
-                                <NavBar />
-                                {props.children}
+                                    <NavBar />
+                                    {props.children}
 
-                                <Equalizer />
-                                <Footer />
+                                    <Equalizer />
+                                    <Footer />
+                                </ToastProvider>
                             </FlagDispatchProvider>
                         </PreferencesProvider>
                     </FilterProvider>

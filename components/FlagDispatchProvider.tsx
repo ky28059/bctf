@@ -1,7 +1,6 @@
 'use client'
 
-import { Fragment, ReactElement, ReactNode, useRef, useState } from 'react';
-import { Transition } from '@headlessui/react';
+import { ReactNode, useRef } from 'react';
 
 // Utils
 import FlagDispatchContext from '@/contexts/FlagDispatchContext';
@@ -19,17 +18,6 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
 
     const rejectQueue = useRef<HTMLVideoElement[]>([]);
     const acceptQueue = useRef<HTMLVideoElement[]>([]);
-
-    const [notifs, setNotifs] = useState<ReactElement[]>([]);
-
-    function dispatchNotif(message: string, success: boolean) {
-        setNotifs((n) => [...n, <Notification success={success}>{message}</Notification>]);
-
-        setTimeout(() => setNotifs((n) => {
-            n.shift();
-            return [...n];
-        }), 5000);
-    }
 
     function rejectFlag() {
         if (!rejectQueue.current.length) {
@@ -81,7 +69,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
     }
 
     return (
-        <FlagDispatchContext.Provider value={{ rejectFlag, acceptFlag, dispatchNotif }}>
+        <FlagDispatchContext.Provider value={{ rejectFlag, acceptFlag }}>
             {Array(6).fill(0).map((_, i) => (
                 <video
                     hidden
@@ -130,31 +118,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
                 <source src="/assets/videos/special2-chrome.webm" type="video/webm" />
             </video>
 
-            <div className="fixed w-screen h-screen flex flex-col gap-2 items-end justify-end py-8 px-8 pointer-events-none z-20">
-                {notifs}
-            </div>
-
             {props.children}
         </FlagDispatchContext.Provider>
-    )
-}
-
-function Notification(props: { success?: boolean, children: ReactNode }) {
-    return (
-        <Transition
-            appear
-            show
-            as={Fragment}
-            enter="transition duration-150 ease-out"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition duration-100 ease-out"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-        >
-            <div className={'bg-background rounded shadow-lg px-6 py-3.5 w-80 border-l-[3px] text-primary ' + (props.success ? 'border-success' : 'border-theme')}>
-                {props.children}
-            </div>
-        </Transition>
     )
 }

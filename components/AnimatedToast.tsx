@@ -28,25 +28,18 @@ export default function AnimatedToast(props: ToastProps) {
             ref={ref}
             // type={props.toast.type}
             duration={props.toast.duration}
-            className="ToastRoot"
+            className="absolute bottom-4 right-4 left-4 transition duration-400 rounded-sm ToastRoot"
             onOpenChange={props.onOpenChange}
         >
-            <div className="ToastInner">
-                {/* <ToastStatusIcon status={toast.status} /> */}
-                <ToastPrimitive.Title className="ToastTitle">
+            <div className={'group relative bg-background rounded-sm shadow-xl px-4 py-3 border-l-4 ' + (props.toast.success ? 'border-success' : 'border-theme')}>
+                <ToastPrimitive.Title className="">
                     {props.toast.title}
                 </ToastPrimitive.Title>
-                <ToastPrimitive.Description className="ToastDescription">
+                <ToastPrimitive.Description className="text-sm text-secondary">
                     {props.toast.description}
                 </ToastPrimitive.Description>
-                <ToastPrimitive.Action
-                    className="ToastAction Button small green"
-                    altText="Goto schedule to undo"
-                >
-                    Undo
-                </ToastPrimitive.Action>
-                <ToastPrimitive.Close aria-label="Close" className="ToastClose">
-                    x
+                <ToastPrimitive.Close aria-label="Close" className="absolute -top-1.5 -left-3 bg-black rounded-full size-5 text-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-75">
+                    ×
                 </ToastPrimitive.Close>
             </div>
         </ToastPrimitive.Root>

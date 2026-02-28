@@ -133,6 +133,81 @@
             transform: translateX(0);
         }
     }
+
+    @keyframes slide-down {
+        from {
+            transform: translate3d(0, var(--y), 0);
+        }
+        to {
+            transform: translate3d(0, 85px, 0);
+        }
+    }
+    @keyframes slide-right {
+        from {
+            transform: translate3d(var(--radix-toast-swipe-end-x, 0), var(--y), 0);
+        }
+        to {
+            transform: translate3d(100%, var(--y), 0);
+        }
+    }
+    @keyframes slide-left {
+        from {
+            transform: translate3d(var(--radix-toast-swipe-end-x, 0), var(--y), 0);
+        }
+        to {
+            transform: translate3d(-100%, var(--y), 0);
+        }
+    }
+}
+
+.ToastRoot {
+    --opacity: 0;
+    --x: var(--radix-toast-swipe-move-x, 0);
+    --y: calc(1px - (10px * var(--index)));
+    --scale: calc(1 - 0.05 * var(--index));
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+    transition-property: transform, opacity;
+    transition-duration: 400ms;
+    transition-timing-function: ease;
+    opacity: var(--opacity);
+    transform: translate3d(var(--x), 85px, 0);
+    outline: none;
+    border-radius: 5px;
+}
+.ToastRoot[data-front="true"] {
+    transform: translate3d(var(--x), var(--y, 0), 0);
+}
+.ToastRoot[data-front="false"] {
+    transform: translate3d(var(--x), var(--y, 0), 0) scale(var(--scale));
+}
+.ToastRoot[data-state="closed"] {
+    animation: slide-down 350ms ease;
+}
+.ToastRoot[data-hidden="false"] {
+    --opacity: 1;
+}
+.ToastRoot[data-hidden="true"] {
+    --opacity: 0;
+}
+.ToastRoot[data-hovering="true"] {
+    --scale: 1;
+    --y: calc(var(--hover-offset-y) - var(--stack-gap) * var(--index));
+    transition-duration: 350ms;
+}
+.ToastRoot[data-swipe="move"] {
+    transition-duration: 0ms;
+}
+.ToastRoot[data-swipe="cancel"] {
+    --x: 0;
+}
+.ToastRoot[data-swipe-direction="right"][data-swipe="end"] {
+    animation: slide-right 150ms ease-out;
+}
+.ToastRoot[data-swipe-direction="left"][data-swipe="end"] {
+    animation: slide-left 150ms ease-out;
 }
 
 @utility container {

@@ -10,6 +10,7 @@ import { ToastContext, ToastImplContext, ToastPayload } from '@/contexts/ToastCo
 
 const ANIMATION_OUT_DURATION = 350;
 
+// Based on {@Link https://codesandbox.io/p/sandbox/radix-toast-stack-dpfx5f}
 export default function ToastProvider(props: { children: ReactNode }) {
     const [toasts, setToasts] = useState(new Map<string, ToastPayload>());
     const toastElementsMapRef = useRef(new Map<string, HTMLLIElement>());
@@ -36,7 +37,7 @@ export default function ToastProvider(props: { children: ReactNode }) {
         });
     }, []);
 
-    const handleAddToast = useCallback((toast: ToastPayload) => {
+    const addToast = useCallback((toast: ToastPayload) => {
         setToasts((currentToasts) => {
             const m = new Map(currentToasts);
             m.set(String(Date.now()), toast);
@@ -44,7 +45,7 @@ export default function ToastProvider(props: { children: ReactNode }) {
         });
     }, []);
 
-    const handleRemoveToast = useCallback((key: string) => {
+    const removeToast = useCallback((key: string) => {
         setToasts((currentToasts) => {
             const m = new Map(currentToasts);
             m.delete(key);
@@ -84,7 +85,7 @@ export default function ToastProvider(props: { children: ReactNode }) {
     }, []);
 
     return (
-        <ToastContext.Provider value={{ toast: handleAddToast }}>
+        <ToastContext.Provider value={{ toast: addToast }}>
             <ToastImplContext.Provider value={{ toastElementsMapRef, sortToasts }}>
                 <ToastPrimitive.Provider {...props}>
                     {props.children}
@@ -95,21 +96,18 @@ export default function ToastProvider(props: { children: ReactNode }) {
                             id={key}
                             toast={toast}
                             onOpenChange={(open) => {
-                                if (!open) {
-                                    toastElementsMapRef.current.delete(key);
-                                    sortToasts();
-                                    if (!open) {
-                                        setTimeout(() => {
-                                            handleRemoveToast(key);
-                                        }, ANIMATION_OUT_DURATION);
-                                    }
-                                }
+                                if (open) return;
+                                toastElementsMapRef.current.delete(key);
+                                sortToasts();
+                                setTimeout(() => {
+                                    removeToast(key);
+                                }, ANIMATION_OUT_DURATION);
                             }}
                         />
                     ))}
                     <ToastPrimitive.Viewport
                         ref={viewportRef}
-                        className="ToastViewport"
+                        className="fixed bottom-0 right-0 w-96 max-w-svw z-50 outline-none"
                     />
                 </ToastPrimitive.Provider>
             </ToastImplContext.Provider>

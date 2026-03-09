@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.9",
     "@tailwindcss/postcss": "^4.1.18",
     "luxon": "^3.7.2",
     "next": "^16.1.6",

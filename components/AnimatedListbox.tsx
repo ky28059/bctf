@@ -1,23 +1,29 @@
 'use client'
 
 import type { ReactNode } from 'react';
-import { ListboxOptions } from '@headlessui/react';
+import type { SelectContentProps } from '@radix-ui/react-select';
+import { Select } from 'radix-ui';
 
 
 // A reusable component to wrap a dropdown animation around a `ListboxOptions`.
 type AnimatedListboxProps = {
     children: ReactNode,
-    modal?: boolean,
+    position?: SelectContentProps['position'],
+    side?: SelectContentProps['side'],
+    sideOffset?: SelectContentProps['sideOffset'],
     className?: string
 }
 export default function AnimatedListbox(props: AnimatedListboxProps) {
     return (
-        <ListboxOptions
-            transition
+        <Select.Content
             className={`transition ease-out duration-100 data-closed:opacity-0` + (props.className ? ` ${props.className}` : '')}
-            modal={props.modal ?? false}
+            position={props.position ?? 'popper'}
+            side={props.side}
+            sideOffset={props.sideOffset}
         >
-            {props.children}
-        </ListboxOptions>
+            <Select.Viewport>
+                {props.children}
+            </Select.Viewport>
+        </Select.Content>
     )
 }

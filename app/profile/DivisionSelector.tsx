@@ -1,6 +1,6 @@
 'use client'
 
-import { Listbox, ListboxButton, ListboxOption } from '@headlessui/react';
+import { Select } from 'radix-ui';
 import AnimatedListbox from '@/components/AnimatedListbox';
 
 // Icons
@@ -16,33 +16,39 @@ type DivisionSelectorProps = {
 }
 export default function DivisionSelector(props: DivisionSelectorProps) {
     return (
-        <Listbox
-            as="div"
-            className="w-full relative"
+        <Select.Root
             value={props.division}
-            onChange={props.setDivision}
+            onValueChange={(d) => d && props.setDivision(d)} // https://github.com/radix-ui/primitives/issues/3249
         >
-            <ListboxButton className="relative text-left w-full bg-black/40 pl-12 pr-4 py-2 rounded border border-secondary">
+            <Select.Trigger className="relative text-left w-full bg-black/40 pl-12 pr-4 py-2 rounded border border-secondary">
                 <FaAddressBook className="absolute left-4 inset-y-0 my-auto" />
-                {props.divisionNames[props.division]}
+                <Select.Value aria-label={props.division}>
+                    {props.divisionNames[props.division]}
+                </Select.Value>
                 <PiCaretUpDown className="absolute right-2 inset-y-0 my-auto text-secondary" />
-            </ListboxButton>
+            </Select.Trigger>
 
-            <AnimatedListbox className="absolute text-sm w-full mt-0.5 bg-background shadow-lg overflow-hidden rounded divide-y divide-tertiary z-10">
-                <p className="px-6 py-1 text-secondary select-none">
-                    Division
-                </p>
+            <AnimatedListbox
+                className="w-(--radix-popper-anchor-width) text-sm bg-background shadow-lg overflow-hidden rounded divide-y divide-tertiary z-10"
+                side="bottom"
+                sideOffset={5}
+            >
+                <Select.Group>
+                    <Select.Label className="px-6 py-1 text-secondary select-none">
+                        Division
+                    </Select.Label>
 
-                {props.divisions.map((d) => (
-                    <ListboxOption
-                        className="px-6 py-1 cursor-pointer text-primary hover:text-white hover:bg-blue-500/30 data-selected:bg-blue-500 data-selected:text-white transition duration-200"
-                        value={d}
-                        key={d}
-                    >
-                        {props.divisionNames[d]}
-                    </ListboxOption>
-                ))}
+                    {props.divisions.map((d) => (
+                        <Select.Item
+                            className="px-6 py-1 cursor-pointer outline-none text-primary hover:text-white hover:bg-blue-500/30 data-[state=checked]:bg-blue-500 data-[state=checked]:text-white transition duration-200"
+                            value={d}
+                            key={d}
+                        >
+                            {props.divisionNames[d]}
+                        </Select.Item>
+                    ))}
+                </Select.Group>
             </AnimatedListbox>
-        </Listbox>
+        </Select.Root>
     )
 }

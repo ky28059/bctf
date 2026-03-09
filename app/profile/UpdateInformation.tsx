@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Components
@@ -10,7 +10,7 @@ import DivisionSelector from '@/app/profile/DivisionSelector';
 // Utils
 import type { CTFConfig } from '@/util/config';
 import { MyProfileData, updateEmail, updateProfile, UpdateProfilePayload } from '@/util/profile';
-import FlagDispatchContext from '@/contexts/FlagDispatchContext';
+import { useToast } from '@/contexts/ToastContext';
 
 // Icons
 import { FaCircleUser } from 'react-icons/fa6';
@@ -22,14 +22,14 @@ export default function UpdateInformation(props: MyProfileData & { config: CTFCo
     const [email, setEmail] = useState(props.email);
     const [division, setDivision] = useState(props.division);
 
-    const { dispatchNotif } = useContext(FlagDispatchContext);
+    const { toast } = useToast();
     const { refresh } = useRouter();
 
     async function updateInfoCallback(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (name === props.name && email === props.email && division === props.division)
-            return dispatchNotif('Nothing to update!', false);
+            return toast({ title: 'Error updating user information.', description: 'Nothing to update!', success: false });
 
         // Update name and division
         if (name !== props.name || division !== props.division) {
@@ -38,16 +38,18 @@ export default function UpdateInformation(props: MyProfileData & { config: CTFCo
             if (division !== props.division) payload.division = division;
 
             const res = await updateProfile(payload);
-            if (res.error) return dispatchNotif(res.error, false);
+            if (res.error)
+                return toast({ title: 'Error updating user information.', description: res.error, success: false });
 
-            dispatchNotif('Successfully updated user information.', true);
+            toast({ title: 'Successfully updated user information.', description: '...', success: true });
         }
 
         if (email !== props.email) {
             const res = await updateEmail(email);
-            if (res.error) return dispatchNotif(res.error, false);
+            if (res.error)
+                return toast({ title: 'Error updating user information.', description: res.error, success: false });
 
-            dispatchNotif('Confirmation email sent.', true);
+            toast({ title: 'Confirmation email sent.', description: '...', success: true });
         }
 
         refresh();

@@ -13,6 +13,7 @@ import TimeProvider from '@/components/TimeProvider';
 import FilterProvider from '@/components/FilterProvider';
 import PreferencesProvider from '@/components/PreferencesProvider';
 import FlagDispatchProvider from '@/components/FlagDispatchProvider';
+import ToastProvider from '@/components/ToastProvider';
 
 import '@/app/globals.css';
 
@@ -29,22 +30,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: ReactNode }) {
     return (
-        <html lang="en" className="h-full overflow-y-scroll scroll-smooth">
+        <html lang="en" className="h-full scroll-smooth">
             <body
-                className="bg-linear-to-b/srgb from-background from-25% to-theme bg-fixed text-white h-full flex flex-col"
+                className="bg-linear-to-b/srgb from-background from-25% to-theme bg-fixed text-white h-full flex flex-col overflow-y-scroll"
                 style={inter.style}
             >
                 <TimeProvider>
                     <FilterProvider>
                         <PreferencesProvider>
                             <FlagDispatchProvider>
-                                <ScrollableBackground />
+                                <ToastProvider>
+                                    <ScrollableBackground />
 
-                                <NavBar />
-                                {props.children}
+                                    <NavBar />
+                                    {props.children}
 
-                                <Equalizer />
-                                <Footer />
+                                    <Equalizer />
+                                    <Footer />
+                                </ToastProvider>
                             </FlagDispatchProvider>
                         </PreferencesProvider>
                     </FilterProvider>

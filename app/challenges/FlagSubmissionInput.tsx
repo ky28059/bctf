@@ -2,10 +2,11 @@
 
 import { FormEvent, useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import FlagDispatchContext from '@/contexts/FlagDispatchContext';
 
 // Utils
 import type { Challenge } from '@/util/challenges';
+import FlagDispatchContext from '@/contexts/FlagDispatchContext';
+import { useToast } from '@/contexts/ToastContext';
 import { attemptSubmit } from '@/util/flags';
 
 
@@ -15,7 +16,8 @@ type FlagSubmissionInputProps = {
 }
 export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
     const [flag, setFlag] = useState('');
-    const { acceptFlag, rejectFlag, dispatchNotif } = useContext(FlagDispatchContext);
+    const { acceptFlag, rejectFlag } = useContext(FlagDispatchContext);
+    const { toast } = useToast()
 
     const router = useRouter();
 
@@ -31,7 +33,7 @@ export default function FlagSubmissionInput(props: FlagSubmissionInputProps) {
         } else if (res.kind === 'badFlag') {
             rejectFlag();
         } else {
-            dispatchNotif(res.message!, false);
+            toast({ title: 'Error submitting flag.', description: res.message!, success: false });
         }
     }
 

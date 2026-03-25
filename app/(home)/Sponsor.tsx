@@ -10,7 +10,7 @@ type SponsorProps = {
 }
 export default function Sponsor(props: SponsorProps) {
     return (
-        <HoverCard.Root>
+        <HoverCard.Root openDelay={400}>
             <HoverCard.Trigger asChild>
                 <a
                     className="ImageTrigger"
@@ -26,7 +26,7 @@ export default function Sponsor(props: SponsorProps) {
                 </a>
             </HoverCard.Trigger>
             <HoverCard.Portal>
-                <HoverCard.Content className="bg-background rounded-lg shadow-2xl px-6 pt-4 pb-6 max-w-sm" sideOffset={5}>
+                <HoverCard.Content className="bg-background rounded-lg shadow-2xl px-6 pt-4 pb-6 max-w-sm data-[side=top]:animate-slide-down-fade data-[side=bottom]:animate-slide-up-fade data-[side=left]:animate-slide-right-fade data-[side=right]:animate-slide-left-fade" sideOffset={5}>
                     <img
                         className="w-full h-20 object-contain flex-none"
                         src={props.src}

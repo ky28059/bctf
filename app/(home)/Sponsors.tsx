@@ -9,7 +9,7 @@ export default function Sponsors() {
             {/*    Sponsors*/}
             {/*</SectionHeader>*/}
 
-            <div className="flex gap-x-6 justify-center items-center">
+            <div className="flex flex-wrap gap-x-8 justify-center items-center">
                 <Sponsor
                     href="https://cloud.google.com/"
                     src="/assets/sponsors/google-cloud.png"
@@ -30,22 +30,22 @@ export default function Sponsors() {
                     creativity, and uncompromising excellence — because the stakes are high, the work is hard, and
                     the impact is real.
                 </Sponsor>
+
+                <Sponsor
+                    href="https://www.zellic.io/"
+                    src="/assets/sponsors/zellic.svg"
+                    name="Zellic"
+                >
+                    Zellic is a security research firm. We hire top CTF talent to solve the world's most critical security problems. We specialize in ZKPs, cryptography, web app security, smart contracts, and blockchain L1/L2s. Before Zellic, we previously founded perfect blue, the #1 CTF team in 2020 and 2021. You're a good fit for Zellic if you have extensive real-world experience in vulnerability research (VR) / binary exploitation, reverse engineering (RE), cryptography, or web application security. We hire internationally and offer competitive salaries and a comprehensive benefits package.
+                    <br />
+                    <br />
+                    To learn more about Zellic, check out our blog: <a href="https://www.zellic.io/blog/the-auditooor-grindset" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">https://www.zellic.io/blog/the-auditooor-grindset</a>
+                    <br />
+                    Work at Zellic: <a href="mailto:jobs@zellic.io" className="text-theme-bright hover:underline">jobs@zellic.io</a> | @gf_256
+                </Sponsor>
             </div>
 
             {/*
-            <Sponsor
-                href="https://www.zellic.io/"
-                src="/assets/sponsors/zellic.svg"
-                name="Zellic"
-            >
-                Zellic is a security research firm. We hire top CTF talent to solve the world's most critical security problems. We specialize in ZKPs, cryptography, web app security, smart contracts, and blockchain L1/L2s. Before Zellic, we previously founded perfect blue, the #1 CTF team in 2020 and 2021. You're a good fit for Zellic if you have extensive real-world experience in vulnerability research (VR) / binary exploitation, reverse engineering (RE), cryptography, or web application security. We hire internationally and offer competitive salaries and a comprehensive benefits package.
-                <br />
-                <br />
-                To learn more about Zellic, check out our blog: <a href="https://www.zellic.io/blog/the-auditooor-grindset" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">https://www.zellic.io/blog/the-auditooor-grindset</a>
-                <br />
-                Work at Zellic: <a href="mailto:jobs@zellic.io" className="text-theme-bright hover:underline">jobs@zellic.io</a> | @gf_256
-            </Sponsor>
-
             <Sponsor
                 href="https://osec.io/"
                 src="/assets/sponsors/ottersec.svg"

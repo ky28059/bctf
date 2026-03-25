@@ -9,6 +9,27 @@ export default function Sponsors() {
                 Sponsors
             </SectionHeader>
 
+            <Sponsor
+                href="https://cloud.google.com/"
+                src="/assets/sponsors/google-cloud.png"
+                name="Google Cloud"
+            >
+                Infra sponsored by <a href="https://goo.gle/ctfsponsorship" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">goo.gle/ctfsponsorship</a>.
+            </Sponsor>
+
+            <Sponsor
+                href="https://www.crypticvector.com/"
+                src="/assets/sponsors/cryptic-vector.webp"
+                name="Cryptic vector"
+            >
+                At Cryptic Vector, our mission is to bring together the brightest engineers and technologists, equip
+                them with the freedom, tools, and support they need to do the best work of their careers, and deliver
+                groundbreaking solutions in offensive cyber, ISR, and electronic warfare that provide decisive
+                advantages for U.S. national security. We tackle the most challenging problems with urgency,
+                creativity, and uncompromising excellence — because the stakes are high, the work is hard, and
+                the impact is real.
+            </Sponsor>
+
             {/*
             <Sponsor
                 href="https://www.zellic.io/"
@@ -31,14 +52,6 @@ export default function Sponsors() {
                 OtterSec secures critical blockchain infrastructure — from custom compilers to novel virtual machines,
                 we review a wide range of difficult targets. Our team consists largely of CTF players that enjoy solving
                 hard problems. If that sounds like you, please apply through our <a href="https://osec.io/careers" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">careers page</a>.
-            </Sponsor>
-
-            <Sponsor
-                href="https://cloud.google.com/"
-                src="/assets/sponsors/google-cloud.png"
-                name="Google Cloud"
-            >
-                Infra sponsored by <a href="https://goo.gle/ctfsponsorship" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">goo.gle/ctfsponsorship</a>.
             </Sponsor>
 
             <Sponsor

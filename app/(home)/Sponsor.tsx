@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { HoverCard } from 'radix-ui';
 
 
 type SponsorProps = {
@@ -9,24 +10,38 @@ type SponsorProps = {
 }
 export default function Sponsor(props: SponsorProps) {
     return (
-        <div className="relative flex flex-col md:flex-row gap-x-8 gap-y-6 md:items-center bg-black/30 backdrop-blur-sm rounded px-8 py-6 border border-tertiary hover:border-secondary transition duration-200">
-            <a
-                className="absolute inset-0"
-                href={props.href}
-                target="_blank"
-                rel="noopener noreferrer"
-            />
-            <img
-                className="w-48 flex-none"
-                src={props.src}
-                alt={props.name}
-            />
-            <div>
-                <h3 className="font-semibold mb-2 text-lg">{props.name}</h3>
-                <p className="text-sm text-primary [&_a]:relative [&_a]:z-10"> {/* TODO: hacky? */}
-                    {props.children}
-                </p>
-            </div>
-        </div>
-    )
+        <HoverCard.Root>
+            <HoverCard.Trigger asChild>
+                <a
+                    className="ImageTrigger"
+                    href={props.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img
+                        className="max-w-56 h-24 object-contain flex-none"
+                        src={props.src}
+                        alt={props.name}
+                    />
+                </a>
+            </HoverCard.Trigger>
+            <HoverCard.Portal>
+                <HoverCard.Content className="bg-background rounded-lg shadow-2xl px-6 pt-4 pb-6 max-w-sm" sideOffset={5}>
+                    <img
+                        className="w-full h-20 object-contain flex-none"
+                        src={props.src}
+                        alt={props.name}
+                    />
+
+                    <h3 className="font-semibold mb-1.5 text-lg">{props.name}</h3>
+
+                    <p className="text-sm text-primary">
+                        {props.children}
+                    </p>
+
+                    <HoverCard.Arrow className="HoverCardArrow" />
+                </HoverCard.Content>
+            </HoverCard.Portal>
+        </HoverCard.Root>
+    );
 }

@@ -4,31 +4,33 @@ import SectionHeader from '@/components/SectionHeader';
 
 export default function Sponsors() {
     return (
-        <section className="container flex flex-col gap-2">
-            <SectionHeader id="sponsors">
-                Sponsors
-            </SectionHeader>
+        <section className="container">
+            {/*<SectionHeader id="sponsors">*/}
+            {/*    Sponsors*/}
+            {/*</SectionHeader>*/}
 
-            <Sponsor
-                href="https://cloud.google.com/"
-                src="/assets/sponsors/google-cloud.png"
-                name="Google Cloud"
-            >
-                Infra sponsored by <a href="https://goo.gle/ctfsponsorship" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">goo.gle/ctfsponsorship</a>.
-            </Sponsor>
+            <div className="flex gap-x-6 justify-center items-center">
+                <Sponsor
+                    href="https://cloud.google.com/"
+                    src="/assets/sponsors/google-cloud.png"
+                    name="Google Cloud"
+                >
+                    Infra sponsored by <a href="https://goo.gle/ctfsponsorship" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">goo.gle/ctfsponsorship</a>.
+                </Sponsor>
 
-            <Sponsor
-                href="https://www.crypticvector.com/"
-                src="/assets/sponsors/cryptic-vector.webp"
-                name="Cryptic vector"
-            >
-                At Cryptic Vector, our mission is to bring together the brightest engineers and technologists, equip
-                them with the freedom, tools, and support they need to do the best work of their careers, and deliver
-                groundbreaking solutions in offensive cyber, ISR, and electronic warfare that provide decisive
-                advantages for U.S. national security. We tackle the most challenging problems with urgency,
-                creativity, and uncompromising excellence — because the stakes are high, the work is hard, and
-                the impact is real.
-            </Sponsor>
+                <Sponsor
+                    href="https://www.crypticvector.com/"
+                    src="/assets/sponsors/cryptic-vector.webp"
+                    name="Cryptic vector"
+                >
+                    At Cryptic Vector, our mission is to bring together the brightest engineers and technologists, equip
+                    them with the freedom, tools, and support they need to do the best work of their careers, and deliver
+                    groundbreaking solutions in offensive cyber, ISR, and electronic warfare that provide decisive
+                    advantages for U.S. national security. We tackle the most challenging problems with urgency,
+                    creativity, and uncompromising excellence — because the stakes are high, the work is hard, and
+                    the impact is real.
+                </Sponsor>
+            </div>
 
             {/*
             <Sponsor

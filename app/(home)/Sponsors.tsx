@@ -9,7 +9,7 @@ export default function Sponsors() {
             {/*    Sponsors*/}
             {/*</SectionHeader>*/}
 
-            <div className="flex flex-wrap gap-x-8 justify-center items-center">
+            <div className="flex flex-wrap gap-x-10 justify-center items-center">
                 <Sponsor
                     href="https://cloud.google.com/"
                     src="/assets/sponsors/google-cloud.png"
@@ -42,6 +42,15 @@ export default function Sponsors() {
                     To learn more about Zellic, check out our blog: <a href="https://www.zellic.io/blog/the-auditooor-grindset" target="_blank" rel="noopener noreferrer" className="text-theme-bright hover:underline">https://www.zellic.io/blog/the-auditooor-grindset</a>
                     <br />
                     Work at Zellic: <a href="mailto:jobs@zellic.io" className="text-theme-bright hover:underline">jobs@zellic.io</a> | @gf_256
+                </Sponsor>
+
+                <Sponsor
+                    href="https://www.researchinnovations.com/"
+                    src="/assets/sponsors/rii.svg"
+                    name="Research Innovations"
+                >
+                    RII builds software and hardware for command and control, electronic warfare, and cyber — designed
+                    by people who've done the work, for the operators who have to.
                 </Sponsor>
             </div>
 

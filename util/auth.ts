@@ -96,7 +96,15 @@ export async function verify(verifyToken: string) {
 
     console.log(verifyToken, res);
 
-    return res;
+    if (res.kind === 'goodEmailSet')
+        return redirect('/profile'); // TODO: display error message?
+    if (res.kind !== 'goodRegister' && res.kind !== 'goodVerify')
+        return redirect('/register'); // TODO: display error message?
+
+    const c = await cookies();
+    c.set(AUTH_COOKIE_NAME, res.data.authToken, { maxAge: 16070400 }); // ~6 months
+
+    return redirect('/profile');
 }
 
 type LoginResponse = {

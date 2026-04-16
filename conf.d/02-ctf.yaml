@@ -2,6 +2,7 @@ origin: https://b01lersc.tf
 divisions:
   open: Open
   purdue: Purdue
+  human: Human
 divisionACLs:
   - match: domain
     value: purdue.edu
@@ -12,9 +13,6 @@ divisionACLs:
     value: ''
     divisions:
       - open
-  - match: any
-    value: ''
-    divisions:
       - human
 startTime: 1776470400000
 endTime: 1776643200000

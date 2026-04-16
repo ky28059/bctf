@@ -9,6 +9,7 @@ divisionACLs:
     divisions:
       - purdue
       - open
+      - human
   - match: any
     value: ''
     divisions:

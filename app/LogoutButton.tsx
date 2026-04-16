@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Dialog } from 'radix-ui';
 
 // Components
@@ -13,12 +12,10 @@ import { logout } from '@/util/auth';
 
 export default function LogoutButton() {
     const [open, setOpen] = useState(false);
-    const router = useRouter();
 
     async function logoutCallback() {
         setOpen(false);
         await logout();
-        router.refresh();
     }
 
     return (

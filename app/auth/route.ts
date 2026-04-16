@@ -3,7 +3,11 @@ import { cookies } from 'next/headers';
 import { AUTH_COOKIE_NAME } from '@/util/config';
 
 
-const ALLOWED_REDIRECTS = [`${process.env.KLODD_URL}/auth`];
+const ALLOWED_REDIRECTS = [
+    `${process.env.KLODD_URL}/auth`,
+    'https://verify.b01lersc.tf/auth',
+    'https://koth.b01lersc.tf/auth'
+];
 
 /**
  * "pseudo-oauth" functionality for Klodd.

@@ -12,5 +12,9 @@ divisionACLs:
     value: ''
     divisions:
       - open
+  - match: any
+    value: ''
+    divisions:
+      - human
 startTime: 1776470400000
 endTime: 1776643200000

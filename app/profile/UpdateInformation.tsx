@@ -41,7 +41,7 @@ export default function UpdateInformation(props: MyProfileData & { config: CTFCo
             if (res.error)
                 return toast({ title: 'Error updating user information.', description: res.error, success: false });
 
-            toast({ title: 'Successfully updated user information.', description: '...', success: true });
+            toast({ title: 'Successfully updated user information.', description: 'Your changes should propagate immediately.', success: true });
         }
 
         if (email !== props.email) {
@@ -49,7 +49,7 @@ export default function UpdateInformation(props: MyProfileData & { config: CTFCo
             if (res.error)
                 return toast({ title: 'Error updating user information.', description: res.error, success: false });
 
-            toast({ title: 'Confirmation email sent.', description: '...', success: true });
+            toast({ title: 'Confirmation email sent.', description: 'Check your inbox for a verification link to update your email.', success: true });
         }
 
         refresh();

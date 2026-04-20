@@ -1,6 +1,6 @@
 'use server'
 
-import type { BadTokenResponse, RateLimitResponse, UserNotFoundResponse } from '@/util/errors';
+import type { BadTokenResponse, CTFEndedResponse, RateLimitResponse, UserNotFoundResponse } from '@/util/errors';
 import { cookies } from 'next/headers';
 import { AUTH_COOKIE_NAME } from '@/util/config';
 
@@ -64,6 +64,18 @@ type UpdateUserResponse = {
     }
 }
 
+type BadNameResponse = {
+    kind: 'badName',
+    message: 'The name should only use english letters, numbers, and symbols.',
+    data: null
+}
+
+type BadKnownNameResponse = {
+    kind: 'badKnownName',
+    message: 'An account with this name already exists.',
+    data: null
+}
+
 export type UpdateProfilePayload = {
     name?: string,
     division?: string
@@ -75,7 +87,7 @@ export async function updateProfile(payload: UpdateProfilePayload) {
     if (!token)
         return { error: 'Not authenticated.' };
 
-    const res: UpdateUserResponse | RateLimitResponse = await (await fetch(`${process.env.API_BASE}/users/me`, {
+    const res: UpdateUserResponse | RateLimitResponse | CTFEndedResponse | BadNameResponse | BadKnownNameResponse = await (await fetch(`${process.env.API_BASE}/users/me`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -86,6 +98,8 @@ export async function updateProfile(payload: UpdateProfilePayload) {
 
     if (res.kind === 'badRateLimit')
         return { error: `You are doing this too fast! Try again in ${res.data.timeLeft} ms.` };
+    if (res.kind !== 'goodUserUpdate')
+        return { error: res.message };
 
     return { ok: true };
 }

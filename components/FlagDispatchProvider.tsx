@@ -73,6 +73,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
             {Array(6).fill(0).map((_, i) => (
                 <video
                     hidden
+                    playsInline
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToRejectVideos}
                     onPlay={(e) => e.currentTarget.hidden = false}
@@ -86,6 +87,7 @@ export default function FlagDispatchProvider(props: { children: ReactNode }) {
             {Array(6).fill(0).map((_, i) => (
                 <video
                     hidden
+                    playsInline
                     className="fixed top-0 w-screen h-screen pointer-events-none z-50 object-cover object-center"
                     ref={appendToAcceptVideos}
                     onPlay={(e) => e.currentTarget.hidden = false}

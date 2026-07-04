@@ -1,0 +1,31 @@
+name: Create vercel preview URL on pull request
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dkershner6/vercel-set-env-action@v3
+        with:
+          token: ${{ secrets.VERCEL_TOKEN }}
+          teamId: ${{ secrets.ORG_ID }}
+          projectName: internal-ctf
+          envVariableKeys: ADMIN_TOKEN
+        env:
+          ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+          TARGET_ADMIN_TOKEN: preview,development,production
+          TYPE_ADMIN_TOKEN: encrypted
+
+      - uses: amondnet/vercel-action@v20
+        id: vercel-deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID}}
+          vercel-project-id: ${{ secrets.PROJECT_ID}}
+      - name: preview-url
+        run: |
+          echo ${{ steps.vercel-deploy.outputs.preview-url }}

@@ -22,10 +22,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: {
-        absolute: 'b01lers CTF 2026',
-        template: '%s - b01lers CTF 2026'
+        absolute: 'b01lers internal CTF',
+        template: '%s - b01lers internal CTF'
     },
-    description: 'b01lers CTF is jeopardy-style CTF hosted by the b01lers CTF team at Purdue University.',
+    description: 'b01lers internal CTF is a training camp to sharpen your CTF skills, hosted by the b01lers CTF team at Purdue University.',
 }
 
 export default function RootLayout(props: { children: ReactNode }) {

@@ -7,7 +7,7 @@ export default function CTFNotStarted() {
             <FaRegClock className="text-5xl" />
             <div>
                 <h1 className="font-semibold text-2xl">
-                    b01lers CTF has not started yet.
+                    b01lers internal CTF has not started yet.
                 </h1>
             </div>
         </div>

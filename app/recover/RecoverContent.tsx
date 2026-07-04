@@ -29,7 +29,7 @@ export default function RecoverContent() {
     return !recovered ? (
         <>
             <h1 className="text-2xl font-bold mb-8 text-center">
-                Recover your b01lers CTF account
+                Recover your b01lers internal CTF account
             </h1>
 
             <form

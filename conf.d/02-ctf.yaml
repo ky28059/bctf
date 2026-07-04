@@ -1,4 +1,4 @@
-origin: https://b01lersc.tf
+origin: https://internal.b01lersc.tf
 divisions:
   open: Open
   purdue: Purdue
@@ -14,6 +14,5 @@ divisionACLs:
     value: ''
     divisions:
       - open
-      - human
-startTime: 1776472200000
-endTime: 1776645000000
+startTime: 0
+endTime: 4111862400000
